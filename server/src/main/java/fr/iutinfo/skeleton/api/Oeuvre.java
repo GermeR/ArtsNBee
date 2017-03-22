@@ -2,11 +2,14 @@ package fr.iutinfo.skeleton.api;
 
 import java.security.SecureRandom;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.hash.Hasher;
 import com.google.common.hash.Hashing;
+
+import fr.iutinfo.skeleton.common.dto.OeuvreDto;
 
 public class Oeuvre {
 	
@@ -188,20 +191,26 @@ public class Oeuvre {
 	}
 
     public void initFromDto(OeuvreDto dto) {
-        this.setAlias(dto.getAlias());
-        this.setEmail(dto.getEmail());
-        this.setId(dto.getId());
-        this.setName(dto.getName());
-        this.setPassword(dto.getPassword());
+    	setAno(dto.getAno());
+    	setDescription(dto.getDescription());
+    	setDimension(dto.getDimension());
+    	setNom(dto.getName());
+    	setOno(dto.getOno());
+    	setPoids(dto.getPoids());
+    	setPrix(dto.getPrix());
+    	setPromo(dto.getPromo());
     }
 
     public OeuvreDto convertToDto() {
-        OeuvreDto dto = new UserDto();
-        dto.setAlias(this.getAlias());
-        dto.setEmail(this.getEmail());
-        dto.setId(this.getId());
-        dto.setName(this.getName());
-        dto.setPassword(this.getPassword());
+        OeuvreDto dto = new OeuvreDto();
+    	dto.setAno(getAno());
+    	dto.setDescription(getDescription());
+    	dto.setDimension(getDimension());
+    	dto.setName(getNom());
+    	dto.setOno(getOno());
+    	dto.setPoids(getPoids());
+    	dto.setPrix(getPrix());
+    	dto.setPromo(getPromo());
         return dto;
     }
 }
