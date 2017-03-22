@@ -25,6 +25,9 @@ public class Oeuvre {
     private String search;
 	
     
+    public Oeuvre() {
+	}
+    
     /**
      * Constructeur avec ID spécifié (pour les reste des opérations)
      * @param ono
@@ -184,7 +187,7 @@ public class Oeuvre {
 		return search;
 	}
 
-  /*  public void initFromDto(UserDto dto) {
+    public void initFromDto(OeuvreDto dto) {
         this.setAlias(dto.getAlias());
         this.setEmail(dto.getEmail());
         this.setId(dto.getId());
@@ -193,12 +196,12 @@ public class Oeuvre {
     }
 
     public UserDto convertToDto() {
-        UserDto dto = new UserDto();
+        OeuvreDto dto = new UserDto();
         dto.setAlias(this.getAlias());
         dto.setEmail(this.getEmail());
         dto.setId(this.getId());
         dto.setName(this.getName());
         dto.setPassword(this.getPassword());
         return dto;
-    }*/
+    }
 }
