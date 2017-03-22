@@ -1,6 +1,7 @@
 package fr.iutinfo.skeleton.common.remote;
 
 import fr.iutinfo.skeleton.api.Api;
+
 import fr.iutinfo.skeleton.api.BDDFactory;
 import fr.iutinfo.skeleton.api.User;
 import fr.iutinfo.skeleton.api.UserDao;
