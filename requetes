@@ -1,0 +1,9 @@
+create table souhaits(ono integer, login varchar(20), primary key (ono, login), foreign key (ono) references oeuvre(ono), foreign key (login) references user(login));
+
+create table commande(ono integer, login varchar(20), paiement boolean, envoi boolean, reception boolean, remuneration boolean, prix numeric(6,2), frais numeric(4,2), primary key (ono, login), foreign key (ono) references oeuvre(ono), foreign key (login) references user(login));
+
+create table oeuvre(ono integer primary key, ano varchar(20), prix numeric(6,2), promo integer, description text, type varchar(20), dimension varchar(20), poids integer, thematique varchar(20), foreign key (ano) references user(login));
+
+create table user(login varchar(20) primary key, nom varchar(20), prenom varchar(20), dateN date, fno varchar(20), mail text, dateDéb date, dateFin date, adresse text,optin boolean, optinPart boolean, role varchar(5), foreign key (fno) references forfait(fno));
+
+create table forfait(fno varchar(20) primary key, prix integer, nboeuvres integer );
