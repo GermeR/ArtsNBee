@@ -195,7 +195,7 @@ public class Oeuvre {
         this.setPassword(dto.getPassword());
     }
 
-    public UserDto convertToDto() {
+    public OeuvreDto convertToDto() {
         OeuvreDto dto = new UserDto();
         dto.setAlias(this.getAlias());
         dto.setEmail(this.getEmail());
