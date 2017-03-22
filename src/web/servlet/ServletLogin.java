@@ -21,7 +21,7 @@ public class ServletLogin extends HttpServlet {
 
 	static final String NOM = "kwin";
 	static final String MDP = "moi";
-	static final String URL = "jdbc:postgresql://kwinserv.ddns.net:22042/MeetNRoll";
+	static final String URL = ""; // TODO
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -47,7 +47,7 @@ public class ServletLogin extends HttpServlet {
 			if (rs.next()) {
 				session.setAttribute("personne", new Personne(rs.getString(1), rs.getString(3), rs.getDate(4),
 						rs.getString(5), rs.getString(6)));
-				res.sendRedirect("/Meet-N-Roll/servlet/Menu");
+				res.sendRedirect("Menu");
 			} else
 				res.sendRedirect("../login.html");
 		} catch (ClassNotFoundException e) {

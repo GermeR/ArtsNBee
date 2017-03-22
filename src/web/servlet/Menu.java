@@ -29,7 +29,7 @@ public class Menu extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static final String NOM = "kwin";
 	static final String MDP = "moi";
-	static final String URL = "jdbc:postgresql://kwinserv.ddns.net:22042/MeetNRoll";
+	static final String URL = "";
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -56,56 +56,17 @@ public class Menu extends HttpServlet {
 			out.println("<div class=\"container\">");
 			out.println("<div class=\"page-header\">");
 			out.println("<center>");
-			out.println("<h1 class=\"display-1\">Meet'N'Roll : Menu</h1>");
+			out.println("<h1 class=\"display-1\">Notre Site : Menu</h1>");
 			out.println("</center>");
 			out.println("</div>");
 			out.println("<div class=\"row\">");
 			out.println("<div class=\"col-xs-6 col-xs-offset-3\">");
-			out.println("<a href=\"/Meet-N-Roll/servlet/profil\" class=\"btn btn-primary\" role=\"button\">Profil</a>");
-			out.println("<a href=\"/Meet-N-Roll/servlet/listeGens\" class=\"btn btn-primary\"role=\"button\">Liste des gens</a>");
-			out.println("<a href=\"/Meet-N-Roll/servlet/log?delog=true\" class=\"btn btn-primary\"role=\"button\">Deconnexion</a>");
+			out.println("<a href=\"profil\" class=\"btn btn-primary\" role=\"button\">Profil</a>");
+			out.println("<a href=\"log?delog=true\" class=\"btn btn-primary\"role=\"button\">Deconnexion</a>");
 			out.println("</div>");
 			out.println("</div>");
-			out.println(lectureLogs());
-
+	
 			out.println("</body></html>");
 		}
-	}
-
-	private String lectureLogs() {
-		String rez = "";
-		
-		BufferedReader bf = null;
-		
-		try {
-			bf = Files.newBufferedReader(Paths.get("/home/gaut-vador/Programs Files/apache-tomcat-8.5.11/webapps/Meet-N-Roll/README.md"));
-			String ligne;
-			while((ligne= bf.readLine()) != null){
-				if(ligne.startsWith("\t"))
-					rez += "<h2>" + ligne + "</h2>";
-				if(ligne.substring(0, 9).matches("[0-9]*[/]*[0-9]*[/]*[0-9]"))
-					rez += "<h3>" + ligne + "</h3>";
-				if(ligne.startsWith("#")){}
-				if(ligne.startsWith("["))
-					rez += "<ul>";
-				if(ligne.startsWith("]"))
-					rez += "</ul>";
-				if(ligne.startsWith("."))
-					rez += "<li>" + ligne + "</li>";
-				
-				else
-					rez += "<p>" + ligne + "</p>";
-				
-				
-			}
-			
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		return rez;
 	}
 }
