@@ -5,11 +5,8 @@ import java.security.SecureRandom;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.base.Charsets;
 import com.google.common.hash.Hasher;
 import com.google.common.hash.Hashing;
-
-import fr.iutinfo.skeleton.common.dto.UserDto;
 
 public class Oeuvre {
 	
@@ -27,9 +24,49 @@ public class Oeuvre {
     private String salt;
     private String search;
 	
+    
+    /**
+     * Constructeur avec ID spécifié (pour les reste des opérations)
+     * @param ono
+     * @param ano
+     * @param nom
+     * @param prix
+     * @param promo
+     * @param description
+     * @param type
+     * @param dimension
+     * @param poids
+     * @param thematique
+     */
 	public Oeuvre(int ono, String ano, String nom, double prix, int promo, String description, String type,
 			String dimension, double poids, String thematique) {
 		this.ono = ono;
+		this.ano = ano;
+		this.nom = nom;
+		this.prix = prix;
+		this.promo = promo;
+		this.description = description;
+		this.type = type;
+		this.dimension = dimension;
+		this.poids = poids;
+		this.thematique = thematique;
+	}
+	
+	/**
+     * Constructeur avec ID non-spécifié (pour les insertions)
+     * @param ono
+     * @param ano
+     * @param nom
+     * @param prix
+     * @param promo
+     * @param description
+     * @param type
+     * @param dimension
+     * @param poids
+     * @param thematique
+     */
+	public Oeuvre(String ano, String nom, double prix, int promo, String description, String type,
+			String dimension, double poids, String thematique) {
 		this.ano = ano;
 		this.nom = nom;
 		this.prix = prix;
