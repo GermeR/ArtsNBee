@@ -1,5 +1,5 @@
 java:
-  image: tclavier/jersey-skeleton
+  image: germer/G5-Agile-Web
   ports:
   - ip: A.X.Y.Z
     container_port: 8080
