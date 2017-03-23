@@ -30,7 +30,7 @@ public class Utilisateur implements Principal {
     private String passwdHash;
     private String salt;
     
-    public Utilisateur(String login, String password, String nom, String prenom, String dateN, String fno, String mail, String dateDéb, String dateFin, String adresse, boolean optin, boolean optinPart, String role) {
+    public Utilisateur(String login, String password, String nom, String prenom, String dateN, String fno, String mail, String dateDeb, String dateFin, String adresse, boolean optin, boolean optinPart, String role) {
     	this.login = login; 
     	this.password = password;
     	this.nom = nom;

@@ -33,10 +33,12 @@ public class UtilisateurResource {
 
     public UtilisateurResource() throws SQLException {
         if (!tableExist("utilisateur")) {
-            logger.debug("Crate table utilisateur");
+            logger.debug("Creation de la table utilisateur");
             dao.createUtilisateurTable();
-            dao.insert(new Utilisateur("Robert", "Robert", "Georgi", "Robert", "1990-01-01","Classique", "robert.georgi@gmail.com", "2017-01-01", "2017-05-01", "05 Rue des orgie à fleur", false, false, "Client"));
-            dao.insert(new Utilisateur("Adrien", "Adrien","LeRageux", "Adrien", "1997-01-01","Premium", "adrien.lerageux@gmail.com", "2017-01-01", "2017-05-01", "05 Rue des rageux à fleur", true, true, "Artiste"));
+            dao.insert(new Utilisateur("Robert", "Robert", "Georgi", "Robert", "1977-04-22T01:00:00-05:00","Classique", "robert.georgi@gmail.com", "1977-04-22T01:00:00-05:00", "1978-04-22T01:00:00-05:00", "05 Rue des orgie à fleur", false, false, "Client"));
+            dao.insert(new Utilisateur("Adrien", "Adrien","LeRageux", "Adrien", "1977-04-22T01:00:00-05:00","Premium", "adrien.lerageux@gmail.com", "1977-04-22T01:00:00-05:00", "1978-04-22T01:00:00-05:00", "05 Rue des rageux à fleur", true, true, "Artiste"));
+        } else {
+        	logger.debug("Table utilsiateur déjà existatne");
         }
     }
 

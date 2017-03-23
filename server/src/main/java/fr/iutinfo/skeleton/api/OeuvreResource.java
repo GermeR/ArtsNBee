@@ -42,8 +42,8 @@ public class OeuvreResource {
     public OeuvreDto createOeuvre(OeuvreDto dto) {
     	Oeuvre oeuvre = new Oeuvre();
     	oeuvre.initFromDto(dto);
-    	//int id = dao.insert(oeuvre);
-        //dto.setId(id);
+    	int id = dao.insert(oeuvre);
+        dto.setOno(id);
         return dto;
     }
 
