@@ -6,13 +6,13 @@ import org.slf4j.LoggerFactory;
 import java.security.Principal;
 
 public class ForfaitDto implements Principal {
-	private int fno;
+	private String fno;
 	private double prix;
-	public int getFno() {
+	public String getFno() {
 		return fno;
 	}
 
-	public void setFno(int fno) {
+	public void setFno(String fno) {
 		this.fno = fno;
 	}
 
@@ -42,10 +42,10 @@ public class ForfaitDto implements Principal {
 	}
 
 	public String getName() {
-		return "" + fno;
+		return fno;
 	}
 
-	public void setName(int str) {
+	public void setName(String str) {
 		this.fno = str;
 	}
 }

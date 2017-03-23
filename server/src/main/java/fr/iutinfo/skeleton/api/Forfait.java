@@ -17,7 +17,7 @@ public class Forfait {
 		return logger;
 	}
 
-	private int fno;
+	private String fno;
 	private double prix;
 	private int nbOeuvres;
 	private String salt;
@@ -25,18 +25,18 @@ public class Forfait {
 	
 	public Forfait(){}
 	
-	public Forfait(int fno, double prix, int nbOeuvres) {
+	public Forfait(String fno, double prix, int nbOeuvres) {
 		super();
 		this.fno = fno;
 		this.prix = prix;
 		this.nbOeuvres = nbOeuvres;
 	}
 
-	public int getFno() {
+	public String getFno() {
 		return fno;
 	}
 
-	public void setFno(int fno) {
+	public void setFno(String fno) {
 		this.fno = fno;
 	}
 
