@@ -68,6 +68,8 @@ public class OeuvreResource {
         }
         return oeuvres.stream().map(Oeuvre::convertToDto).collect(Collectors.toList());
     }
+    
+    
 
     @DELETE
     @Path("/{id}")

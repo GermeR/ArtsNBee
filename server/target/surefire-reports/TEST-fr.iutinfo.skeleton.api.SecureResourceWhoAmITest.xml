@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="3" failures="0" name="fr.iutinfo.skeleton.api.SecureResourceWhoAmITest" time="1.02" errors="0" skipped="0">
+<testsuite tests="3" failures="0" name="fr.iutinfo.skeleton.api.SecureResourceWhoAmITest" time="1.079" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/jdk-8-oracle-x64/jre/lib/amd64"/>
@@ -58,7 +58,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="fr.iutinfo.skeleton.api.SecureResourceWhoAmITest" name="should_return_current_user_with_authorization_header" time="0.37"/>
-  <testcase classname="fr.iutinfo.skeleton.api.SecureResourceWhoAmITest" name="should_return_anonymous_user_without_authorization_header" time="0.289"/>
-  <testcase classname="fr.iutinfo.skeleton.api.SecureResourceWhoAmITest" name="should_return_anonymous_user_for_bad_user" time="0.354"/>
+  <testcase classname="fr.iutinfo.skeleton.api.SecureResourceWhoAmITest" name="should_return_current_user_with_authorization_header" time="0.389"/>
+  <testcase classname="fr.iutinfo.skeleton.api.SecureResourceWhoAmITest" name="should_return_anonymous_user_without_authorization_header" time="0.325"/>
+  <testcase classname="fr.iutinfo.skeleton.api.SecureResourceWhoAmITest" name="should_return_anonymous_user_for_bad_user" time="0.355"/>
 </testsuite>

@@ -21,6 +21,7 @@ import javax.ws.rs.core.MediaType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import fr.iutinfo.skeleton.common.dto.SouhaitDto;
 import fr.iutinfo.skeleton.common.dto.UtilisateurDto;
 
 
@@ -72,6 +73,16 @@ public class UtilisateurResource {
             users = dao.search("%" + query + "%");
         }
         return users.stream().map(Utilisateur::convertToDto).collect(Collectors.toList());
+    }
+    
+    @GET
+    @Path("/{login}:{password}")
+    public UtilisateurDto get(@PathParam("login") String login,@PathParam("password") String password) {
+        Utilisateur Utilisateur = dao.findByAll(login,password);
+        if (Utilisateur == null) {
+            throw new WebApplicationException(404);
+        }
+        return Utilisateur.convertToDto();
     }
 
     @DELETE
