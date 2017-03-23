@@ -14,7 +14,7 @@ public class UtilisateurDto implements Principal {
     private String dateN; 
     private String fno; 
     private String mail; 
-    private String dateDéb; 
+    private String dateDeb; 
     private String dateFin; 
     private String adresse; 
     private boolean optin; 
@@ -64,10 +64,10 @@ public class UtilisateurDto implements Principal {
 		this.mail = mail;
 	}
 	public String getDateDéb() {
-		return dateDéb;
+		return dateDeb;
 	}
 	public void setDateDéb(String dateDéb) {
-		this.dateDéb = dateDéb;
+		this.dateDeb = dateDéb;
 	}
 	public String getDateFin() {
 		return dateFin;

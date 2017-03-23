@@ -20,7 +20,7 @@ public class Utilisateur implements Principal {
     private String dateN; 
     private String fno; 
     private String mail; 
-    private String dateDéb; 
+    private String dateDeb; 
     private String dateFin; 
     private String adresse; 
     private boolean optin; 
@@ -30,14 +30,14 @@ public class Utilisateur implements Principal {
     private String passwdHash;
     private String salt;
     
-    public Utilisateur(String login, String password, String nom, String prenom, String dateN, String fno, String mail, String dateDéb, String dateFin, String adresse, boolean optin, boolean optinPart, String role) {
+    public Utilisateur(String login, String password, String nom, String prenom, String dateN, String fno, String mail, String dateDeb, String dateFin, String adresse, boolean optin, boolean optinPart, String role) {
     	this.login = login; 
     	this.password = password;
     	this.nom = nom;
     	this.dateN = dateN;
     	this.fno = fno;
     	this.mail = mail;
-    	this.dateDéb = dateDéb;
+    	this.dateDeb = dateDeb;
     	this.dateFin = dateFin;
     	this.adresse = adresse;
     	this.optin = optin;
@@ -138,7 +138,7 @@ public class Utilisateur implements Principal {
     	dto.setDateN(this.getDateN());
     	dto.setFno(this.getFno());
     	dto.setMail(this.getMail());
-    	dto.setDateDéb(this.getDateDéb());
+    	dto.setDateDéb(this.getDateDeb());
     	dto.setDateFin(this.getDateFin());
     	dto.setAdresse(this.getAdresse());
     	dto.setOptin(this.isOptin());
@@ -204,12 +204,12 @@ public class Utilisateur implements Principal {
 		this.mail = mail;
 	}
 
-	public String getDateDéb() {
-		return dateDéb;
+	public String getDateDeb() {
+		return dateDeb;
 	}
 
-	public void setDateDéb(String dateDéb) {
-		this.dateDéb = dateDéb;
+	public void setDateDéb(String dateDeb) {
+		this.dateDeb = dateDeb;
 	}
 
 	public String getDateFin() {

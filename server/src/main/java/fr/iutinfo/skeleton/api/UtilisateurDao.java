@@ -7,10 +7,10 @@ import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 import java.util.List;
 
 public interface UtilisateurDao {
-    @SqlUpdate("create table utilisateur(login varchar(20) primary key, password varchar(20), nom varchar(20), prenom varchar(20), dateN date, fno varchar(20), mail text, dateDéb date, dateFin date, adresse text,optin boolean, optinPart boolean, role varchar(5), foreign key (fno) references forfait(fno));")
+    @SqlUpdate("create table utilisateur(login varchar(20) primary key, password varchar(20), nom varchar(20), prenom varchar(20), dateN date, fno varchar(20), mail text, dateDeb date, dateFin date, adresse text,optin boolean, optinPart boolean, role varchar(5), foreign key (fno) references forfait(fno));")
     void createUtilisateurTable();
 
-    @SqlUpdate("insert into utilisateur (login , password , nom , prenom , dateN , fno , mail , dateDéb , dateFin , adresse ,optin , optinPart , role ) values (:login , :password , :nom , :prenom , :dateN , :fno , :mail , :dateDéb , :dateFin , :adresse ,:optin , :optinPart , :role )")
+    @SqlUpdate("insert into utilisateur (login , password , nom , prenom , dateN , fno , mail , dateDeb , dateFin , adresse ,optin , optinPart , role ) values (:login , :password , :nom , :prenom , :dateN , :fno , :mail , :dateDeb , :dateFin , :adresse ,:optin , :optinPart , :role )")
     @GetGeneratedKeys
     int insert(@BindBean() Utilisateur Utilisateur);
 
