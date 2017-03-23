@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="14" failures="0" name="fr.iutinfo.skeleton.api.UserResourceTest" time="6.876" errors="0" skipped="0">
+<testsuite tests="14" failures="0" name="fr.iutinfo.skeleton.api.UserResourceTest" time="7.01" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/jdk-8-oracle-x64/jre/lib/amd64"/>
@@ -58,18 +58,18 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="list_should_search_in_alias_field" time="1.218"/>
-  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="after_delete_read_user_sould_return_204" time="0.601"/>
-  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="delete_unexisting_should_return_404" time="0.263"/>
-  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="read_user_should_read_user_with_same_salt" time="0.435"/>
-  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="should_delete_user" time="0.435"/>
-  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="list_should_search_in_email_field" time="0.514"/>
-  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="read_user_should_return_hashed_password" time="0.347"/>
-  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="list_all_must_be_ordered" time="0.544"/>
-  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="create_should_return_the_user_with_valid_id" time="0.431"/>
-  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="read_should_return_a_user_as_object" time="0.386"/>
-  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="list_should_search_in_name_field" time="0.437"/>
-  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="list_should_return_all_users" time="0.482"/>
-  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="read_user_should_return_good_alias" time="0.374"/>
-  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="read_user_should_return_good_email" time="0.367"/>
+  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="list_should_search_in_alias_field" time="1.156"/>
+  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="after_delete_read_user_sould_return_204" time="0.615"/>
+  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="delete_unexisting_should_return_404" time="0.311"/>
+  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="read_user_should_read_user_with_same_salt" time="0.399"/>
+  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="should_delete_user" time="0.465"/>
+  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="list_should_search_in_email_field" time="0.542"/>
+  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="read_user_should_return_hashed_password" time="0.357"/>
+  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="list_all_must_be_ordered" time="0.507"/>
+  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="create_should_return_the_user_with_valid_id" time="0.403"/>
+  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="read_should_return_a_user_as_object" time="0.379"/>
+  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="list_should_search_in_name_field" time="0.522"/>
+  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="list_should_return_all_users" time="0.512"/>
+  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="read_user_should_return_good_alias" time="0.42"/>
+  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="read_user_should_return_good_email" time="0.382"/>
 </testsuite>
