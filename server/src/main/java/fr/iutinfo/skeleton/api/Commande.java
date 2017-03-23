@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import com.google.common.hash.Hasher;
 import com.google.common.hash.Hashing;
 
+import fr.iutinfo.skeleton.common.dto.CommandeDto;
+
 public class Commande {
 	final static Logger logger = LoggerFactory.getLogger(Commande.class);
 	private String login;
@@ -126,10 +128,10 @@ public class Commande {
     public void initFromDto(CommandeDto dto) {
     	setLogin(dto.getLogin());
     	setOno(dto.getOno());
-    	setPaiement(dto.getPaiement());
-    	setEnvoi(dto.getEnvoi());
-    	setReception(dto.getReception());
-    	setRemuneration(dto.getRemuneration());
+    	setPaiement(dto.isPaiement());
+    	setEnvoi(dto.isEnvoi());
+    	setReception(dto.isReception());
+    	setRemuneration(dto.isRemuneration());
     	setPrix(dto.getPrix());
     	setFrais(dto.getFrais());
     }

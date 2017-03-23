@@ -68,5 +68,4 @@ public class CommandeDto implements Principal {
 	public String getName() {
 		return login+":"+ono;
 	}
-
 }

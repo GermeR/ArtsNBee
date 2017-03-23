@@ -21,6 +21,8 @@ import javax.ws.rs.core.MediaType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import fr.iutinfo.skeleton.common.dto.CommandeDto;
+
 @Path("/commande")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -38,7 +40,7 @@ public class CommandeResource {
     }
 
     @POST
-    public fr.iutinfo.skeleton.api.CommandeDto createCommande(fr.iutinfo.skeleton.api.CommandeDto dto) {
+    public CommandeDto createCommande(CommandeDto dto) {
     	Commande Commande = new Commande();
     	Commande.initFromDto(dto);
     	//int id = dao.insert(Commande);
@@ -48,7 +50,7 @@ public class CommandeResource {
 
     @GET
     @Path("/{ono}")
-    public fr.iutinfo.skeleton.api.CommandeDto getCommande(@PathParam("ono") String ono) {
+    public CommandeDto getCommande(@PathParam("ono") String ono) {
         Commande Commande = dao.findByName(ono);
         if (Commande == null) {
             throw new WebApplicationException(404);
@@ -57,7 +59,7 @@ public class CommandeResource {
     }
 
     @GET
-    public List<fr.iutinfo.skeleton.api.CommandeDto> getAllCommandes(@QueryParam("q") String query) {
+    public List<CommandeDto> getAllCommandes(@QueryParam("q") String query) {
         List<Commande> Commandes;
         if (query == null) {
         	Commandes = dao.all();
