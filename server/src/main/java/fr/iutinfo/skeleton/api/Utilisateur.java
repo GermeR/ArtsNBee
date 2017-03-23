@@ -1,158 +1,160 @@
 package fr.iutinfo.skeleton.api;
 
-import com.google.common.base.Charsets;
-import com.google.common.hash.Hasher;
-import com.google.common.hash.Hashing;
-import fr.iutinfo.skeleton.common.dto.UtilisateurDto;
+import java.security.Principal;
+import java.security.SecureRandom;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.security.Principal;
-import java.security.SecureRandom;
+import com.google.common.base.Charsets;
+import com.google.common.hash.Hasher;
+import com.google.common.hash.Hashing;
+
+import fr.iutinfo.skeleton.common.dto.UtilisateurDto;
 
 public class Utilisateur implements Principal {
-    final static Logger logger = LoggerFactory.getLogger(User.class);
-    private String login; 
-    private String password;
-    private String nom; 
-    private String prenom; 
-    private String dateN; 
-    private String fno; 
-    private String mail; 
-    private String dateDéb; 
-    private String dateFin; 
-    private String adresse; 
-    private boolean optin; 
-    private boolean optinPart; 
-    private String role; 
-    
-    private String passwdHash;
-    private String salt;
-    
-    public Utilisateur(String login, String password, String nom, String prenom, String dateN, String fno, String mail, String dateDeb, String dateFin, String adresse, boolean optin, boolean optinPart, String role) {
-    	this.login = login; 
-    	this.password = password;
-    	this.nom = nom;
-    	this.dateN = dateN;
-    	this.fno = fno;
-    	this.mail = mail;
-    	this.dateDéb = dateDéb;
-    	this.dateFin = dateFin;
-    	this.adresse = adresse;
-    	this.optin = optin;
-    	this.optinPart = optinPart;
-    	this.role = role;
-    }
+	final static Logger logger = LoggerFactory.getLogger(User.class);
+	private String login;
+	private String password;
+	private String nom;
+	private String prenom;
+	private String dateN;
+	private String fno;
+	private String mail;
+	private String dateDeb;
+	private String dateFin;
+	private String adresse;
+	private boolean optin;
+	private boolean optinPart;
+	private String role;
 
-    public Utilisateur() {
-    }
+	private String passwdHash;
+	private String salt;
 
-    public String getPassword() {
-        return this.password;
-    }
+	public Utilisateur(String login, String password, String nom, String prenom, String dateN, String fno, String mail,
+			String dateDeb, String dateFin, String adresse, boolean optin, boolean optinPart, String role) {
+		this.login = login;
+		this.password = password;
+		this.nom = nom;
+		this.dateN = dateN;
+		this.fno = fno;
+		this.mail = mail;
+		this.dateDeb = dateDeb;
+		this.dateFin = dateFin;
+		this.adresse = adresse;
+		this.optin = optin;
+		this.optinPart = optinPart;
+		this.role = role;
+	}
 
-    public void setPassword(String password) {
-        passwdHash = buildHash(password, getSalt());
-        this.password = password;
-    }
+	public Utilisateur() {
+	}
 
-    private String buildHash(String password, String s) {
-        Hasher hasher = Hashing.sha256().newHasher();
-        hasher.putString(password + s, Charsets.UTF_8);
-        return hasher.hash().toString();
-    }
+	public String getPassword() {
+		return this.password;
+	}
 
-    public boolean isGoodPassword(String password) {
-        String hash = buildHash(password, getSalt());
-        return hash.equals(getPasswdHash());
-    }
+	public void setPassword(String password) {
+		passwdHash = buildHash(password, getSalt());
+		this.password = password;
+	}
 
-    public String getPasswdHash() {
-        return passwdHash;
-    }
+	private String buildHash(String password, String s) {
+		Hasher hasher = Hashing.sha256().newHasher();
+		hasher.putString(password + s, Charsets.UTF_8);
+		return hasher.hash().toString();
+	}
 
-    public void setPasswdHash(String passwdHash) {
-        this.passwdHash = passwdHash;
-    }
+	public boolean isGoodPassword(String password) {
+		String hash = buildHash(password, getSalt());
+		return hash.equals(getPasswdHash());
+	}
 
-    @Override
-    public boolean equals(Object arg) {
-        if (getClass() != arg.getClass())
-            return false;
-        Utilisateur user = (Utilisateur) arg;
-        return login.equals(user.login) && passwdHash.equals(user.getPasswdHash()) && salt.equals((user.getSalt()));
-    }
+	public String getPasswdHash() {
+		return passwdHash;
+	}
 
-    @Override
-    public String toString() {
-        return login + ": " + prenom + ", " + nom + " <" + mail + ">";
-    }
+	public void setPasswdHash(String passwdHash) {
+		this.passwdHash = passwdHash;
+	}
 
-    public String getSalt() {
-        if (salt == null) {
-            salt = generateSalt();
-        }
-        return salt;
-    }
+	@Override
+	public boolean equals(Object arg) {
+		if (getClass() != arg.getClass())
+			return false;
+		Utilisateur user = (Utilisateur) arg;
+		return login.equals(user.login) && passwdHash.equals(user.getPasswdHash()) && salt.equals((user.getSalt()));
+	}
 
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
+	@Override
+	public String toString() {
+		return login + ": " + prenom + ", " + nom + " <" + mail + ">";
+	}
 
-    private String generateSalt() {
-        SecureRandom random = new SecureRandom();
-        Hasher hasher = Hashing.sha256().newHasher();
-        hasher.putLong(random.nextLong());
-        return hasher.hash().toString();
-    }
+	public String getSalt() {
+		if (salt == null) {
+			salt = generateSalt();
+		}
+		return salt;
+	}
 
-    public void resetPasswordHash() {
-        if (password != null && !password.isEmpty()) {
-            setPassword(getPassword());
-        }
-    }
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
 
-    public void initFromDto(UtilisateurDto dto) {    	
-    	this.setLogin(dto.getLogin());
-        this.setPassword(dto.getPassword());
-        this.setName(dto.getName());
-        this.setPrenom(dto.getPrenom());
-        this.setDateN(dto.getDateN());
-        this.setFno(dto.getFno());
-        this.setMail(dto.getMail());
-        this.setDateDéb(dto.getDateDéb());
-        this.setDateFin(dto.getDateFin());
-        this.setAdresse(dto.getAdresse());
-        this.setOptin(dto.isOptin());
-        this.setOptinPart(dto.isOptinPart());
-        this.setRole(dto.getRole());
-    }
+	private String generateSalt() {
+		SecureRandom random = new SecureRandom();
+		Hasher hasher = Hashing.sha256().newHasher();
+		hasher.putLong(random.nextLong());
+		return hasher.hash().toString();
+	}
 
-    public UtilisateurDto convertToDto() {
-    	UtilisateurDto dto = new UtilisateurDto();
-    	dto.setLogin(this.getLogin());
-    	dto.setPassword(this.getPassword());
-    	dto.setName(this.getName());
-    	dto.setPrenom(this.getPrenom());
-    	dto.setDateN(this.getDateN());
-    	dto.setFno(this.getFno());
-    	dto.setMail(this.getMail());
-    	dto.setDateDéb(this.getDateDéb());
-    	dto.setDateFin(this.getDateFin());
-    	dto.setAdresse(this.getAdresse());
-    	dto.setOptin(this.isOptin());
-    	dto.setOptinPart(this.isOptinPart());
-    	dto.setRole(this.getRole());
-        return dto;
-    }
+	public void resetPasswordHash() {
+		if (password != null && !password.isEmpty()) {
+			setPassword(getPassword());
+		}
+	}
+
+	public void initFromDto(UtilisateurDto dto) {
+		this.setLogin(dto.getLogin());
+		this.setPassword(dto.getPassword());
+		this.setName(dto.getName());
+		this.setPrenom(dto.getPrenom());
+		this.setDateN(dto.getDateN());
+		this.setFno(dto.getFno());
+		this.setMail(dto.getMail());
+		this.setDateDéb(dto.getDateDéb());
+		this.setDateFin(dto.getDateFin());
+		this.setAdresse(dto.getAdresse());
+		this.setOptin(dto.isOptin());
+		this.setOptinPart(dto.isOptinPart());
+		this.setRole(dto.getRole());
+	}
+
+	public UtilisateurDto convertToDto() {
+		UtilisateurDto dto = new UtilisateurDto();
+		dto.setLogin(this.getLogin());
+		dto.setPassword(this.getPassword());
+		dto.setName(this.getName());
+		dto.setPrenom(this.getPrenom());
+		dto.setDateN(this.getDateN());
+		dto.setFno(this.getFno());
+		dto.setMail(this.getMail());
+		dto.setDateDéb(this.getDateDeb());
+		dto.setDateFin(this.getDateFin());
+		dto.setAdresse(this.getAdresse());
+		dto.setOptin(this.isOptin());
+		dto.setOptinPart(this.isOptinPart());
+		dto.setRole(this.getRole());
+		return dto;
+	}
 
 	@Override
 	public String getName() {
 		return nom;
 	}
-	
-	public void setName(String name){
+
+	public void setName(String name) {
 		this.nom = name;
 	}
 
@@ -204,12 +206,12 @@ public class Utilisateur implements Principal {
 		this.mail = mail;
 	}
 
-	public String getDateDéb() {
-		return dateDéb;
+	public String getDateDeb() {
+		return dateDeb;
 	}
 
-	public void setDateDéb(String dateDéb) {
-		this.dateDéb = dateDéb;
+	public void setDateDéb(String dateDeb) {
+		this.dateDeb = dateDeb;
 	}
 
 	public String getDateFin() {
