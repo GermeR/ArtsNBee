@@ -16,7 +16,7 @@ public interface ForfaitDao {
 
     @SqlQuery("select * from Forfait where fno = :fno")
     @RegisterMapperFactory(BeanMapperFactory.class)
-    Forfait findByName(@Bind("fno") String fno);
+    Forfait findByFNO(@Bind("fno") String fno);
 
     @SqlQuery("select * from Forfait where search like :fno")
     @RegisterMapperFactory(BeanMapperFactory.class)
@@ -36,7 +36,7 @@ public interface ForfaitDao {
     @RegisterMapperFactory(BeanMapperFactory.class)
     Forfait findById(@Bind("fno") int fno);
     
-    @SqlUpdate("update utilisateur set prix = :prix, nboeuvres = :nboeuvres where fno = :fnoo")
+    @SqlUpdate("update Forfait set prix = :prix, nboeuvres = :nbOeuvres where fno = :fnoo")
 	void update(@Bind("fnoo") String fno, @BindBean() Forfait forfait);
 
     void close();

@@ -1,12 +1,7 @@
 package fr.iutinfo.skeleton.api;
 
-import java.security.SecureRandom;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.google.common.hash.Hasher;
-import com.google.common.hash.Hashing;
 
 import fr.iutinfo.skeleton.common.dto.ForfaitDto;
 
@@ -19,8 +14,8 @@ public class Forfait {
 	private String fno;
 	private double prix;
 	private int nbOeuvres;
-	private String salt;
-	private String search;
+	//private String salt;
+	//private String search;
 	
 	public Forfait(){}
 	
@@ -55,7 +50,7 @@ public class Forfait {
 		this.nbOeuvres = nbOeuvres;
 	}
 	
-	public String getSalt() {
+	/*public String getSalt() {
         if (salt == null) {
             salt = generateSalt();
         }
@@ -79,17 +74,17 @@ public class Forfait {
     
     public String getSearch() {
 		return search;
-	}
+	}*/
     
     public void initFromDto(ForfaitDto dto) {
-    	setFno(dto.getName());
+    	setFno(dto.getFno());
     	setNbOeuvres(dto.getNbOeuvres());
     	setPrix(dto.getPrix());
     }
     
     public ForfaitDto convertToDto() {
         ForfaitDto dto = new ForfaitDto();
-        dto.setName(getFno());
+        dto.setFno(getFno());
     	dto.setNbOeuvres(getNbOeuvres());
     	dto.setPrix(getPrix());
         return dto;

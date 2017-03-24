@@ -59,8 +59,8 @@ public class ForfaitResource {
 
     @GET
     @Path("/{fno}")
-    public ForfaitDto getForfait(@PathParam("name") String fno) {
-        Forfait Forfait = dao.findByName(fno);
+    public ForfaitDto getForfait(@PathParam("fno") String fno) {
+        Forfait Forfait = dao.findByFNO(fno);
         if (Forfait == null) {
             throw new WebApplicationException(404);
         }

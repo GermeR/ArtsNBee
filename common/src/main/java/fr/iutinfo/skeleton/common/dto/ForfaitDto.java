@@ -3,11 +3,10 @@ package fr.iutinfo.skeleton.common.dto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.security.Principal;
-
-public class ForfaitDto implements Principal {
+public class ForfaitDto {
 	private String fno;
 	private double prix;
+	private int nbOeuvres;
 
 	public int getNbOeuvres() {
 		return nbOeuvres;
@@ -16,8 +15,6 @@ public class ForfaitDto implements Principal {
 	public void setNbOeuvres(int nbOeuvres) {
 		this.nbOeuvres = nbOeuvres;
 	}
-
-	private int nbOeuvres;
 	
 	final static Logger logger = LoggerFactory.getLogger(ForfaitDto.class);
 	
@@ -34,11 +31,11 @@ public class ForfaitDto implements Principal {
 		return logger;
 	}
 
-	public String getName() {
+	public String getFno(){
 		return fno;
 	}
-
-	public void setName(String str) {
-		this.fno = str;
+	
+	public void setFno(String fno) {
+		this.fno = fno;
 	}
 }

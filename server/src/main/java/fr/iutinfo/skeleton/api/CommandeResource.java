@@ -11,6 +11,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -43,9 +44,15 @@ public class CommandeResource {
     public CommandeDto createCommande(CommandeDto dto) {
     	Commande Commande = new Commande();
     	Commande.initFromDto(dto);
-    	//int id = dao.insert(Commande);
-        //dto.setId(id);
         return dto;
+    }
+    
+    @PUT
+    @Path("/{login}:{ono}")
+    public void UpdateForfait(@PathParam("login") String login, @PathParam("ono") int ono, CommandeDto dto) {
+    	Commande commande = new Commande();
+    	commande.initFromDto(dto);
+        dao.update(login, ono, commande);
     }
 
     @GET

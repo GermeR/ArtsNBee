@@ -35,6 +35,9 @@ public interface CommandeDao {
     @SqlQuery("select * from commande where ono = :ono")
     @RegisterMapperFactory(BeanMapperFactory.class)
     Commande findById(@Bind("ono") int ono);
+    
+	@SqlUpdate("update commande set paiement = :paiement, envoi = :envoi, reception = :reception, remuneration = :remuneration, prix = :prix, frais = :frais where login = :log and ono = :onoo")
+	void update(@Bind("log") String login, @Bind("onoo") int ono, @BindBean() Commande commande);
 
     void close();
 }
