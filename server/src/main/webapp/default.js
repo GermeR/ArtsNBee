@@ -43,6 +43,7 @@ $(document).ready(function() {
         if ($("#getOeuvreMini").is(":visible")) {
             $("#getOeuvreMini").hide();
         } else {
+            afficherOeuvres();
             $("#getOeuvreMini").show();
         }        
     });
@@ -70,6 +71,7 @@ $(document).ready(function() {
         if ($("#getCommandeMini").is(":visible")) {
             $("#getCommandeMini").hide();
         } else {
+            afficherCommandes();
             $("#getCommandeMini").show();
         }        
     });

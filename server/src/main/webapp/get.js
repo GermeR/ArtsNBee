@@ -1,5 +1,7 @@
-$(document).ready(function() {
-   
+function afficherOeuvres() {
+    
+    $("#table-oeuvre").empty();
+    
     $.ajax({
         url: "v1/oeuvre",
         type: "GET",
@@ -19,6 +21,7 @@ $(document).ready(function() {
             $("<th>").html("dimension").appendTo(tr);
             $("<th>").html("poids").appendTo(tr);
             $("<th>").html("thematique").appendTo(tr);
+            $("<th>").html("").appendTo(tr);
             tr.appendTo(table);
             
             json.sort(function (a, b) {
@@ -45,7 +48,13 @@ $(document).ready(function() {
         error: function(xhr, status, errorThrown) {
             alert("Requête impossible: GET/oeuvre");
         }
-    });
+    });    
+    
+}
+
+function afficherCommandes() {
+    
+    $("#table-commande").empty();
     
     $.ajax({
         url: "v1/commande",
@@ -88,5 +97,12 @@ $(document).ready(function() {
         error: function(xhr, status, errorThrown) {
             alert("Requête impossible: GET/commande");
         }
-    });    
+    }); 
+    
+}
+
+$(document).ready(function() {
+    
+    afficherOeuvres();
+    afficherCommandes();       
 });
