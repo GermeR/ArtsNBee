@@ -102,12 +102,13 @@ $(document).ready(function() {
     });
     
     $("#loginButton").click(function (event) {
-        
-        if($("#login").val() != "" && $("#password").val() != "") {
+        console.log(document.getElementById('login').value);
+        if($("#loginField").val() != "" && $("#passwordField").val() != "") {
             $.ajax({
-                url: "v1/utilisateur/"+document.getElementById('login').value+":"+document.getElementById('password').value,
+                url: "v1/utilisateur/"+document.getElementById('loginField').value+":"+document.getElementById('passwordField').value,
                 type: 'GET',
                 success: function(response) {
+                    connected = true;
                     alert( "Login existant ! " );
                 },
                 error: function( xhr, status, errorThrown ) {
