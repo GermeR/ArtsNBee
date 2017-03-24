@@ -1,6 +1,6 @@
 $(document).ready(function() {
     
-    $("#delete-btn").click(function (event) {
+    $("#delete-oeuvre-btn").click(function (event) {
         
         console.log(parseInt($("#deleteOno").val()));
         

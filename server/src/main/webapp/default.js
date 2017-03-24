@@ -1,5 +1,6 @@
 function hideAll() {
     $("#oeuvre").hide();
+    $("#commande").hide();
     $("#login").hide();
 }
 
@@ -7,6 +8,12 @@ function hideAllOeuvre() {
     $("#getOeuvreMini").hide();
     $("#postOeuvreMini").hide();
     $("#deleteOeuvreMini").hide();
+}
+
+function hideAllCommande() {
+    $("#getCommandeMini").hide();
+    $("#postCommandeMini").hide();
+    $("#deleteCommandeMini").hide();
 }
   
 $(document).ready(function() { 
@@ -18,6 +25,16 @@ $(document).ready(function() {
             $("#oeuvre").hide();
         } else {
             $("#oeuvre").show();
+        }        
+    });
+    
+    $("#showCommande").click(function (event) {
+        hideAll();
+        hideAllCommande();
+        if ($("#commande").is(":visible")) {
+            $("#commande").hide();
+        } else {
+            $("#commande").show();
         }        
     });
     
@@ -46,8 +63,34 @@ $(document).ready(function() {
         } else {
             $("#deleteOeuvreMini").show();
         }        
+    });    
+     
+    $("#getCommande").click(function (event) {
+        hideAllCommande();
+        if ($("#getCommandeMini").is(":visible")) {
+            $("#getCommandeMini").hide();
+        } else {
+            $("#getCommandeMini").show();
+        }        
     });
     
+    $("#postCommande").click(function (event) {
+        hideAllCommande();
+        if ($("#postCommandeMini").is(":visible")) {
+            $("#postCommandeMini").hide();
+        } else {
+            $("#postCommandeMini").show();
+        }        
+    });
+    
+     $("#deleteCommande").click(function (event) {
+        hideAllCommande();
+        if ($("#deleteCommandeMini").is(":visible")) {
+            $("#deleteCommandeMini").hide();
+        } else {
+            $("#deleteCommandeMini").show();
+        }        
+    });
     
     $("#showLogin").click(function (event) {
         hideAll();

@@ -1,17 +1,17 @@
 $(document).ready(function() {
     
-    $("#post-btn").click(function (event) {
+    $("#post-oeuvre-btn").click(function (event) {
        
         var data={
-            ano: $("#postAno").val(),
-            prix: $("#postPrix").val(),
-            frais: $("#postFrais").val(),
-            promo: $("#postPromo").val(),
-            description: $("#postDescription").val(),
-            type: $("#postType").val(),
-            dimension: $("#postDimension").val(),
-            poids: $("#postPoids").val(),
-            thematique: $("#postThematique").val()
+            ano: $("#postOeuvreAno").val(),
+            prix: $("#postOeuvrePrix").val(),
+            frais: $("#postOeuvreFrais").val(),
+            promo: $("#postOeuvrePromo").val(),
+            description: $("#postOeuvreDescription").val(),
+            type: $("#postOeuvreType").val(),
+            dimension: $("#postOeuvreDimension").val(),
+            poids: $("#postOeuvrePoids").val(),
+            thematique: $("#postOeuvreThematique").val()
         };
         
         $.ajax({
@@ -29,6 +29,37 @@ $(document).ready(function() {
             },
         });
         
-    });
+    });   
+    
+    $("#post-commande-btn").click(function (event) {
+       
+        var data={
+            login: $("#postCommandeLogin").val(),
+            ono: $("#postCommandeOno").val(),
+            paiement: $("#postCommandePaiement").val(),
+            envoi: $("#postCommandeEnvoi").val(),
+            reception: $("#postCommandeReception").val(),
+            remuneration: $("#postCommandeRemuneration").val(),
+            prix: $("#postCommandePrix").val(),
+            frais: $("#postCommandeFrais").val(),
+        };
+        
+        $.ajax({
+            url: "v1/commande",
+            data: JSON.stringify(data),
+            type: "POST",
+            dataType: "json",
+            contentType : 'application/json',
+            success: function(json) {
+                console.log(json);
+                alert("Added");
+            },
+            error: function( xhr, status, errorThrown) {
+                alert("Erreur: POST");
+            },
+        });
+        
+    });  
+    
     
 });

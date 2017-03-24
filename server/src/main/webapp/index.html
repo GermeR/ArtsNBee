@@ -23,6 +23,7 @@
     <br>
     <div class="text-center"  id="menubar" >
         <button type="button" id="showOeuvre" class="btn btn-default">Œuvres</button>
+        <button type="button" id="showCommande" class="btn btn-default">Commandes</button>
         <button type="button" id="showLogin" class="btn btn-default">Se connecter</button>
         <button type="button" class="btn btn-default">S'inscrire</button>
     </div>    
@@ -47,16 +48,16 @@
             <div id="postOeuvreMini" class="col-md-4">
                 <form id="post-form" class="form-horizontal">
                     <h3>Ajouter une œuvre:</h3>
-                    <input class="form-control" type="text" id="postAno" placeholder="Artiste">
-                    <input class="form-control" type="text" id="postPrix" placeholder="Prix">
-                    <input class="form-control" type="text" id="postFrais" placeholder="Frais">
-                    <input class="form-control" type="text" id="postPromo" placeholder="Promo">
-                    <input class="form-control" type="text" id="postDescription" placeholder="Description">
-                    <input class="form-control" type="text" id="postType" placeholder="Type">
-                    <input class="form-control" type="text" id="postDimension" placeholder="Dimension">
-                    <input class="form-control" type="text" id="postPoids" placeholder="Poids">
-                    <input class="form-control" type="text" id="postThematique" placeholder="Thematique">
-                    <span type="button" id="post-btn" class="btn btn-success btn-block">Ajouter</span>
+                    <input class="form-control" type="text" id="postOeuvreAno" placeholder="Artiste">
+                    <input class="form-control" type="text" id="postOeuvrePrix" placeholder="Prix">
+                    <input class="form-control" type="text" id="postOeuvreFrais" placeholder="Frais">
+                    <input class="form-control" type="text" id="postOeuvrePromo" placeholder="Promo">
+                    <input class="form-control" type="text" id="postOeuvreDescription" placeholder="Description">
+                    <input class="form-control" type="text" id="postOeuvreType" placeholder="Type">
+                    <input class="form-control" type="text" id="postOeuvreDimension" placeholder="Dimension">
+                    <input class="form-control" type="text" id="postOeuvrePoids" placeholder="Poids">
+                    <input class="form-control" type="text" id="postOeuvreThematique" placeholder="Thematique">
+                    <span type="button" id="post-oeuvre-btn" class="btn btn-success btn-block">Ajouter</span>
                 </form>    
             </div>
             
@@ -67,13 +68,57 @@
                         <label for="login" class="control-label">Œuvre</label>
                         <input class="form-control" type="text" id="deleteOno" placeholder="Numero de l'oeuvre">
                     </div>
-                    <span type="button" id="delete-btn" class="btn btn-danger btn-block">Supprimer</span>
+                    <span type="button" id="delete-oeuvre-btn" class="btn btn-danger btn-block">Supprimer</span>
                 </form>
             </div>
             
         </div>        
         
     </div>
+    
+        <!--Oeuvres/-->
+    <div id="commande" class="container">
+        
+        <div class="page-header">
+            <h1>Commandes</h1>
+            <button type="button" id="getCommande" class="btn btn-default">Lister</button>
+            <button type="button" id="postCommande" class="btn btn-default">Ajouter</button>
+            <button type="button" id="deleteCommande" class="btn btn-default">Supprimer</button>
+        </div>
+        
+        <div class="row">
+            
+            <div id="getCommandeMini" class="col-xs-10">
+                <h3>Liste des commandes:</h3>
+                <table id="table-commande" class="table table-bordered"></table>
+            </div>
+            
+            <div id="postCommandeMini" class="col-md-4">
+                <form id="post-form" class="form-horizontal">
+                    <h3>Ajouter une commande:</h3>
+                    <input class="form-control" type="text" id="postCommandeLogin" placeholder="Login">
+                    <input class="form-control" type="text" id="postCommandeOno" placeholder="ID de l'oeuvre">
+                    <input class="form-control" type="text" id="postCommandePaiement" placeholder="Paiement">
+                    <input class="form-control" type="text" id="postCommandeEnvoi" placeholder="Envoi">
+                    <input class="form-control" type="text" id="postCommandeReception" placeholder="Réception">
+                    <input class="form-control" type="text" id="postCommandeRemuneration" placeholder="Rémuneration">
+                    <input class="form-control" type="text" id="postCommandePrix" placeholder="Prix">
+                    <input class="form-control" type="text" id="postCommandeFrais" placeholder="Frais">
+                    <span type="button" id="post-commande-btn" class="btn btn-success btn-block">Ajouter</span>
+                </form>    
+            </div>
+            
+            <div id="deleteCommandeMini" class="col-md-4">
+                <form name="post-form">
+                    <h3>Supprimer une commande:</h3>
+                    TODO
+                </form>
+            </div>
+            
+        </div>        
+        
+    </div>
+   
     
     <!--Login-->
     <div id="login" class="container">

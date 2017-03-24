@@ -82,7 +82,7 @@ $(document).ready(function() {
                 $("<td>").html(json[i].frais).appendTo(tr);
                 tr.appendTo(table);
             }
-            table.appendTo("#commande");
+            table.appendTo("#showCommandeMini");
 
         },
         error: function(xhr, status, errorThrown) {
