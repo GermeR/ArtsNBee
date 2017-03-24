@@ -21,10 +21,6 @@ public interface UtilisateurDao {
     @GetGeneratedKeys
     int insert(@BindBean() Utilisateur Utilisateur);
 
-    @SqlQuery("select * from utilisateur where login = :login")
-    @RegisterMapperFactory(BeanMapperFactory.class)
-    Utilisateur findByName(@Bind("login") String login);
-
     @SqlQuery("select * from utilisateur where search like :login")
     @RegisterMapperFactory(BeanMapperFactory.class)
     List<Utilisateur> search(@Bind("login") String login);
@@ -41,11 +37,14 @@ public interface UtilisateurDao {
 
     @SqlQuery("select * from utilisateur where login = :login")
     @RegisterMapperFactory(BeanMapperFactory.class)
-    Utilisateur findById(@Bind("login") String login);
+    Utilisateur findByLogin(@Bind("login") String login);
     
     @SqlQuery("select * from utilisateur where login = :login and password = :password")
     @RegisterMapperFactory(BeanMapperFactory.class)
-    Utilisateur findByAll(@Bind("login") String login, @Bind("password") String password);
+    Utilisateur findByLoginAndPassword(@Bind("login") String login, @Bind("password") String password);
+    
+	@SqlUpdate("update utilisateur set password = :password, nom = :nom, prenom = :prenom, dateN = :dateN, fno = :fno, mail = :mail , dateDeb = :dateDeb, dateFin = :dateFin, adresse = :adresse,optin = :optin, optinPart = :optinPart, role = :role where login = :log")
+	void update(@Bind("log") String login, @BindBean() Utilisateur utilisateur);
 
     void close();
 }
