@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+	<title>Page de login</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="//getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<script>
+
+	function afficheUser(data) {
+		console.log(data);
+	}
+
+	function clic(element)
+	{
+		if($("#login").val() != "" && $("#password").val() != "") {
+			 $.ajax({
+             	url: "v1/utilisateur/"+document.getElementById('login').value+":"+document.getElementById('password').value,
+                type: 'GET',
+                success: function(response) {
+                    alert( "Login existant ! " );
+                },
+                error: function( xhr, status, errorThrown ) {
+                    alert( "Votre nom d'utilisateur ou votre mot de passe sont incorrects.");
+                },
+            });
+		} else {
+			alert( "Pas de mot de passe ou Login dans les champs !");
+		}
+	}
+	</script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="page-header">
+		    	<h1>Connexion</h1>
+		    </div>
+	    	<div class="row">
+	        	<div class="col-xs-6 col-xs-offset-3">
+				    <FORM name="login">
+					<div class="form-group">
+							<label for="login" class="control-label">Login</label>
+							<input type="text" class="form-control" name="login" id="login" value="">
+						</div>
+						<div class="form-group">
+							<label for="password" class="control-label">Mot de passe</label>
+							<input type="password" class="form-control" name="password" id="password" value="">
+						</div>
+						<div class="login_erreur">
+						</div>
+						<button type="button" name="login" class="btn btn-success btn-block" onClick="clic(this);">Envoyer</button>
+						<a href="servlet/New" class="btn btn-default btn-block">Créer un compte !</a>
+					</FORM> 
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+

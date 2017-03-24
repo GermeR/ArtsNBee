@@ -5,14 +5,21 @@ import org.slf4j.LoggerFactory;
 
 import java.security.Principal;
 
-public class CommandeDto implements Principal {
+public class CommandeTermineeDto implements Principal {
 
-	final static Logger logger = LoggerFactory.getLogger(CommandeDto.class);
+	final static Logger logger = LoggerFactory.getLogger(CommandeTermineeDto.class);
 	private String login;
 	private int ono;
-	private boolean paiement, envoi, reception, remuneration;
 	private double prix;
 	private double frais;
+	private String adresseLivraison;
+	
+	public String getAdresseLivraison() {
+		return adresseLivraison;
+	}
+	public void setAdresseLivraison(String adresseLivraison) {
+		this.adresseLivraison = adresseLivraison;
+	}
 	public String getLogin() {
 		return login;
 	}
@@ -24,30 +31,6 @@ public class CommandeDto implements Principal {
 	}
 	public void setOno(int ono) {
 		this.ono = ono;
-	}
-	public boolean isPaiement() {
-		return paiement;
-	}
-	public void setPaiement(boolean paiement) {
-		this.paiement = paiement;
-	}
-	public boolean isEnvoi() {
-		return envoi;
-	}
-	public void setEnvoi(boolean envoi) {
-		this.envoi = envoi;
-	}
-	public boolean isReception() {
-		return reception;
-	}
-	public void setReception(boolean reception) {
-		this.reception = reception;
-	}
-	public boolean isRemuneration() {
-		return remuneration;
-	}
-	public void setRemuneration(boolean remuneration) {
-		this.remuneration = remuneration;
 	}
 	public double getPrix() {
 		return prix;

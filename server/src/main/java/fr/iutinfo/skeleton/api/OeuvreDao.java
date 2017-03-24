@@ -7,7 +7,7 @@ import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 import java.util.List;
 
 public interface OeuvreDao {
-    @SqlUpdate("create table oeuvre(ono serial primary key, nom varchar(20),ano varchar(20), prix numeric(6,2), promo integer, description text, type varchar(20), dimension varchar(20), poids integer, thematique varchar(20), foreign key (ano) references user(login));")
+    @SqlUpdate("create table oeuvre(ono integer primary key autoincrement, nom varchar(20),ano varchar(20), prix numeric(6,2), promo integer, description text, type varchar(20), dimension varchar(20), poids integer, thematique varchar(20), foreign key (ano) references user(login));")
     void createOeuvreTable();
 
     @SqlUpdate("insert into oeuvre (nom,ano,prix, promo, description, type, dimension, poids, thematique) values (:nom, :ano, :prix, :promo, :description, :type, :dimension, :poids, :thematique)")

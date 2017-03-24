@@ -11,18 +11,20 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.SecurityContext;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import fr.iutinfo.skeleton.common.dto.UtilisateurDto;
-
 
 @Path("/utilisateur")
 @Produces(MediaType.APPLICATION_JSON)
@@ -47,15 +49,21 @@ public class UtilisateurResource {
     	Utilisateur user = new Utilisateur();
         user.initFromDto(dto);
         user.resetPasswordHash();
-        //int id = dao.insert(user);
-        //dto.setId(id);
         return dto;
+    }
+    
+    @PUT
+    @Path("/{log}")
+    public void UpdateUtilisateur(@PathParam("log") String login, UtilisateurDto dto) {
+    	Utilisateur user = new Utilisateur();
+        user.initFromDto(dto);
+        dao.update(login, user);
     }
 
     @GET
-    @Path("/{name}")
-    public UtilisateurDto getUtilisateur(@PathParam("name") String name) {
-        Utilisateur user = dao.findByName(name);
+    @Path("/{login}")
+    public UtilisateurDto getUtilisateur(@PathParam("login") String login) {
+        Utilisateur user = dao.findByLogin(login);
         if (user == null) {
             throw new WebApplicationException(404);
         }
@@ -73,9 +81,19 @@ public class UtilisateurResource {
         }
         return users.stream().map(Utilisateur::convertToDto).collect(Collectors.toList());
     }
+    
+    @GET
+    @Path("/{login}:{password}")
+    public UtilisateurDto get(@PathParam("login") String login,@PathParam("password") String password) {
+        Utilisateur Utilisateur = dao.findByLoginAndPassword(login,password);
+        if (Utilisateur == null) {
+            throw new WebApplicationException(404);
+        }
+        return Utilisateur.convertToDto();
+    }
 
     @DELETE
-    @Path("/{id}")
+    @Path("/{login}")
     public void deleteUtilisateur(@PathParam("login") String login) {
         dao.delete(login);
     }

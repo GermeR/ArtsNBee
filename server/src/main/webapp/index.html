@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Jersey Skeleton</title>
+    <title>Curl Testing Web Page</title>
     <meta charset='utf-8'>
     <!-- jQuery -->
     <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -12,69 +12,98 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     
     <!-- Code local -->
-    <script src="all.js"></script>
+    <script src="get.js"></script>
+    <script src="delete.js"></script>
+    <script src="post.js"></script>
+    <script src="default.js"></script>
+
 </head>
 <body>
-<nav class="navbar navbar-default">
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Javascript (Single Page Application)</a></li>
-            <li><a href="/html/user">MVC Template (jsp)</a></li>
-        </ul>
-    </div>
-</nav>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <h1>Utilisateur :</h1>
-                <input type="text" name="userdb" id="userdb" placeholder="Nom ?" class="form-control"/>
-                <input type="text" name="user" id="aliasdb" placeholder="Surnom ?" class="form-control"/>
-                <input type="text" name="email" id="emaildb" placeholder="Email ?" class="form-control"/>
-                <input type="password" name="user" id="passwddb" placeholder="Mot de passe ?" class="form-control"/>
-            </div>
-            <div class="btn-group" role="group">
-                <button type="button" id="get-bdd" class="btn btn-default">Lire</button>
-                <button type="button" id="post-bdd" class="btn btn-primary">Sauver</button>
-                <button type="button" id="list-bdd" class="btn btn-warning">Lister</button>
-            </div>
+    <h1 class="text-center"><b>Art'N'Bee</b></h1>
+    <br>
+    <div class="text-center"  id="menubar" >
+        <button type="button" id="showOeuvre" class="btn btn-default">Œuvres</button>
+        <button type="button" id="showLogin" class="btn btn-default">Se connecter</button>
+        <button type="button" class="btn btn-default">S'inscrire</button>
+    </div>    
+    
+    <!--Oeuvres/-->
+    <div id="oeuvre" class="container">
+        
+        <div class="page-header">
+            <h1>Œuvres</h1>
+            <button type="button" id="getOeuvre" class="btn btn-default">Lister</button>
+            <button type="button" id="postOeuvre" class="btn btn-default">Ajouter</button>
+            <button type="button" id="deleteOeuvre" class="btn btn-default">Supprimer</button>
         </div>
-        <div class="col-md-6">
-            <h1>S'identifier :</h1>
-            <input type="text" name="userlogin" id="userlogin" placeholder="Login" class="form-control"/>
-            <input type="password" name="user" id="passwdlogin" placeholder="Password" class="form-control"/>
-            <br/>
-            <button id="read-forall" class="btn btn-default">Lire /v1/secure/who</button>
-            <br/>
-            <button id="read-byannotation" class="btn btn-default">Lire /v1/secure/byannotation</button>
-        </div>
-    </div>
-    <div class="row" style="margin-top: 20px;">
-    </div>
-    <div class="row" style="margin-top: 1em;">
-        <div class="panel panel-info">
-            <div class="panel-heading">Réponse</div>
-            <div class="panel-body" id="reponse">
+        
+        <div class="row">
+            
+            <div id="getOeuvreMini" class="col-xs-10">
+                <h3>Liste des œuvres:</h3>
+                <table id="table-oeuvre" class="table table-bordered"></table>
             </div>
-        </div>
+            
+            <div id="postOeuvreMini" class="col-md-4">
+                <form id="post-form" class="form-horizontal">
+                    <h3>Ajouter une œuvre:</h3>
+                    <input class="form-control" type="text" id="postAno" placeholder="Artiste">
+                    <input class="form-control" type="text" id="postPrix" placeholder="Prix">
+                    <input class="form-control" type="text" id="postFrais" placeholder="Frais">
+                    <input class="form-control" type="text" id="postPromo" placeholder="Promo">
+                    <input class="form-control" type="text" id="postDescription" placeholder="Description">
+                    <input class="form-control" type="text" id="postType" placeholder="Type">
+                    <input class="form-control" type="text" id="postDimension" placeholder="Dimension">
+                    <input class="form-control" type="text" id="postPoids" placeholder="Poids">
+                    <input class="form-control" type="text" id="postThematique" placeholder="Thematique">
+                    <span type="button" id="post-btn" class="btn btn-success btn-block">Ajouter</span>
+                </form>    
+            </div>
+            
+            <div id="deleteOeuvreMini" class="col-md-4">
+                <form name="post-form">
+                    <h3>Supprimer une œuvre:</h3>
+                    <div class="form-group">
+                        <label for="login" class="control-label">Œuvre</label>
+                        <input class="form-control" type="text" id="deleteOno" placeholder="Numero de l'oeuvre">
+                    </div>
+                    <span type="button" id="delete-btn" class="btn btn-danger btn-block">Supprimer</span>
+                </form>
+            </div>
+            
+        </div>        
+        
     </div>
-    <script type="text/javascript">
-			$(document).ready(function() {
-				$("#get-ram").click(function () {getUser($('#user').val(), $('#alias').val())});
-				$("#post-ram").click(function () {postUser($('#user').val(), $('#alias').val())});
-				$("#list-ram").click(function () {listUsers()});
-				$("#get-bdd").click(function () {getUserBdd($('#userdb').val(), $('#aliasdb').val())});
-				$("#post-bdd").click(function () {postUserBdd(
-				    $('#userdb').val(),
-				    $('#aliasdb').val(),
-				    $('#emaildb').val(),
-				    $('#passwddb').val())});
-				$("#list-bdd").click(function () {listUsersBdd()});
-				$("#read-forall").click(function () {getForAll()});
-				$("#read-byannotation").click(function () {getByAnnotation()});
-			});
-
+    
+    <!--Login-->
+    <div id="login" class="container">
+        <div class="page-header">
+            <h1>Connexion</h1>
+		</div>
+	    <div class="row">
+	     	<div class="col-xs-6 col-xs-offset-3">
+                <form name="login">
+                    <div class="form-group">
+                        <label for="login" class="control-label">Login</label>
+                        <input type="text" class="form-control" name="login" id="login" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="control-label">Mot de passe</label>
+                        <input type="password" class="form-control" name="password" id="password" value="">
+                    </div>
+                    <div class="login_erreur">
+                    </div>
+                    <button type="button" id="loginButton" class="btn btn-success btn-block">Envoyer</button>
+                    <a href="newUser" class="btn btn-default btn-block">Créer un compte</a>
+                </form>
+            </div>
+		</div>
+    </div>
+    
+    
+    <script>
+        hideAll();
     </script>
+
+    
 </body>
-</html>

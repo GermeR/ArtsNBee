@@ -39,7 +39,7 @@ $(document).ready(function() {
                 $("<td>").html(json[i].thematique).appendTo(tr);
                 tr.appendTo(table);
             }
-            table.appendTo("#oeuvre");
+            table.appendTo("#showOeuvreMini");
 
         },
         error: function(xhr, status, errorThrown) {

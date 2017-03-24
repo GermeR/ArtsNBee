@@ -12,15 +12,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     
     <!-- Code local -->
-    <script src="get.js"></script>
+    <script src="delete.js"></script>
 </head>
 <body>
-    <div id="oeuvre">
-        <h1>Oeuvres:</h1>
-        <table id="table-oeuvre" class="table table-bordered"></table>
-    </div>
-    <div id="commande">
-        <h1>Commandes:</h1>
-        <table id="table-commande" class="table table-bordered"></table>
-    </div>
+    <form id="post-form" class="form-horizontal">
+        <h1>Supprimer des oeuvres:</h1>
+        <input class="form-control" type="text" id="deleteOno" placeholder="Numero de l'oeuvre">
+        <span class="btn btn-default" id="delete-btn">Ajouter</span>
+    </form>    
 </body>
