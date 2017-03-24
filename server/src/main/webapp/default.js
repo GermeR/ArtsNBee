@@ -1,18 +1,53 @@
-$(document).ready(function() {
-    
-    function hideAll() {
-        $("#oeuvre").hide();
-        $("#login").hide();
-    }
+function hideAll() {
+    $("#oeuvre").hide();
+    $("#login").hide();
+}
+
+function hideAllOeuvre() {    
+    $("#getOeuvreMini").hide();
+    $("#postOeuvreMini").hide();
+    $("#deleteOeuvreMini").hide();
+}
+  
+$(document).ready(function() { 
     
     $("#showOeuvre").click(function (event) {
         hideAll();
+        hideAllOeuvre();
         if ($("#oeuvre").is(":visible")) {
             $("#oeuvre").hide();
         } else {
             $("#oeuvre").show();
         }        
     });
+    
+    $("#getOeuvre").click(function (event) {
+        hideAllOeuvre();
+        if ($("#getOeuvreMini").is(":visible")) {
+            $("#getOeuvreMini").hide();
+        } else {
+            $("#getOeuvreMini").show();
+        }        
+    });
+    
+    $("#postOeuvre").click(function (event) {
+        hideAllOeuvre();
+        if ($("#postOeuvreMini").is(":visible")) {
+            $("#postOeuvreMini").hide();
+        } else {
+            $("#postOeuvreMini").show();
+        }        
+    });
+    
+     $("#deleteOeuvre").click(function (event) {
+        hideAllOeuvre();
+        if ($("#deleteOeuvreMini").is(":visible")) {
+            $("#deleteOeuvreMini").hide();
+        } else {
+            $("#deleteOeuvreMini").show();
+        }        
+    });
+    
     
     $("#showLogin").click(function (event) {
         hideAll();
