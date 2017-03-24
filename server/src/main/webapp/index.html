@@ -18,7 +18,7 @@
     <script src="default.js"></script>
     
     <script>    
-        var connected = false;
+        var monlogin = null;
     </script>
 
 </head>
@@ -27,9 +27,15 @@
     <br>
     <div class="text-center"  id="menubar" >
         <button type="button" id="showOeuvre" class="btn btn-default">Œuvres</button>
-        <button type="button" id="showCommande" class="btn btn-default">Commandes</button>
+        <button type="button" id="showCommande" class="btn btn-default">Commandes</button>  
         <button type="button" id="showLogin" class="btn btn-default">Se connecter</button>
-        <button type="button" class="btn btn-default">S'inscrire</button>
+        <button type="button" id="showSignup" class="btn btn-default">S'inscrire</button>
+        <button type="button" id="showProfile" class="btn btn-default">Mon profil</button>
+        
+        <script>
+            $("#showProfile").hide();
+        </script>
+        
     </div>    
     
     <!--Oeuvres/-->
@@ -146,7 +152,19 @@
                 </form>
             </div>
 		</div>
-    </div>    
+    </div>
+    
+    <!--UserProfile-->
+    <div id="profile" class="container">
+        <div class="page-header">
+            <h1>Mon profil</h1>
+		</div>
+        <div class="row">
+            <div id="getProfile" class="col-xs-10">
+                <script> afficherUser("Robert"); </script>
+            </div>
+        </div>
+    </div>
     
     <script>
         hideAll();

@@ -15,12 +15,17 @@ function hideAllCommande() {
     $("#postCommandeMini").hide();
     $("#deleteCommandeMini").hide();
 }
+
+function isConnected() {
+    
+}
   
 $(document).ready(function() { 
     
     $("#showOeuvre").click(function (event) {
         hideAll();
         hideAllOeuvre();
+        $("#getOeuvreMini").show();
         if ($("#oeuvre").is(":visible")) {
             $("#oeuvre").hide();
         } else {
@@ -31,6 +36,7 @@ $(document).ready(function() {
     $("#showCommande").click(function (event) {
         hideAll();
         hideAllCommande();
+        $("#getCommandeMini").show();
         if ($("#commande").is(":visible")) {
             $("#commande").hide();
         } else {
@@ -104,14 +110,20 @@ $(document).ready(function() {
     });
     
     $("#loginButton").click(function (event) {
-        console.log(document.getElementById('login').value);
+        console.log(document.getElementById('loginField').value);
         if($("#loginField").val() != "" && $("#passwordField").val() != "") {
             $.ajax({
                 url: "v1/utilisateur/"+document.getElementById('loginField').value+":"+document.getElementById('passwordField').value,
                 type: 'GET',
                 success: function(response) {
-                    connected = true;
-                    alert( "Login existant ! " );
+                    monlogin = document.getElementById('loginField').value;
+                    console.log("Connecté entant que "+ monlogin);
+                    hideAll();                           
+                    if (monlogin != null) {
+                        $("#showLogin").hide();
+                        $("#showSignup").hide();
+                        $("#showProfile").show();
+                    }
                 },
                 error: function( xhr, status, errorThrown ) {
                     alert( "Votre nom d'utilisateur ou votre mot de passe sont incorrects.");

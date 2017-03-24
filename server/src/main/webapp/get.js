@@ -1,3 +1,25 @@
+function afficherUser(nom) {
+    
+    $.ajax({
+        url: "v1/utilisateur/"+nom,
+        type: "GET",
+        dataType: "json",
+        success: function(json) {
+            var profil = $("#getProfile");
+            $("<h3>").html(json.login).appendTo(profil);
+            $("<h3>").html(json.nom).appendTo(profil);
+            $("<h3>").html(json.prenom).appendTo(profil);
+            $("<h3>").html(json.dateN).appendTo(profil);
+            $("<h3>").html(json.adresse).appendTo(profil);
+            $("<h3>").html(json.mail).appendTo(profil);
+        },
+        error: function(xhr, status, errorThrown) {
+            alert("Requête impossible: GET/utilisateur/"+nom);
+        }
+    });
+    
+}
+
 function afficherOeuvres() {
     
     $("#table-oeuvre").empty();
