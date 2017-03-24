@@ -8,13 +8,6 @@ import java.security.Principal;
 public class ForfaitDto implements Principal {
 	private String fno;
 	private double prix;
-	public String getFno() {
-		return fno;
-	}
-
-	public void setFno(String fno) {
-		this.fno = fno;
-	}
 
 	public int getNbOeuvres() {
 		return nbOeuvres;

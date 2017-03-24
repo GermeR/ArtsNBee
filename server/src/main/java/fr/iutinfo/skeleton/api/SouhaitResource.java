@@ -23,7 +23,7 @@ import org.slf4j.LoggerFactory;
 
 import fr.iutinfo.skeleton.common.dto.SouhaitDto;
 
-@Path("/Souhait")
+@Path("/souhait")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class SouhaitResource {
@@ -32,11 +32,10 @@ public class SouhaitResource {
 
     public SouhaitResource() throws SQLException {
         if (!tableExist("Souhait")) {
-            logger.debug("Crate table Souhaits");
+        	logger.debug("Création de la table souhait.");
             dao.createSouhaitTable();
-            dao.insert(new Souhait(0,"Robert"));
-            dao.insert(new Souhait(0,"Roberto"));
-            dao.insert(new Souhait(0,"Adrien"));
+        } else {
+        	logger.debug("Table souhait déjà existante.");
         }
     }
 

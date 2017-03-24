@@ -7,7 +7,7 @@ import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 import java.util.List;
 
 public interface ForfaitDao {
-    @SqlUpdate("create table forfait(fno varchar(20) primary key, prix, nboeuvres integer);")
+    @SqlUpdate("create table forfait(fno varchar(20) primary key, prix numeric, nboeuvres integer);")
     void createForfaitTable();
 
     @SqlUpdate("insert into forfait (fno,prix,nboeuvres) values (:fno, :prix, :nbOeuvres);")
@@ -35,6 +35,9 @@ public interface ForfaitDao {
     @SqlQuery("select * from Forfait where fno = :fno")
     @RegisterMapperFactory(BeanMapperFactory.class)
     Forfait findById(@Bind("fno") int fno);
+    
+    @SqlUpdate("update utilisateur set prix = :prix, nboeuvres = :nboeuvres where fno = :fnoo")
+	void update(@Bind("fnoo") String fno, @BindBean() Forfait forfait);
 
     void close();
 }

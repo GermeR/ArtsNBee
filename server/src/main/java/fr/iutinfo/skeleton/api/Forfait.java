@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import com.google.common.hash.Hasher;
 import com.google.common.hash.Hashing;
 
-import fr.iutinfo.skeleton.common.dto.CommandeDto;
 import fr.iutinfo.skeleton.common.dto.ForfaitDto;
 
 public class Forfait {
@@ -83,14 +82,14 @@ public class Forfait {
 	}
     
     public void initFromDto(ForfaitDto dto) {
-    	setFno(dto.getFno());
+    	setFno(dto.getName());
     	setNbOeuvres(dto.getNbOeuvres());
     	setPrix(dto.getPrix());
     }
     
     public ForfaitDto convertToDto() {
         ForfaitDto dto = new ForfaitDto();
-        dto.setFno(getFno());
+        dto.setName(getFno());
     	dto.setNbOeuvres(getNbOeuvres());
     	dto.setPrix(getPrix());
         return dto;

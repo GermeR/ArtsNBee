@@ -11,6 +11,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -32,18 +33,27 @@ public class ForfaitResource {
 
     public ForfaitResource() throws SQLException {
         if (!tableExist("Forfait")) {
-            logger.debug("Create table Forfaits");
+        	logger.debug("Création de la table forfait.");
             dao.createForfaitTable();
             dao.insert(new Forfait("Classique", 5, 5));
+        }else{
+        	logger.debug("Table forfait déjà existante.");
         }
     }
 
+    @PUT
+    @Path("/{fno}")
+    public void UpdateForfait(@PathParam("fno") String fno, ForfaitDto dto) {
+    	Forfait forfait = new Forfait();
+    	forfait.initFromDto(dto);
+        dao.update(fno, forfait);
+    }
+    
     @POST
     public ForfaitDto createForfait(ForfaitDto dto) {
     	Forfait Forfait = new Forfait();
     	Forfait.initFromDto(dto);
-    	int id = dao.insert(Forfait);
-        //dto.setOno(id);
+    	dao.insert(Forfait);
         return dto;
     }
 
