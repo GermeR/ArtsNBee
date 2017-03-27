@@ -2,6 +2,7 @@ function hideAll() {
     $("#oeuvre").hide();
     $("#commande").hide();
     $("#login").hide();
+    $("#profile").hide();
 }
 
 function hideAllOeuvre() {    
@@ -43,6 +44,16 @@ $(document).ready(function() {
             $("#commande").show();
         }        
     });
+
+    $("#showProfile").click(function (event) {
+        hideAll();
+        if ($("#profile").is(":visible")) {
+            $("#profile").hide();
+        } else {
+            $("#profile").show();
+        }
+    });
+
     
     $("#getOeuvre").click(function (event) {
         hideAllOeuvre();
@@ -118,11 +129,13 @@ $(document).ready(function() {
                 success: function(response) {
                     monlogin = document.getElementById('loginField').value;
                     console.log("Connecté entant que "+ monlogin);
-                    hideAll();                           
+                    afficherUser(monlogin);
+                    hideAll();
                     if (monlogin != null) {
                         $("#showLogin").hide();
                         $("#showSignup").hide();
                         $("#showProfile").show();
+                        $("#profile").show();
                     }
                 },
                 error: function( xhr, status, errorThrown ) {
