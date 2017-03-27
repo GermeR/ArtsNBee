@@ -130,60 +130,6 @@ function afficherUtilisateur() {
 
 }
 
-/*function afficherOeuvres() {
-
-    $("#table-oeuvre").empty();
-    
-    $.ajax({
-        url: "v1/oeuvre",
-        type: "GET",
-        dataType: "json",
-        success: function(json) {
-            console.log("Getting /oeuvres");
-            
-            var table = $("#table-oeuvre");
-            var tr = $("<tr>");
-            $("<th>").html("ono").appendTo(tr);
-            $("<th>").html("nom").appendTo(tr);
-            $("<th>").html("ano").appendTo(tr);
-            $("<th>").html("prix").appendTo(tr);
-            $("<th>").html("promo").appendTo(tr);
-            $("<th>").html("description").appendTo(tr);
-            $("<th>").html("type").appendTo(tr);
-            $("<th>").html("dimension").appendTo(tr);
-            $("<th>").html("poids").appendTo(tr);
-            $("<th>").html("thematique").appendTo(tr);
-            $("<th>").html("").appendTo(tr);
-            tr.appendTo(table);
-            
-            json.sort(function (a, b) {
-                return a.ono - b.ono; 
-            });
-            
-            for (var i=0; i<json.length; i++) {
-                var tr = $("<tr>");
-                $("<td>").html(json[i].ono).appendTo(tr);
-                $("<td>").html(json[i].nom).appendTo(tr);
-                $("<td>").html(json[i].ano).appendTo(tr);
-                $("<td>").html(json[i].prix).appendTo(tr);
-                $("<td>").html(json[i].promo).appendTo(tr);
-                $("<td>").html(json[i].description).appendTo(tr);
-                $("<td>").html(json[i].type).appendTo(tr);
-                $("<td>").html(json[i].dimension).appendTo(tr);
-                $("<td>").html(json[i].poids).appendTo(tr);
-                $("<td>").html(json[i].thematique).appendTo(tr);
-                tr.appendTo(table);
-            }
-            table.appendTo("#showOeuvreMini");
-
-        },
-        error: function(xhr, status, errorThrown) {
-            alert("Requête impossible: GET/oeuvre");
-        }
-    });    
-    
-}*/
-
 function afficherOeuvre(ono) {
 
     $.ajax({
@@ -196,16 +142,6 @@ function afficherOeuvre(ono) {
             $("#getOneOeuvre").show();
             console.log("Getting oeuvre/"+ono);
             var profil = $("#getOneOeuvre");
-            /*$("<h3>").html("Ono: " + json.ono).appendTo(profil);
-            $("<h3>").html("Nom: " + json.nom).appendTo(profil);
-            $("<h3>").html("Ano: " + json.ano).appendTo(profil);
-            $("<h3>").html("Prix: " + json.prix).appendTo(profil);
-            $("<h3>").html("Réduction: " + json.promo).appendTo(profil);
-            $("<h3>").html("Description: " + json.description).appendTo(profil);
-            $("<h3>").html("Type: " + json.type).appendTo(profil);
-            $("<h3>").html("Dimensions: " + json.dimension).appendTo(profil);
-            $("<h3>").html("Poids: " + json.poids).appendTo(profil);
-            $("<h3>").html("Thématique: " + json.thematique).appendTo(profil);*/
 
             var table = $("<table>");
             var tr = $("<tr>");
