@@ -60,6 +60,28 @@ $(document).ready(function() {
         
     });
 
+    $("#post-souhait-btn").click(function (event) {
+        var data={
+            login: $("#postSouhaitLogin").val(),
+            ono: $("#postSouhaitOno").val()
+        };
+
+        $.ajax({
+            url: "v1/souhait",
+            data: JSON.stringify(data),
+            type: "POST",
+            dataType: "json",
+            contentType : 'application/json',
+            success: function(json) {
+                console.log(json);
+                alert("Added");
+            },
+            error: function( xhr, status, errorThrown) {
+                alert("Erreur: POST");
+            },
+        });
+    });
+
     $("#button_new").click(function (event)
     {
 
@@ -71,7 +93,7 @@ $(document).ready(function() {
         console.log(role);
 
         if($("#new_login").val() != "" && $("#new_password").val() != "" && $("#new_nom").val() != "" && $("#new_prenom").val() != "" && $("#new_dateN").val() != "" && $("#new_mail").val() != "" && $("#new_adresse").val() != "") {
-            var data={
+            var data= {
                 adresse: $("#new_adresse").val(),
                 dateDeb: "",
                 dateFin: "",
@@ -85,7 +107,7 @@ $(document).ready(function() {
                 optin: false,
                 optinPart: false,
                 password: $("#new_password").val(),
-            };
+            }
 
             $.ajax({
                 url: "v1/utilisateur",

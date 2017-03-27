@@ -157,6 +157,7 @@ $(document).ready(function() {
         if ($("#getSouhaitMini").is(":visible")) {
             $("#getSouhaitMini").hide();
         } else {
+            afficherSouhaits();
             $("#getSouhaitMini").show();
         }
     });
