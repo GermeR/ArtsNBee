@@ -5,6 +5,7 @@ function hideAll() {
     $("#inscription").hide();
     $("#profile").hide();
     $("#souhait").hide();
+    $("#utilisateur").hide();
 }
 
 function hideAllOeuvre() {    
@@ -36,6 +37,15 @@ $(document).ready(function() {
         } else {
             $("#oeuvre").show();
         }        
+    });
+
+    $("#showUtilisateur").click(function (event) {
+        hideAll();
+        if ($("#utilisateur").is(":visible")) {
+            $("#utilisateur").hide();
+        } else {
+            $("#utilisateur").show();
+        }
     });
 
     $("#showSouhait").click(function (event) {
