@@ -51,12 +51,12 @@ public class OeuvreResource {
 
 	@GET
 	@Path("/{name}")
-	public OeuvreDto getOeuvre(@PathParam("name") String name) {
-		Oeuvre oeuvre = dao.findByName(name);
+	public List<OeuvreDto> getOeuvre(@PathParam("name") String name) {
+		List<Oeuvre> oeuvre = dao.oeuvreDe(name);
 		if (oeuvre == null) {
 			throw new WebApplicationException(404);
 		}
-		return oeuvre.convertToDto();
+		return oeuvre.stream().map(Oeuvre::convertToDto).collect(Collectors.toList());
 	}
 
 	@GET
@@ -70,7 +70,7 @@ public class OeuvreResource {
 		}
 		return oeuvres.stream().map(Oeuvre::convertToDto).collect(Collectors.toList());
 	}
-
+	
 	@PUT
 	@Path("/{ono}")
 	public void UpdateOeuvre(@PathParam("ono") int ono, OeuvreDto dto) {

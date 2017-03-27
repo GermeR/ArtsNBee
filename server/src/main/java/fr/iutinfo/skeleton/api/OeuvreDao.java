@@ -36,6 +36,10 @@ public interface OeuvreDao {
     @RegisterMapperFactory(BeanMapperFactory.class)
     Oeuvre findById(@Bind("ono") int ono);
     
+    @SqlQuery("select * from oeuvre where ano = :login")
+    @RegisterMapperFactory(BeanMapperFactory.class)
+    List<Oeuvre> oeuvreDe(@Bind("login") String login);
+    
     //nom,prix, promo, description, type, dimension, poids, thematique
 	@SqlUpdate("update oeuvre set nom = :nom, prix = :prix, description = :description, type = :type, dimension = :dimension, poids = :poids, thematique = :thematique where ono = :no")
 	void update(@Bind("no") int ono, @BindBean() Oeuvre oeuvre);
