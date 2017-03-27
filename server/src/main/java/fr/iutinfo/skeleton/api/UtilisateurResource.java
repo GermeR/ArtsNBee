@@ -21,7 +21,6 @@ import javax.ws.rs.core.MediaType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import fr.iutinfo.skeleton.common.dto.OeuvreDto;
 import fr.iutinfo.skeleton.common.dto.UtilisateurDto;
 
 @Path("/utilisateur")
@@ -57,27 +56,27 @@ public class UtilisateurResource {
         dao.update(login, user);
     }
 
-    @GET
-    @Path("/{login}")
-    public UtilisateurDto getUtilisateur(@PathParam("login") String login) {
-        Utilisateur user = dao.findByLogin(login);
-        if (user == null) {
-            throw new WebApplicationException(404);
-        }
-        return user.convertToDto();
-    }
+	@GET
+	@Path("/{login}")
+	public UtilisateurDto getUtilisateur(@PathParam("login") String login) {
+		Utilisateur utilisateur = dao.findByLogin(login);
+		if (utilisateur == null) {
+			throw new WebApplicationException(404);
+		}
+		return utilisateur.convertToDto();
+	}
 
-    @GET
-    public List<UtilisateurDto> getAllUtilisateurs(@QueryParam("q") String query) {
-        List<Utilisateur> users;
-        if (query == null) {
-            users = dao.all();
-        } else {
-            logger.debug("Search users with query: " + query);
-            users = dao.search("%" + query + "%");
-        }
-        return users.stream().map(Utilisateur::convertToDto).collect(Collectors.toList());
-    }
+	@GET
+	public List<UtilisateurDto> getAllUtilisateur(@QueryParam("q") String query) {
+		List<Utilisateur> utilisateur;
+		if (query == null) {
+			utilisateur = dao.all();
+		} else {
+			logger.debug("Search users with query: " + query);
+			utilisateur = dao.search("%" + query + "%");
+		}
+		return utilisateur.stream().map(Utilisateur::convertToDto).collect(Collectors.toList());
+	}
     
     @GET
     @Path("/{login}:{password}")

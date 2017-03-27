@@ -13,7 +13,13 @@
     
     <!-- Code local -->
     <script src="get.js"></script>
+    <script src="delete.js"></script>
+    <script src="post.js"></script>
     <script src="default.js"></script>
+    
+    <script>    
+        var monlogin = null;
+    </script>
 
 </head>
 <body>
@@ -21,27 +27,107 @@
     <br>
     <div class="text-center"  id="menubar" >
         <button type="button" id="showOeuvre" class="btn btn-default">Œuvres</button>
+        <button type="button" id="showCommande" class="btn btn-default">Commandes</button>  
         <button type="button" id="showLogin" class="btn btn-default">Se connecter</button>
-        <button type="button" class="btn btn-default">S'inscrire</button>
-    </div>
+        <button type="button" id="showSignup" class="btn btn-default">S'inscrire</button>
+        <button type="button" id="showProfile" class="btn btn-default">Mon profil</button>
+        
+        <script>
+            $("#showProfile").hide();
+        </script>
+        
+    </div>    
     
     <!--Oeuvres/-->
     <div id="oeuvre" class="container">
+        
         <div class="page-header">
             <h1>Œuvres</h1>
             <button type="button" id="getOeuvre" class="btn btn-default">Lister</button>
             <button type="button" id="postOeuvre" class="btn btn-default">Ajouter</button>
             <button type="button" id="deleteOeuvre" class="btn btn-default">Supprimer</button>
         </div>
-        <div class="row">
-	       <div class="col-xs-6 col-xs-offset-3">
-               <table id="table-oeuvre" class="table table-bordered"></table>
-           </div>
-        </div>
         
+        <div class="row">
+            
+            <div id="getOeuvreMini" class="col-xs-10">
+                <h3>Liste des œuvres:</h3>
+                <table id="table-oeuvre" class="table table-bordered"></table>
+            </div>
+            
+            <div id="postOeuvreMini" class="col-md-4">
+                <form id="post-form" class="form-horizontal">
+                    <h3>Ajouter une œuvre:</h3>
+                    <input class="form-control" type="text" id="postOeuvreAno" placeholder="Artiste">
+                    <input class="form-control" type="text" id="postOeuvrePrix" placeholder="Prix">
+                    <input class="form-control" type="text" id="postOeuvreFrais" placeholder="Frais">
+                    <input class="form-control" type="text" id="postOeuvrePromo" placeholder="Promo">
+                    <input class="form-control" type="text" id="postOeuvreDescription" placeholder="Description">
+                    <input class="form-control" type="text" id="postOeuvreType" placeholder="Type">
+                    <input class="form-control" type="text" id="postOeuvreDimension" placeholder="Dimension">
+                    <input class="form-control" type="text" id="postOeuvrePoids" placeholder="Poids">
+                    <input class="form-control" type="text" id="postOeuvreThematique" placeholder="Thematique">
+                    <span type="button" id="post-oeuvre-btn" class="btn btn-success btn-block">Ajouter</span>
+                </form>    
+            </div>
+            
+            <div id="deleteOeuvreMini" class="col-md-4">
+                <form name="post-form">
+                    <h3>Supprimer une œuvre:</h3>
+                    <div class="form-group">
+                        <label for="login" class="control-label">Œuvre</label>
+                        <input class="form-control" type="text" id="deleteOno" placeholder="Numero de l'oeuvre">
+                    </div>
+                    <span type="button" id="delete-oeuvre-btn" class="btn btn-danger btn-block">Supprimer</span>
+                </form>
+            </div>
+            
+        </div>        
         
     </div>
-    <script> $("#oeuvre").hide(); </script>
+    
+    <!--Commandes/-->
+    <div id="commande" class="container">
+        
+        <div class="page-header">
+            <h1>Commandes</h1>
+            <button type="button" id="getCommande" class="btn btn-default">Lister</button>
+            <button type="button" id="postCommande" class="btn btn-default">Ajouter</button>
+            <button type="button" id="deleteCommande" class="btn btn-default">Supprimer</button>
+        </div>
+        
+        <div class="row">
+            
+            <div id="getCommandeMini" class="col-xs-10">
+                <h3>Liste des commandes:</h3>
+                <table id="table-commande" class="table table-bordered"></table>
+            </div>
+            
+            <div id="postCommandeMini" class="col-md-4">
+                <form id="post-form" class="form-horizontal">
+                    <h3>Ajouter une commande:</h3>
+                    <input class="form-control" type="text" id="postCommandeLogin" placeholder="Login">
+                    <input class="form-control" type="text" id="postCommandeOno" placeholder="ID de l'oeuvre">
+                    <input class="form-control" type="text" id="postCommandePaiement" placeholder="Paiement">
+                    <input class="form-control" type="text" id="postCommandeEnvoi" placeholder="Envoi">
+                    <input class="form-control" type="text" id="postCommandeReception" placeholder="Réception">
+                    <input class="form-control" type="text" id="postCommandeRemuneration" placeholder="Rémuneration">
+                    <input class="form-control" type="text" id="postCommandePrix" placeholder="Prix">
+                    <input class="form-control" type="text" id="postCommandeFrais" placeholder="Frais">
+                    <span type="button" id="post-commande-btn" class="btn btn-success btn-block">Ajouter</span>
+                </form>    
+            </div>
+            
+            <div id="deleteCommandeMini" class="col-md-4">
+                <form name="post-form">
+                    <h3>Supprimer une commande:</h3>
+                    TODO
+                </form>
+            </div>
+            
+        </div>        
+        
+    </div>   
     
     <!--Login-->
     <div id="login" class="container">
@@ -50,14 +136,14 @@
 		</div>
 	    <div class="row">
 	     	<div class="col-xs-6 col-xs-offset-3">
-                <form name="login">
+                <form>
                     <div class="form-group">
                         <label for="login" class="control-label">Login</label>
-                        <input type="text" class="form-control" name="login" id="login" value="">
+                        <input type="text" class="form-control" id="loginField" value="">
                     </div>
                     <div class="form-group">
                         <label for="password" class="control-label">Mot de passe</label>
-                        <input type="password" class="form-control" name="password" id="password" value="">
+                        <input type="password" class="form-control" id="passwordField" value="">
                     </div>
                     <div class="login_erreur">
                     </div>
@@ -67,7 +153,22 @@
             </div>
 		</div>
     </div>
-    <script> $("#login").hide(); </script>
+    
+    <!--UserProfile-->
+    <div id="profile" class="container">
+        <div class="page-header">
+            <h1>Mon profil</h1>
+		</div>
+        <div class="row">
+            <div id="getProfile" class="col-xs-10">
+                <script> afficherUser("Robert"); </script>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        hideAll();
+    </script>
 
     
 </body>

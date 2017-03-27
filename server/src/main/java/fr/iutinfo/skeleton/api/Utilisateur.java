@@ -1,6 +1,5 @@
 package fr.iutinfo.skeleton.api;
 
-import java.security.Principal;
 import java.security.SecureRandom;
 
 import org.slf4j.Logger;
@@ -12,8 +11,8 @@ import com.google.common.hash.Hashing;
 
 import fr.iutinfo.skeleton.common.dto.UtilisateurDto;
 
-public class Utilisateur implements Principal {
-	final static Logger logger = LoggerFactory.getLogger(User.class);
+public class Utilisateur {
+	final static Logger logger = LoggerFactory.getLogger(Utilisateur.class);
 	private String login;
 	private String password;
 	private String nom;
@@ -115,10 +114,10 @@ public class Utilisateur implements Principal {
 		}
 	}
 
-	public void initFromDto(UtilisateurDto dto) {
+	public void initFromDto(UtilisateurDto dto) {	
 		this.setLogin(dto.getLogin());
 		this.setPassword(dto.getPassword());
-		this.setName(dto.getName());
+		this.setNom(dto.getNom());
 		this.setPrenom(dto.getPrenom());
 		this.setDateN(dto.getDateN());
 		this.setFno(dto.getFno());
@@ -135,7 +134,7 @@ public class Utilisateur implements Principal {
 		UtilisateurDto dto = new UtilisateurDto();
 		dto.setLogin(this.getLogin());
 		dto.setPassword(this.getPassword());
-		dto.setName(this.getName());
+		dto.setNom(this.getNom());
 		dto.setPrenom(this.getPrenom());
 		dto.setDateN(this.getDateN());
 		dto.setFno(this.getFno());
@@ -147,15 +146,6 @@ public class Utilisateur implements Principal {
 		dto.setOptinPart(this.isOptinPart());
 		dto.setRole(this.getRole());
 		return dto;
-	}
-
-	@Override
-	public String getName() {
-		return nom;
-	}
-
-	public void setName(String name) {
-		this.nom = name;
 	}
 
 	public String getLogin() {
