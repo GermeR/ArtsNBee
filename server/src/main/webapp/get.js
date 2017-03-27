@@ -1,17 +1,18 @@
 function afficherUser(nom) {
-    
+
     $.ajax({
         url: "v1/utilisateur/"+nom,
         type: "GET",
         dataType: "json",
         success: function(json) {
+            console.log("Getting utilisateur/"+nom);
             var profil = $("#getProfile");
-            $("<h3>").html(json.login).appendTo(profil);
-            $("<h3>").html(json.nom).appendTo(profil);
-            $("<h3>").html(json.prenom).appendTo(profil);
-            $("<h3>").html(json.dateN).appendTo(profil);
-            $("<h3>").html(json.adresse).appendTo(profil);
-            $("<h3>").html(json.mail).appendTo(profil);
+            $("<h3>").html("Identifiant: " + json.login).appendTo(profil);
+            $("<h3>").html("Nom: " + json.nom).appendTo(profil);
+            $("<h3>").html("Prenom: " + json.prenom).appendTo(profil);
+            $("<h3>").html("Date de naissance: " + json.dateN).appendTo(profil);
+            $("<h3>").html("Adresse: " + json.adresse).appendTo(profil);
+            $("<h3>").html("Adresse e-mail: " + json.mail).appendTo(profil);
         },
         error: function(xhr, status, errorThrown) {
             alert("Requête impossible: GET/utilisateur/"+nom);
