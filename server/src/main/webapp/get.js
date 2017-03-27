@@ -192,6 +192,8 @@ function afficherOeuvre(ono) {
         dataType: "json",
         success: function(json) {
             hideAllOeuvre();
+            $("#getOneOeuvre").empty();
+            $("#getOneOeuvre").show();
             console.log("Getting oeuvre/"+ono);
             var profil = $("#getOneOeuvre");
             $("<h3>").html("Ono: " + json.ono).appendTo(profil);
@@ -219,12 +221,8 @@ function afficherOeuvres() {
         type: "GET",
         dataType: "json",
         success: function(json) {
+
             var table = $("#table-oeuvre");
-            /*var tr = $("<tr>");
-            $("<th>").html("Image").appendTo(tr);
-            $("<th>").html("Informations").appendTo(tr);
-            $("<th>").html("Prix").appendTo(tr);
-            tr.appendTo(table);*/
 
             json.sort(function (a, b) {
                 return a.ono - b.ono;
@@ -237,40 +235,42 @@ function afficherOeuvres() {
                 $("<td>").html("<img src='"+json[i].img+"' width='150' height='150'></img>").appendTo(tr);
 
                 // Informations
+
                 var tdDesc = $("<td>"); // Colonne des informations
                 var tdDescTable = $("<table>"); // Tableau dans la colonne
+
                 var nom = $("<tr>");
                 $("<td>").html("<b>Nom:</b>").appendTo(nom);
                 $("<td>").html(json[i].nom).appendTo(nom);
+
                 var auteur = $("<tr>");
                 $("<td>").html("<b>Description:</b>").appendTo(auteur);
                 $("<td>").html(json[i].description).appendTo(auteur);
+
                 var dimensions = $("<tr>");
                 $("<td>").html("<b>Dimensions:</b>").appendTo(dimensions);
                 $("<td>").html(json[i].dimension).appendTo(dimensions);
+
                 var poids = $("<tr>");
                 $("<td>").html("<b>Poids:</b>").appendTo(poids);
                 $("<td>").html(json[i].poids + "g").appendTo(poids);
+
                 nom.appendTo(tdDescTable);
                 auteur.appendTo(tdDescTable);
                 dimensions.appendTo(tdDescTable);
                 poids.appendTo(tdDescTable);
+
                 tdDescTable.appendTo(tdDesc);
                 tdDesc.appendTo(tr);
 
                 // Prix
                 $("<td>").html("<h2>"+json[i].prix+"€").appendTo(tr);
 
+                // Options
+                var tdDOpt = $("<td>"); // Colonne des options
+                $("<h3>").html("<span class='btn btn-success btn-block' onclick='afficherOeuvre("+json[i].ono+")'>Plus d'infos</span>").appendTo(tdDOpt);
+                tdDOpt.appendTo(tr);
 
-                /*$("<td>").html(json[i].nom).appendTo(tr);
-                $("<td>").html(json[i].ano).appendTo(tr);
-                $("<td>").html(json[i].prix).appendTo(tr);
-                $("<td>").html(json[i].promo).appendTo(tr);
-                $("<td>").html(json[i].description).appendTo(tr);
-                $("<td>").html(json[i].type).appendTo(tr);
-                $("<td>").html(json[i].dimension).appendTo(tr);
-                $("<td>").html(json[i].poids).appendTo(tr);
-                $("<td>").html(json[i].thematique).appendTo(tr);*/
                 tr.appendTo(table);
             }
             table.appendTo("#showOeuvreMini");
