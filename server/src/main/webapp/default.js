@@ -196,6 +196,7 @@ $(document).ready(function() {
                         $("#showInscription").hide();
                         $("#showProfile").show();
                         $("#profile").show();
+                        afficherOeuvresParArtiste(monlogin);
                     }
                 },
                 error: function( xhr, status, errorThrown ) {
