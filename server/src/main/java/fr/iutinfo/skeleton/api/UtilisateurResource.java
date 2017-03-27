@@ -35,7 +35,6 @@ public class UtilisateurResource {
             logger.debug("Création de la table utilisateur.");
             dao.createUtilisateurTable();
             dao.insert(new Utilisateur("client", "client", "Client", "Toto", "05/01/1990", "Gratuit", "client.client@gmail.com", "", "", "02 Rue des tombes", false, false, "Client"));
-            dao.insert(new Utilisateur("test", "test", "test", "prenom", "test", "test", "test", "test", "test", "test", false, false, "test"));
         	dao.insert(new Utilisateur("artiste", "artiste", "Artiste", "Toto", "05/01/1990", "Premium", "artiste.artiste@gmail.com", "", "", "05 Rue des tombes", true, true, "Artiste"));
         	dao.insert(new Utilisateur("admin", "admin", "Admin", "Toto", "05/01/1990", "Classique", "admin.admin@gmail.com", "", "", "07 Rue des tombes", false, false, "Admin"));
         }
@@ -43,9 +42,10 @@ public class UtilisateurResource {
 
 	@POST
 	public UtilisateurDto createUtilisateur(UtilisateurDto dto) {
-    	Utilisateur user = new Utilisateur();
-        user.initFromDto(dto);
-		dao.insert(user);
+		Utilisateur utilisateur = new Utilisateur();
+		utilisateur.initFromDto(dto);
+		dao.insert(utilisateur);
+		System.out.println(utilisateur);
 		return dto;
 	}
     

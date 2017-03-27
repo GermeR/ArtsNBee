@@ -19,7 +19,7 @@ public interface UtilisateurDao {
 
     @SqlUpdate("insert into utilisateur (login,password,nom,prenom,dateN,fno,mail,dateDeb,dateFin,adresse,optin,optinPart,role) values (:login,:password,:nom,:prenom,:dateN,:fno,:mail,:dateDeb,:dateFin,:adresse,:optin,:optinPart,:role)")
     @GetGeneratedKeys
-    int insert(@BindBean() Utilisateur Utilisateur);
+    int insert(@BindBean() Utilisateur utilisateur);
 
     @SqlQuery("select * from utilisateur where search like :login")
     @RegisterMapperFactory(BeanMapperFactory.class)
