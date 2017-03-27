@@ -62,11 +62,20 @@ $(document).ready(function() {
 
     $("#button_new").click(function (event)
     {
+
+        var role = "Client";
+        if ($("#radioArtiste").is(":checked")) {
+            role = "Artiste";
+        }
+
+        console.log(role);
+
         if($("#new_login").val() != "" && $("#new_password").val() != "" && $("#new_nom").val() != "" && $("#new_prenom").val() != "" && $("#new_dateN").val() != "" && $("#new_mail").val() != "" && $("#new_adresse").val() != "") {
             var data={
                 adresse: $("#new_adresse").val(),
                 dateDeb: "",
                 dateFin: "",
+                role: role,
                 dateN: $("#new_dateN").val(),
                 fno: "Gratuit",
                 login: $("#new_login").val(),
@@ -76,7 +85,6 @@ $(document).ready(function() {
                 optin: false,
                 optinPart: false,
                 password: $("#new_password").val(),
-                role: "Client"
             };
 
             $.ajax({

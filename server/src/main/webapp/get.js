@@ -7,6 +7,7 @@ function afficherUser(nom) {
         success: function(json) {
             console.log("Getting utilisateur/"+nom);
             var profil = $("#getProfile");
+            $("<h3>").html("Role: " + json.role).appendTo(profil);
             $("<h3>").html("Identifiant: " + json.login).appendTo(profil);
             $("<h3>").html("Nom: " + json.nom).appendTo(profil);
             $("<h3>").html("Prenom: " + json.prenom).appendTo(profil);
@@ -22,7 +23,7 @@ function afficherUser(nom) {
 }
 
 function afficherOeuvres() {
-    
+
     $("#table-oeuvre").empty();
     
     $.ajax({
