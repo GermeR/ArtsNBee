@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Curl Testing Web Page</title>
+    <title>Arts'n'Bee</title>
     <meta charset='utf-8'>
     <!-- jQuery -->
     <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
 
     <!-- bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
     
     <!-- Code local -->
     <script src="get.js"></script>
     <script src="delete.js"></script>
     <script src="post.js"></script>
     <script src="default.js"></script>
+
+    <div id="fb-root"></div>
+    <script>/*(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.8";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));*/</script>
     
     <script>    
         var monlogin = null;
@@ -23,13 +30,15 @@
 
 </head>
 <body>
-    <h1 class="text-center"><b>Art'N'Bee</b></h1>
+    <h1><b>Arts'n'Bee</b></h1>
     <br>
-    <div class="text-center"  id="menubar" >
+    <div id="menubar" >
         <button type="button" id="showOeuvre" class="btn btn-default">Œuvres</button>
-        <button type="button" id="showCommande" class="btn btn-default">Commandes</button>  
+        <button type="button" id="showCommande" class="btn btn-default">Commandes</button>
+        <button type="button" id="showSouhait" class="btn btn-default">Liste de souhaits</button>
+        <button type="button" id="showUtilisateur" class="btn btn-default">Utilisateur</button>
         <button type="button" id="showLogin" class="btn btn-default">Se connecter</button>
-        <button type="button" id="showSignup" class="btn btn-default">S'inscrire</button>
+        <button type="button" id="showInscription" class="btn btn-default">S'inscrire</button>
         <button type="button" id="showProfile" class="btn btn-default">Mon profil</button>
         
         <script>
@@ -53,6 +62,7 @@
             <div id="getOeuvreMini" class="col-xs-10">
                 <h3>Liste des œuvres:</h3>
                 <table id="table-oeuvre" class="table table-bordered"></table>
+                <!--<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Partager</a></div>-->
             </div>
             
             <div id="postOeuvreMini" class="col-md-4">
@@ -60,14 +70,13 @@
                     <h3>Ajouter une œuvre:</h3>
                     <input class="form-control" type="text" id="postOeuvreAno" placeholder="Artiste">
                     <input class="form-control" type="text" id="postOeuvrePrix" placeholder="Prix">
-                    <input class="form-control" type="text" id="postOeuvreFrais" placeholder="Frais">
                     <input class="form-control" type="text" id="postOeuvrePromo" placeholder="Promo">
                     <input class="form-control" type="text" id="postOeuvreDescription" placeholder="Description">
                     <input class="form-control" type="text" id="postOeuvreType" placeholder="Type">
                     <input class="form-control" type="text" id="postOeuvreDimension" placeholder="Dimension">
                     <input class="form-control" type="text" id="postOeuvrePoids" placeholder="Poids">
                     <input class="form-control" type="text" id="postOeuvreThematique" placeholder="Thematique">
-                    <span type="button" id="post-oeuvre-btn" class="btn btn-success btn-block">Ajouter</span>
+                    <span id="post-oeuvre-btn" class="btn btn-success btn-block">Ajouter</span>
                 </form>    
             </div>
             
@@ -78,8 +87,11 @@
                         <label for="login" class="control-label">Œuvre</label>
                         <input class="form-control" type="text" id="deleteOno" placeholder="Numero de l'oeuvre">
                     </div>
-                    <span type="button" id="delete-oeuvre-btn" class="btn btn-danger btn-block">Supprimer</span>
+                    <span id="delete-oeuvre-btn" class="btn btn-danger btn-block">Supprimer</span>
                 </form>
+            </div>
+
+            <div id="getOneOeuvre">
             </div>
             
         </div>        
@@ -104,7 +116,7 @@
             </div>
             
             <div id="postCommandeMini" class="col-md-4">
-                <form id="post-form" class="form-horizontal">
+                <form class="form-horizontal">
                     <h3>Ajouter une commande:</h3>
                     <input class="form-control" type="text" id="postCommandeLogin" placeholder="Login">
                     <input class="form-control" type="text" id="postCommandeOno" placeholder="ID de l'oeuvre">
@@ -114,7 +126,7 @@
                     <input class="form-control" type="text" id="postCommandeRemuneration" placeholder="Rémuneration">
                     <input class="form-control" type="text" id="postCommandePrix" placeholder="Prix">
                     <input class="form-control" type="text" id="postCommandeFrais" placeholder="Frais">
-                    <span type="button" id="post-commande-btn" class="btn btn-success btn-block">Ajouter</span>
+                    <span id="post-commande-btn" class="btn btn-success btn-block">Ajouter</span>
                 </form>    
             </div>
             
@@ -138,11 +150,11 @@
 	     	<div class="col-xs-6 col-xs-offset-3">
                 <form>
                     <div class="form-group">
-                        <label for="login" class="control-label">Login</label>
+                        <label for="loginField" class="control-label">Login</label>
                         <input type="text" class="form-control" id="loginField" value="">
                     </div>
                     <div class="form-group">
-                        <label for="password" class="control-label">Mot de passe</label>
+                        <label for="passwordField" class="control-label">Mot de passe</label>
                         <input type="password" class="form-control" id="passwordField" value="">
                     </div>
                     <div class="login_erreur">
@@ -159,13 +171,112 @@
         <div class="page-header">
             <h1>Mon profil</h1>
 		</div>
-        <div class="row">
+        <div id="oeuvresArtiste" class="row">
             <div id="getProfile" class="col-xs-10">
-                <script> afficherUser("Robert"); </script>
+            </div>
+            <table id="table-oeuvresArtiste"></table>
+        </div>
+    </div>
+
+    <!--Inscription-->
+    <div id="inscription" class="container">
+        <div class="page-header">
+            <h1>Inscription</h1>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-xs-offset-3">
+                <FORM name="login">
+                    <div class="form-group">
+                        <label for="new_login" class="control-label">Login<font color="red"> *</font></label>
+                        <input type="text" class="form-control" name="new_login" id="new_login" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="new_password" class="control-label">Mot de passe<font color="red"> *</font></label>
+                        <input type="password" class="form-control" name="new_password" id="new_password" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="new_nom" class="control-label">Nom<font color="red"> *</font></label>
+                        <input type="text" class="form-control" name="new_nom" id="new_nom" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="new_prenom" class="control-label">Prenom<font color="red"> *</font></label>
+                        <input type="text" class="form-control" name="new_prenom" id="new_prenom" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="new_dateN" class="control-label">Date de Naissance<font color="red"> *</font></label>
+                        <input type="text" class="form-control" name="new_dateN" id="new_dateN" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="new_mail" class="control-label">Mail<font color="red"> *</font></label>
+                        <input type="text" class="form-control" name="new_mail" id="new_mail" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="new_adresse" class="control-label">Adresse<font color="red"> *</font></label>
+                        <input type="text" class="form-control" name="new_adresse" id="new_adresse" value="">
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optionsRadios" id="radioClient" value="option1" checked>
+                            Client
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optionsRadios" id="radioArtiste" value="option2">
+                            Artiste
+                        </label>
+                    </div>
+                    <button type="button" id="button_new" class="btn btn-success btn-block">S'inscrire</button>
+                </FORM>
             </div>
         </div>
     </div>
-    
+
+    <div id="souhait" class="container">
+
+        <div class="page-header">
+            <h1>Liste de souhaits</h1>
+            <button type="button" id="getSouhait" class="btn btn-default">Lister</button>
+            <button type="button" id="postSouhait" class="btn btn-default">Ajouter</button>
+            <button type="button" id="deleteSouhait" class="btn btn-default">Supprimer</button>
+        </div>
+
+        <div class="row">
+
+            <div id="getSouhaitMini" class="col-xs-10">
+                <h3>Liste des Souhaits:</h3>
+                <table id="table-souhait" class="table table-bordered"></table>
+            </div>
+
+            <div id="postSouhaitMini" class="col-md-4">
+                <form  class="form-horizontal">
+                    <h3>Ajouter un Souhait:</h3>
+                    <input class="form-control" type="text" id="postSouhaitLogin" placeholder="Login">
+                    <input class="form-control" type="text" id="postSouhaitOno" placeholder="ID de l'oeuvre">
+                    <span type="button" id="post-souhait-btn" class="btn btn-success btn-block">Ajouter</span>
+                </form>
+            </div>
+
+            <div id="deleteSouhaitMini" class="col-md-4">
+                <form name="post-form">
+                    <h3>Supprimer une Souhait:</h3>
+                    TODO
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="utilisateur" class="container">
+        <div class="page-header">
+            <h1>Utilisateur:</h1>
+        </div>
+        <div class="row">
+            <table id="table-utilisateur" class="table table-bordered"></table>
+        </div>
+    </div>
+
     <script>
         hideAll();
     </script>

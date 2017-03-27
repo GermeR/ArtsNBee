@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="14" failures="0" name="fr.iutinfo.skeleton.api.UserResourceTest" time="6.87" errors="0" skipped="0">
+<testsuite tests="14" failures="0" name="fr.iutinfo.skeleton.api.UserResourceTest" time="7.104" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/jdk-8-oracle-x64/jre/lib/amd64"/>
@@ -14,7 +14,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="unknown"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/home/infoetu/germer/gitWsp/ArtsNBee"/>
+    <property name="user.dir" value="/home/infoetu/plaisanb/N4/projet_agile/ArtsNBee"/>
     <property name="java.runtime.version" value="1.8.0_71-b15"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="/usr/lib/jvm/jdk-8-oracle-x64/jre/lib/endorsed"/>
@@ -31,12 +31,12 @@
     <property name="java.class.version" value="52.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="os.version" value="3.16.0-4-amd64"/>
-    <property name="user.home" value="/home/infoetu/germer"/>
+    <property name="user.home" value="/home/infoetu/plaisanb"/>
     <property name="user.timezone" value="Europe/Paris"/>
     <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
     <property name="file.encoding" value="UTF-8"/>
     <property name="java.specification.version" value="1.8"/>
-    <property name="user.name" value="germer"/>
+    <property name="user.name" value="plaisanb"/>
     <property name="java.class.path" value="/usr/share/maven/boot/plexus-classworlds-2.x.jar"/>
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
@@ -58,18 +58,18 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="list_should_search_in_alias_field" time="1.234"/>
-  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="after_delete_read_user_sould_return_204" time="0.501"/>
-  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="delete_unexisting_should_return_404" time="0.308"/>
-  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="read_user_should_read_user_with_same_salt" time="0.402"/>
-  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="should_delete_user" time="0.43"/>
-  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="list_should_search_in_email_field" time="0.517"/>
-  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="read_user_should_return_hashed_password" time="0.327"/>
-  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="list_all_must_be_ordered" time="0.719"/>
-  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="create_should_return_the_user_with_valid_id" time="0.363"/>
-  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="read_should_return_a_user_as_object" time="0.267"/>
-  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="list_should_search_in_name_field" time="0.392"/>
-  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="list_should_return_all_users" time="0.565"/>
-  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="read_user_should_return_good_alias" time="0.428"/>
-  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="read_user_should_return_good_email" time="0.373"/>
+  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="list_should_search_in_alias_field" time="1.298"/>
+  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="after_delete_read_user_sould_return_204" time="0.587"/>
+  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="delete_unexisting_should_return_404" time="0.316"/>
+  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="read_user_should_read_user_with_same_salt" time="0.414"/>
+  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="should_delete_user" time="0.433"/>
+  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="list_should_search_in_email_field" time="0.593"/>
+  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="read_user_should_return_hashed_password" time="0.482"/>
+  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="list_all_must_be_ordered" time="0.493"/>
+  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="create_should_return_the_user_with_valid_id" time="0.396"/>
+  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="read_should_return_a_user_as_object" time="0.359"/>
+  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="list_should_search_in_name_field" time="0.479"/>
+  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="list_should_return_all_users" time="0.426"/>
+  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="read_user_should_return_good_alias" time="0.392"/>
+  <testcase classname="fr.iutinfo.skeleton.api.UserResourceTest" name="read_user_should_return_good_email" time="0.39"/>
 </testsuite>
