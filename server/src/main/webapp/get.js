@@ -130,7 +130,7 @@ function afficherUtilisateur() {
 
 }
 
-function afficherOeuvres() {
+/*function afficherOeuvres() {
 
     $("#table-oeuvre").empty();
     
@@ -144,6 +144,7 @@ function afficherOeuvres() {
             var table = $("#table-oeuvre");
             var tr = $("<tr>");
             $("<th>").html("ono").appendTo(tr);
+            $("<th>").html("nom").appendTo(tr);
             $("<th>").html("ano").appendTo(tr);
             $("<th>").html("prix").appendTo(tr);
             $("<th>").html("promo").appendTo(tr);
@@ -162,6 +163,7 @@ function afficherOeuvres() {
             for (var i=0; i<json.length; i++) {
                 var tr = $("<tr>");
                 $("<td>").html(json[i].ono).appendTo(tr);
+                $("<td>").html(json[i].nom).appendTo(tr);
                 $("<td>").html(json[i].ano).appendTo(tr);
                 $("<td>").html(json[i].prix).appendTo(tr);
                 $("<td>").html(json[i].promo).appendTo(tr);
@@ -180,10 +182,104 @@ function afficherOeuvres() {
         }
     });    
     
+}*/
+
+function afficherOeuvre(ono) {
+
+    $.ajax({
+        url: "v1/oeuvre/id/"+ono,
+        type: "GET",
+        dataType: "json",
+        success: function(json) {
+            hideAllOeuvre();
+            $("#getOneOeuvre").empty();
+            $("#getOneOeuvre").show();
+            console.log("Getting oeuvre/"+ono);
+            var profil = $("#getOneOeuvre");
+            $("<h3>").html("Ono: " + json.ono).appendTo(profil);
+            $("<h3>").html("Nom: " + json.nom).appendTo(profil);
+            $("<h3>").html("Ano: " + json.ano).appendTo(profil);
+            $("<h3>").html("Prix: " + json.prix).appendTo(profil);
+            $("<h3>").html("Réduction: " + json.promo).appendTo(profil);
+            $("<h3>").html("Description: " + json.description).appendTo(profil);
+            $("<h3>").html("Type: " + json.type).appendTo(profil);
+            $("<h3>").html("Dimensions: " + json.dimension).appendTo(profil);
+            $("<h3>").html("Poids: " + json.poids).appendTo(profil);
+            $("<h3>").html("Thématique: " + json.thematique).appendTo(profil);
+        },
+        error: function(xhr, status, errorThrown) {
+            console.log("Requête impossible: GET/oeuvre/id"+ono);
+        }
+    });
 }
 
-function afficherOeuvre(nom) {
+function afficherOeuvres() {
+    //Clear du tableau pour éviter les doublons
+    $("#table-oeuvre").empty();
+    $.ajax({
+        url: "v1/oeuvre", //Requete sur toutes les oeuvres
+        type: "GET",
+        dataType: "json",
+        success: function(json) {
 
+            var table = $("#table-oeuvre");
+
+            json.sort(function (a, b) {
+                return a.ono - b.ono;
+            });
+
+            for (var i=0; i<json.length; i++) {
+                var tr = $("<tr>");
+
+                // Image
+                $("<td>").html("<img src='"+json[i].img+"' width='150' height='150'></img>").appendTo(tr);
+
+                // Informations
+
+                var tdDesc = $("<td>"); // Colonne des informations
+                var tdDescTable = $("<table>"); // Tableau dans la colonne
+
+                var nom = $("<tr>");
+                $("<td>").html("<b>Nom:</b>").appendTo(nom);
+                $("<td>").html(json[i].nom).appendTo(nom);
+
+                var auteur = $("<tr>");
+                $("<td>").html("<b>Description:</b>").appendTo(auteur);
+                $("<td>").html(json[i].description).appendTo(auteur);
+
+                var dimensions = $("<tr>");
+                $("<td>").html("<b>Dimensions:</b>").appendTo(dimensions);
+                $("<td>").html(json[i].dimension).appendTo(dimensions);
+
+                var poids = $("<tr>");
+                $("<td>").html("<b>Poids:</b>").appendTo(poids);
+                $("<td>").html(json[i].poids + "g").appendTo(poids);
+
+                nom.appendTo(tdDescTable);
+                auteur.appendTo(tdDescTable);
+                dimensions.appendTo(tdDescTable);
+                poids.appendTo(tdDescTable);
+
+                tdDescTable.appendTo(tdDesc);
+                tdDesc.appendTo(tr);
+
+                // Prix
+                $("<td>").html("<h2>"+json[i].prix+"€").appendTo(tr);
+
+                // Options
+                var tdDOpt = $("<td>"); // Colonne des options
+                $("<h3>").html("<span class='btn btn-success btn-block' onclick='afficherOeuvre("+json[i].ono+")'>Plus d'infos</span>").appendTo(tdDOpt);
+                tdDOpt.appendTo(tr);
+
+                tr.appendTo(table);
+            }
+            table.appendTo("#showOeuvreMini");
+
+        },
+        error: function(xhr, status, errorThrown) {
+            console.error("Impossible de récuéperer la liste des oeuvres");
+        }
+    });
 }
 
 function afficherCommandes() {

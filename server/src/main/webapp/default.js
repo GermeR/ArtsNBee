@@ -12,6 +12,7 @@ function hideAllOeuvre() {
     $("#getOeuvreMini").hide();
     $("#postOeuvreMini").hide();
     $("#deleteOeuvreMini").hide();
+    $("#getOneOeuvre").hide();
 }
 
 function hideAllCommande() {
