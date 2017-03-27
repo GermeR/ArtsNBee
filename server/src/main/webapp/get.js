@@ -37,7 +37,6 @@ function afficherOeuvres() {
             $("<th>").html("ono").appendTo(tr);
             $("<th>").html("ano").appendTo(tr);
             $("<th>").html("prix").appendTo(tr);
-            $("<th>").html("frais").appendTo(tr);
             $("<th>").html("promo").appendTo(tr);
             $("<th>").html("description").appendTo(tr);
             $("<th>").html("type").appendTo(tr);
@@ -56,7 +55,6 @@ function afficherOeuvres() {
                 $("<td>").html(json[i].ono).appendTo(tr);
                 $("<td>").html(json[i].ano).appendTo(tr);
                 $("<td>").html(json[i].prix).appendTo(tr);
-                $("<td>").html(json[i].frais).appendTo(tr);
                 $("<td>").html(json[i].promo).appendTo(tr);
                 $("<td>").html(json[i].description).appendTo(tr);
                 $("<td>").html(json[i].type).appendTo(tr);

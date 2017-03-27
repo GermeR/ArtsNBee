@@ -5,7 +5,6 @@ $(document).ready(function() {
         var data={
             ano: $("#postOeuvreAno").val(),
             prix: $("#postOeuvrePrix").val(),
-            frais: $("#postOeuvreFrais").val(),
             promo: $("#postOeuvrePromo").val(),
             description: $("#postOeuvreDescription").val(),
             type: $("#postOeuvreType").val(),
