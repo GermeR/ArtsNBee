@@ -14,9 +14,9 @@ public interface OeuvreDao {
     @GetGeneratedKeys
     int insert(@BindBean() Oeuvre oeuvre);
     
-    @SqlQuery("select * from oeuvre where nom = :nom")
+    @SqlQuery("select * from oeuvre where ono = :ono")
     @RegisterMapperFactory(BeanMapperFactory.class)
-    Oeuvre findByName(@Bind("nom") String nom);
+    Oeuvre findByName(@Bind("ono") int ono);
 
     @SqlQuery("select * from oeuvre where search like :nom")
     @RegisterMapperFactory(BeanMapperFactory.class)

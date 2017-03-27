@@ -60,6 +60,16 @@ public class OeuvreResource {
 	}
 
 	@GET
+	@Path("/{ono}")
+	public OeuvreDto getOeuvre(@PathParam("ono") int ono) {
+		Oeuvre oeuvre = dao.findByName(ono);
+		if (oeuvre == null) {
+			throw new WebApplicationException(404);
+		}
+		return oeuvre.convertToDto();
+	}
+	
+	@GET
 	public List<OeuvreDto> getAllOeuvres(@QueryParam("q") String query) {
 		List<Oeuvre> oeuvres;
 		if (query == null) {
