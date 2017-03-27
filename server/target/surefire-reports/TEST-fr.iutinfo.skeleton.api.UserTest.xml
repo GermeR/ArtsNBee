@@ -58,5 +58,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="fr.iutinfo.skeleton.api.UserTest" name="should_set_salt_at_build" time="0.001"/>
+  <testcase classname="fr.iutinfo.skeleton.api.UserTest" name="should_set_salt_at_build" time="0"/>
 </testsuite>
