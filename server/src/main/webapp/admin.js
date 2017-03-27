@@ -29,27 +29,27 @@ function afficherOeuvres() {
             for (var i=0; i<json.length; i++) {
 				var ono = json[i].ono;
                 var tr = $("<tr>");
-                $("<td>").html("<input class='form-control' type='text' id='postOeuvreNom"+ono+"' value ='"+json[i].nom+"'>" ).appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postOeuvrePrix"+ono+"' value='"+json[i].prix+"'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postOeuvrePromo"+ono+"' value='"+json[i].promo+"'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postOeuvreDescription"+ono+"' value='"+json[i].description+"'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postOeuvreType"+ono+"' value='"+json[i].type+"'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postOeuvreDimension"+ono+"' value='"+json[i].dimension+"'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postOeuvrePoids"+ono+"' value='"+json[i].poids+"'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postOeuvreThematique"+ono+"' value='"+json[i].thematique+"'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='putOeuvreNom"+ono+"' value ='"+json[i].nom+"'>" ).appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='putOeuvrePrix"+ono+"' value='"+json[i].prix+"'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='putOeuvrePromo"+ono+"' value='"+json[i].promo+"'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='putOeuvreDescription"+ono+"' value='"+json[i].description+"'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='putOeuvreType"+ono+"' value='"+json[i].type+"'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='putOeuvreDimension"+ono+"' value='"+json[i].dimension+"'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='putOeuvrePoids"+ono+"' value='"+json[i].poids+"'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='putOeuvreThematique"+ono+"' value='"+json[i].thematique+"'>").appendTo(tr);
 				$("<td>").html("<span id='put-oeuvre-btn' onclick='modifierOeuvre("+ono+");' class='btn btn-success btn-block'>Modifier</span>").appendTo(tr);
 				$("<td>").html("<span id='delete-oeuvre-btn' onclick='supprimerOeuvre("+ono+");' class='btn btn-success btn-block'>Supprimer</span>").appendTo(tr);
                 tr.appendTo(table);
             }
                 var tr = $("<tr>");
-                $("<td>").html("<input class='form-control' type='text' id='postOeuvreAno' value='nom'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postOeuvreAno' value='prix'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postOeuvreAno' value='promo'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postOeuvreAno' value='description'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postOeuvreAno' value='type'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postOeuvreAno' value='dimension'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postOeuvreAno' value='poids'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postOeuvreAno' value='thematique'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='postOeuvreNom' value='nom'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='postOeuvrePrix' value='prix'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='postOeuvrePromo' value='promo'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='postOeuvreDescription' value='description'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='postOeuvreType' value='type'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='postOeuvreDimension' value='dimension'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='postOeuvrePoids' value='poids'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='postOeuvreThematique' value='thematique'>").appendTo(tr);
 				$("<td>").html("<span id='post-oeuvre-btn' onclick='add_oeuvre();' class='btn btn-success btn-block'>Ajouter</span>").appendTo(tr);
                 tr.appendTo(table);
             table.appendTo("#showOeuvreMini");
@@ -65,8 +65,8 @@ function afficherOeuvres() {
 
 function add_oeuvre() {
         var data={
-            ano: $("#postOeuvreAno").val(),
-            prix: $("#postOeuvreNom").val(),
+			nom: $("#postOeuvreNom").val(),
+            prix: $("#postOeuvrePrix").val(),
             promo: $("#postOeuvrePromo").val(),
             description: $("#postOeuvreDescription").val(),
             type: $("#postOeuvreType").val(),
@@ -82,13 +82,12 @@ function add_oeuvre() {
             dataType: "json",
             contentType : 'application/json',
             success: function(json) {
-                console.log(json);
+               	afficherOeuvres();
             },
             error: function( xhr, status, errorThrown) {
                 alert("Erreur: POST");
             },
         });
-	afficherOeuvres();
 }
 
 function supprimerOeuvre(ono) {
@@ -98,24 +97,24 @@ function supprimerOeuvre(ono) {
 		    dataType: "json",
 		    contentType : 'application/json',
 		    success: function(json) {
-		        console.log("Deleted: " + json);
+		       	afficherOeuvres();
 		    },
 		    error: function( xhr, status, errorThrown) {
 		        alert("Erreur: DELETE");
 		    },
 		}); 
-	afficherOeuvres();
 }
 
 function modifierOeuvre(ono) {
-		    var data={
-				    prix: $("#postOeuvreNom"+ono).val(),
-				    promo: $("#postOeuvrePromo"+ono).val(),
-				    description: $("#postOeuvreDescription"+ono).val(),
-				    type: $("#postOeuvreType"+ono).val(),
-				    dimension: $("#postOeuvreDimension"+ono).val(),
-				    poids: $("#postOeuvrePoids"+ono).val(),
-				    thematique: $("#postOeuvreThematique"+ono).val()
+		     var data={
+				    nom: $("#putOeuvreNom"+ono).val(),
+				    prix: $("#putOeuvrePrix"+ono).val(),
+				    promo: $("#putOeuvrePromo"+ono).val(),
+				    description: $("#putOeuvreDescription"+ono).val(),
+				    type: $("#putOeuvreType"+ono).val(),
+				    dimension: $("#putOeuvreDimension"+ono).val(),
+				    poids: $("#putOeuvrePoids"+ono).val(),
+					thematique: $("#putOeuvreThematique"+ono).val()
 		    };
             $.ajax({
 		         url: "v1/oeuvre/"+ono,
@@ -124,14 +123,13 @@ function modifierOeuvre(ono) {
 		        dataType: "json",
 		        contentType : 'application/json',
                 success: function(response) {
-                    alert( "Update" );
+					afficherOeuvres();
                 },
                 error: function( xhr, status, errorThrown ) {
                     alert("Erreur: PUT");
                 },
             });
   
-	afficherOeuvres();
 }
 
 $(document).ready(function() {
