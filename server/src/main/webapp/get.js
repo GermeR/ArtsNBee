@@ -251,6 +251,7 @@ function afficherOeuvre(ono) {
 
             tr.appendTo(table);
             $("<p>").appendTo(table);
+            $("<h1>").html(json.prix+"€").appendTo(tr);
             $("<img src='"+json.img+"'></img>").appendTo(table);
             table.appendTo(profil);
         },
