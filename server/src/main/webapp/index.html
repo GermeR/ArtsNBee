@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Curl Testing Web Page</title>
+    <title>Arts'n'Bee</title>
     <meta charset='utf-8'>
     <!-- jQuery -->
     <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -23,11 +23,12 @@
 
 </head>
 <body>
-    <h1 class="text-center"><b>Art'N'Bee</b></h1>
+    <h1 class="text-center"><b>Arts'n'Bee</b></h1>
     <br>
     <div class="text-center"  id="menubar" >
         <button type="button" id="showOeuvre" class="btn btn-default">Œuvres</button>
-        <button type="button" id="showCommande" class="btn btn-default">Commandes</button>  
+        <button type="button" id="showCommande" class="btn btn-default">Commandes</button>
+        <button type="button" id="showSouhait" class="btn btn-default">Liste de souhaits</button>
         <button type="button" id="showLogin" class="btn btn-default">Se connecter</button>
         <button type="button" id="showInscription" class="btn btn-default">S'inscrire</button>
         <button type="button" id="showProfile" class="btn btn-default">Mon profil</button>
@@ -206,7 +207,43 @@
             </div>
         </div>
     </div>
-    
+
+    <div id="souhait" class="container">
+
+        <div class="page-header">
+            <h1>Liste de souhaits</h1>
+            <button type="button" id="getSouhait" class="btn btn-default">Lister</button>
+            <button type="button" id="postSouhait" class="btn btn-default">Ajouter</button>
+            <button type="button" id="deleteSouhait" class="btn btn-default">Supprimer</button>
+        </div>
+
+        <div class="row">
+
+            <div id="getSouhaitMini" class="col-xs-10">
+                <h3>Liste des Souhaits:</h3>
+                <table id="table-souhait" class="table table-bordered"></table>
+            </div>
+
+            <div id="postSouhaitMini" class="col-md-4">
+                <form  class="form-horizontal">
+                    <h3>Ajouter un Souhait:</h3>
+                    <input class="form-control" type="text" id="postSouhaitLogin" placeholder="Login">
+                    <input class="form-control" type="text" id="postSouhaitOno" placeholder="ID de l'oeuvre">
+                    <span type="button" id="post-souhait-btn" class="btn btn-success btn-block">Ajouter</span>
+                </form>
+            </div>
+
+            <div id="deleteSouhaitMini" class="col-md-4">
+                <form name="post-form">
+                    <h3>Supprimer une Souhait:</h3>
+                    TODO
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
     <script>
         hideAll();
     </script>
