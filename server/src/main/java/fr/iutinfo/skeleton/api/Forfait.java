@@ -14,8 +14,6 @@ public class Forfait {
 	private String fno;
 	private double prix;
 	private int nbOeuvres;
-	//private String salt;
-	//private String search;
 	
 	public Forfait(){}
 	
@@ -49,32 +47,6 @@ public class Forfait {
 	public void setNbOeuvres(int nbOeuvres) {
 		this.nbOeuvres = nbOeuvres;
 	}
-	
-	/*public String getSalt() {
-        if (salt == null) {
-            salt = generateSalt();
-        }
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
-    
-    private String generateSalt() {
-        SecureRandom random = new SecureRandom();
-        Hasher hasher = Hashing.sha256().newHasher();
-        hasher.putLong(random.nextLong());
-        return hasher.hash().toString();
-    }
-    
-    public void setSearch(String search) {
-        this.search = search;
-    }
-    
-    public String getSearch() {
-		return search;
-	}*/
     
     public void initFromDto(ForfaitDto dto) {
     	setFno(dto.getFno());

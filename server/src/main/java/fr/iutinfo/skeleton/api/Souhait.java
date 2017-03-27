@@ -13,22 +13,8 @@ import fr.iutinfo.skeleton.common.dto.SouhaitDto;
 public class Souhait {
 	
     final static Logger logger = LoggerFactory.getLogger(User.class);
-    public String getSearch() {
-		return search;
-	}
-
-	public void setSearch(String search) {
-		this.search = search;
-	}
-
-	public static Logger getLogger() {
-		return logger;
-	}
-
 	private int ono;
     private String login;
-    private String salt;
-    private String search;
     
     public Souhait() {
 	}
@@ -39,30 +25,19 @@ public class Souhait {
 		this.login = login;
 	}
 
-	public String getSalt() {
-        if (salt == null) {
-            salt = generateSalt();
-        }
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
-
-    private String generateSalt() {
-        SecureRandom random = new SecureRandom();
-        Hasher hasher = Hashing.sha256().newHasher();
-        hasher.putLong(random.nextLong());
-        return hasher.hash().toString();
-    }
-    
     public void initFromDto(SouhaitDto dto) {
     	setOno(dto.getOno());
     	setLogin(dto.getLogin());
     }
 
-    public int getOno() {
+	public SouhaitDto convertToDto() {
+		SouhaitDto dto = new SouhaitDto();
+	   	dto.setOno(getOno());
+    	dto.setLogin(getLogin());
+        return dto;
+    }
+
+	public int getOno() {
 		return ono;
 	}
 
@@ -78,10 +53,7 @@ public class Souhait {
 		this.login = login;
 	}
 
-	public SouhaitDto convertToDto() {
-		SouhaitDto dto = new SouhaitDto();
-	   	dto.setOno(getOno());
-    	dto.setLogin(getLogin());
-        return dto;
-    }
+	public static Logger getLogger() {
+		return logger;
+	}
 }

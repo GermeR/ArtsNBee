@@ -5,10 +5,10 @@ import org.slf4j.LoggerFactory;
 
 import java.security.Principal;
 
-public class SouhaitDto implements Principal {
+public class SouhaitDto{
 
 	final static Logger logger = LoggerFactory.getLogger(SouhaitDto.class);
-    private int ono;
+	private int ono;
     private String login;
     
 	public int getOno() {
@@ -26,9 +26,4 @@ public class SouhaitDto implements Principal {
 	public static Logger getLogger() {
 		return logger;
 	}
-	@Override
-	public String getName() {
-		return login+":"+ono;
-	}
-	
 }
