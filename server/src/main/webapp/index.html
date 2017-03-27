@@ -7,7 +7,9 @@
     <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
 
     <!-- bootstrap -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     
     <!-- Code local -->
     <script src="get.js"></script>
@@ -68,6 +70,7 @@
             <div id="postOeuvreMini" class="col-md-4">
                 <form id="post-form" class="form-horizontal">
                     <h3>Ajouter une œuvre:</h3>
+                    <input class="form-control" type="text" id="postOeuvreNom" placeholder="Nom">
                     <input class="form-control" type="text" id="postOeuvreAno" placeholder="Artiste">
                     <input class="form-control" type="text" id="postOeuvrePrix" placeholder="Prix">
                     <input class="form-control" type="text" id="postOeuvrePromo" placeholder="Promo">
@@ -90,8 +93,11 @@
                     <span id="delete-oeuvre-btn" class="btn btn-danger btn-block">Supprimer</span>
                 </form>
             </div>
-
             <div id="getOneOeuvre">
+                <script>
+                    /*afficherOeuvre(1);
+                    hideAll();*/
+                </script>
             </div>
             
         </div>        

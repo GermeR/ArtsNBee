@@ -3,6 +3,7 @@ $(document).ready(function() {
     $("#post-oeuvre-btn").click(function (event) {
        
         var data={
+            nom: $("#postOeuvreNom").val(),
             ano: $("#postOeuvreAno").val(),
             prix: $("#postOeuvrePrix").val(),
             promo: $("#postOeuvrePromo").val(),
