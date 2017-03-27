@@ -7,7 +7,7 @@ import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 import java.util.List;
 
 public interface CommandeDao {
-    @SqlUpdate("create table commande(ono integer, login varchar(20), paiement boolean, envoi boolean, reception boolean, remuneration boolean, prix numeric(6,2), frais numeric(4,2), primary key (ono, login), foreign key (ono) references Commande(ono), foreign key (login) references user(login));")
+    @SqlUpdate("create table commande(ono integer, login varchar(20), paiement boolean, envoi boolean, reception boolean, remuneration boolean, prix numeric(6,2), frais numeric(4,2), primary key (ono, login), foreign key (ono) references Oeuvre(ono), foreign key (login) references utilisateur(login));")
     void createCommandeTable();
 
     @SqlUpdate("insert into commande (login,ono,paiement,envoi,reception,remuneration,prix,frais) values (:login, :ono, :paiement, :envoi, :reception, :remuneration, :prix, :frais)")

@@ -13,6 +13,7 @@ public class CommandeDto implements Principal {
 	private boolean paiement, envoi, reception, remuneration;
 	private double prix;
 	private double frais;
+	
 	public String getLogin() {
 		return login;
 	}

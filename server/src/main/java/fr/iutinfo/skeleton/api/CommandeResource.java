@@ -23,7 +23,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import fr.iutinfo.skeleton.common.dto.CommandeDto;
-import fr.iutinfo.skeleton.common.dto.UtilisateurDto;
 
 @Path("/commande")
 @Produces(MediaType.APPLICATION_JSON)
@@ -82,7 +81,7 @@ public class CommandeResource {
 
     @DELETE
     @Path("/{ono}")
-    public void deleteCommande(@PathParam("id") int ono) {
+    public void deleteCommande(@PathParam("ono") int ono) {
         dao.delete(ono);
     }
 

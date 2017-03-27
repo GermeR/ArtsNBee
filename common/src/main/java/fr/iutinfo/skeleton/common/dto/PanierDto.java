@@ -3,12 +3,11 @@ package fr.iutinfo.skeleton.common.dto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class SouhaitDto{
+public class PanierDto {
 
-	final static Logger logger = LoggerFactory.getLogger(SouhaitDto.class);
+	final static Logger logger = LoggerFactory.getLogger(PanierDto.class);
 	private int ono;
-    private String login;
-    
+	private String login;
 	public int getOno() {
 		return ono;
 	}
