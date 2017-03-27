@@ -21,6 +21,7 @@ import javax.ws.rs.core.MediaType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import fr.iutinfo.skeleton.common.dto.OeuvreDto;
 import fr.iutinfo.skeleton.common.dto.UtilisateurDto;
 
 @Path("/utilisateur")
@@ -34,18 +35,18 @@ public class UtilisateurResource {
         if (!tableExist("utilisateur")) {
             logger.debug("Création de la table utilisateur.");
             dao.createUtilisateurTable();
-        } else {
-        	logger.debug("Table utilisateur déjà existante.");
+            dao.insert(new Utilisateur("client", "client", "Client", "Toto", "05/01/1990", "Gratuit", "client.client@gmail.com", "", "", "02 Rue des tombes", false, false, "Client"));
+        	dao.insert(new Utilisateur("artiste", "artiste", "Artiste", "Toto", "05/01/1990", "Premium", "artiste.artiste@gmail.com", "", "", "05 Rue des tombes", true, true, "Artiste"));
+        	dao.insert(new Utilisateur("admin", "admin", "Admin", "Toto", "05/01/1990", "Classique", "admin.admin@gmail.com", "", "", "07 Rue des tombes", false, false, "Admin"));
         }
     }
 
     @POST
-    public UtilisateurDto createUtilisateur(UtilisateurDto dto) {
-    	Utilisateur user = new Utilisateur();
-        user.initFromDto(dto);
-        user.resetPasswordHash();
-        return dto;
-    }
+	public UtilisateurDto createOeuvre(UtilisateurDto dto) {
+    	Utilisateur utilisateur = new Utilisateur();
+    	utilisateur.initFromDto(dto);
+		return dto;
+	}
     
     @PUT
     @Path("/{log}")

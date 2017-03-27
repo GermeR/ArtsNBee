@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+	<title>Page d'inscription</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="//getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<script>
+	function clic(element)
+	{
+		if($("#new_login").val() != "" && $("#new_password").val() != "" && $("#new_nom").val() != "" && $("#new_prenom").val() != "" && $("#new_dateN").val() != "" && $("#new_mail").val() != "" && $("#new_adresse").val() != "") {
+		    var data={
+				adresse: $("#new_adresse").val(),
+		        dateDeb: "",
+		        dateFin: "",
+		        dateN: $("#new_dateN").val(),
+		        fno: "Gratuit", 
+		        login: $("#new_login").val(),
+		        mail: $("#new_mail").val(),
+		        prenom: $("#new_prenom").val(), 
+		        nom: $("#new_nom").val(),
+				optin: false,
+				optinPart: false,
+		        password: $("#new_password").val(),		
+				role: "Client"
+		    };
+		    
+		    $.ajax({
+		        url: "v1/utilisateur",
+		        data: JSON.stringify(data),
+		        type: "POST",
+		        dataType: "json",
+		        contentType : 'application/json',
+		        success: function(json) {
+		            console.log(json);
+		            alert("Added");
+		        },
+		        error: function( xhr, status, errorThrown) {
+		            alert("Erreur: POST");
+		        },
+		    });
+		} else {
+			alert( "Veuillez remplir les champs obligatoire !");
+		}
+	}
+	</script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="page-header">
+		    	<h1>Inscription</h1>
+		    </div>
+	    	<div class="row">
+	        	<div class="col-xs-6 col-xs-offset-3">
+				    <FORM name="login">
+						<div class="form-group">
+							<label for="login" class="control-label">Login<font color="red"> *</font></label>
+							<input type="text" class="form-control" name="new_login" id="new_login" value="">
+						</div>
+						<div class="form-group">
+							<label for="password" class="control-label">Mot de passe<font color="red"> *</font></label>
+							<input type="password" class="form-control" name="new_password" id="new_password" value="">
+						</div>
+						<div class="form-group">
+							<label for="login" class="control-label">Nom<font color="red"> *</font></label>
+							<input type="text" class="form-control" name="new_nom" id="new_nom" value="">
+						</div>
+						<div class="form-group">
+							<label for="login" class="control-label">Prenom<font color="red"> *</font></label>
+							<input type="text" class="form-control" name="new_prenom" id="new_prenom" value="">
+						</div>
+						<div class="form-group">
+							<label for="login" class="control-label">Date de Naissance<font color="red"> *</font></label>
+							<input type="text" class="form-control" name="new_dateN" id="new_dateN" value="">
+						</div>
+						<div class="form-group">
+							<label for="login" class="control-label">Mail<font color="red"> *</font></label>
+							<input type="text" class="form-control" name="new_mail" id="new_mail" value="">
+						</div>
+						<div class="form-group">
+							<label for="login" class="control-label">Adresse<font color="red"> *</font></label>
+							<input type="text" class="form-control" name="new_adresse" id="new_adresse" value="">
+						</div>
+						<button type="button" name="button_new" class="btn btn-success btn-block" onClick="clic(this);">S'inscrire</button>
+					</FORM> 
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+

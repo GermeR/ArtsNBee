@@ -36,7 +36,7 @@ public class CommandeResource {
         if (!tableExist("commande")) {
             logger.debug("Crate table Commandes");
             dao.createCommandeTable();
-            dao.insert(new Commande("Robert", 1, false, false, false, false, 12, 1));
+            dao.insert(new Commande("client", 1, false, false, false, false, 12, 1));
         }
     }
 
