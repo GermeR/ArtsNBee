@@ -40,7 +40,6 @@ public class OeuvreResource {
 			dao.insert(new Oeuvre("artiste", "Tintin au tibet", 100.0, 0, "blablabla", "Sculpture", "40x10", 10.0, "Arts"));
 		}
 	}
-
 	@POST
 	public OeuvreDto createOeuvre(OeuvreDto dto) {
 		Oeuvre oeuvre = new Oeuvre();
