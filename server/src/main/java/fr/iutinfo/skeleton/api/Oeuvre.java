@@ -24,8 +24,6 @@ public class Oeuvre {
 	private String dimension;
 	private double poids;
 	private String thematique;
-    private String salt;
-    private String search;
 	
     
     public Oeuvre() {
@@ -83,27 +81,33 @@ public class Oeuvre {
 		this.poids = poids;
 		this.thematique = thematique;
 	}
- 
-    public String getSalt() {
-        if (salt == null) {
-            salt = generateSalt();
-        }
-        return salt;
+
+    public void initFromDto(OeuvreDto dto) {    	
+    	this.setOno(dto.getOno());
+    	this.setAno(dto.getAno());
+    	this.setNom(dto.getNom());
+    	this.setPrix(dto.getPrix());
+    	this.setPromo(dto.getPromo());
+    	this.setDescription(dto.getDescription());
+    	this.setType(dto.getType());
+    	this.setDimension(dto.getDimension());
+    	this.setPoids(dto.getPoids());
+    	this.setThematique(dto.getThematique());   	
     }
 
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
-
-    private String generateSalt() {
-        SecureRandom random = new SecureRandom();
-        Hasher hasher = Hashing.sha256().newHasher();
-        hasher.putLong(random.nextLong());
-        return hasher.hash().toString();
-    }
-
-    public void setSearch(String search) {
-        this.search = search;
+    public OeuvreDto convertToDto() {
+    	OeuvreDto dto = new OeuvreDto();
+    	dto.setOno(this.getOno());
+    	dto.setAno(this.getAno());
+    	dto.setNom(this.getNom());
+    	dto.setPrix(this.getPrix());
+    	dto.setPromo(this.getPromo());
+    	dto.setDescription(this.getDescription());
+    	dto.setType(this.getType());
+    	dto.setDimension(this.getDimension());
+    	dto.setPoids(this.getPoids());
+    	dto.setThematique(this.getThematique()); 
+        return dto;
     }
 
 	public int getOno() {
@@ -186,31 +190,9 @@ public class Oeuvre {
 		this.thematique = thematique;
 	}
 
-	public String getSearch() {
-		return search;
+	public static Logger getLogger() {
+		return logger;
 	}
 
-    public void initFromDto(OeuvreDto dto) {
-    	setAno(dto.getAno());
-    	setDescription(dto.getDescription());
-    	setDimension(dto.getDimension());
-    	setNom(dto.getName());
-    	setOno(dto.getOno());
-    	setPoids(dto.getPoids());
-    	setPrix(dto.getPrix());
-    	setPromo(dto.getPromo());
-    }
-
-    public OeuvreDto convertToDto() {
-        OeuvreDto dto = new OeuvreDto();
-    	dto.setAno(getAno());
-    	dto.setDescription(getDescription());
-    	dto.setDimension(getDimension());
-    	dto.setName(getNom());
-    	dto.setOno(getOno());
-    	dto.setPoids(getPoids());
-    	dto.setPrix(getPrix());
-    	dto.setPromo(getPromo());
-        return dto;
-    }
+    
 }

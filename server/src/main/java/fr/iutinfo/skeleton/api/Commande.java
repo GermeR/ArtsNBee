@@ -1,12 +1,7 @@
 package fr.iutinfo.skeleton.api;
 
-import java.security.SecureRandom;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.google.common.hash.Hasher;
-import com.google.common.hash.Hashing;
 
 import fr.iutinfo.skeleton.common.dto.CommandeDto;
 
@@ -17,8 +12,6 @@ public class Commande {
 	private boolean paiement, envoi, reception, remuneration;
 	private double prix;
 	private double frais;
-	private String salt;
-	private String search;	
 	
 	public Commande(){}
 
@@ -97,32 +90,6 @@ public class Commande {
 
 	public void setFrais(double frais) {
 		this.frais = frais;
-	}
-	
-	public String getSalt() {
-        if (salt == null) {
-            salt = generateSalt();
-        }
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
-    
-    private String generateSalt() {
-        SecureRandom random = new SecureRandom();
-        Hasher hasher = Hashing.sha256().newHasher();
-        hasher.putLong(random.nextLong());
-        return hasher.hash().toString();
-    }
-
-    public void setSearch(String search) {
-        this.search = search;
-    }
-    
-    public String getSearch() {
-		return search;
 	}
     
     public void initFromDto(CommandeDto dto) {
