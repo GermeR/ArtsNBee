@@ -23,6 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import fr.iutinfo.skeleton.common.dto.CommandeDto;
+import fr.iutinfo.skeleton.common.dto.UtilisateurDto;
 
 @Path("/commande")
 @Produces(MediaType.APPLICATION_JSON)
@@ -41,12 +42,14 @@ public class CommandeResource {
     }
 
     @POST
-    public CommandeDto createCommande(CommandeDto dto) {
-    	Commande Commande = new Commande();
-    	Commande.initFromDto(dto);
-        return dto;
-    }
+	public CommandeDto createCommande(CommandeDto dto) {
+    	Commande commande = new Commande();
+		commande.initFromDto(dto);
+		dao.insert(commande);
+		return dto;
+	}
     
+
     @PUT
     @Path("/{login}:{ono}")
     public void UpdateForfait(@PathParam("login") String login, @PathParam("ono") int ono, CommandeDto dto) {

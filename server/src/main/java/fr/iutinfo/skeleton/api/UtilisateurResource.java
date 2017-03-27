@@ -41,10 +41,11 @@ public class UtilisateurResource {
         }
     }
 
-    @POST
-	public UtilisateurDto createOeuvre(UtilisateurDto dto) {
-    	Utilisateur utilisateur = new Utilisateur();
-    	utilisateur.initFromDto(dto);
+	@POST
+	public UtilisateurDto createUtilisateur(UtilisateurDto dto) {
+		Utilisateur utilisateur = new Utilisateur();
+		utilisateur.initFromDto(dto);
+		dao.insert(utilisateur);
 		return dto;
 	}
     

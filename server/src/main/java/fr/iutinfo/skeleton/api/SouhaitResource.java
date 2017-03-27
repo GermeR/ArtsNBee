@@ -34,8 +34,6 @@ public class SouhaitResource {
         if (!tableExist("Souhait")) {
         	logger.debug("Création de la table souhait.");
             dao.createSouhaitTable();
-        } else {
-        	logger.debug("Table souhait déjà existante.");
         }
     }
 

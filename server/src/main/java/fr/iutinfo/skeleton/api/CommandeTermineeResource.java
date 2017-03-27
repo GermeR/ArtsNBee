@@ -44,8 +44,7 @@ public class CommandeTermineeResource {
     public CommandeTermineeDto createCommande(CommandeTermineeDto dto) {
     	CommandeTerminee Commande = new CommandeTerminee();
     	Commande.initFromDto(dto);
-    	//int id = dao.insert(Commande);
-        //dto.setId(id);
+    	dao.insert(Commande);
         return dto;
     }
 
