@@ -2,6 +2,7 @@ function hideAll() {
     $("#oeuvre").hide();
     $("#commande").hide();
     $("#login").hide();
+    $("#inscription").hide();
     $("#profile").hide();
 }
 
@@ -16,10 +17,6 @@ function hideAllCommande() {
     $("#postCommandeMini").hide();
     $("#deleteCommandeMini").hide();
 }
-
-function isConnected() {
-    
-}
   
 $(document).ready(function() { 
     
@@ -33,7 +30,7 @@ $(document).ready(function() {
             $("#oeuvre").show();
         }        
     });
-    
+
     $("#showCommande").click(function (event) {
         hideAll();
         hideAllCommande();
@@ -54,6 +51,14 @@ $(document).ready(function() {
         }
     });
 
+    $("#showInscription").click(function (event) {
+        hideAll();
+        if ($("#inscription").is(":visible")) {
+            $("#inscription").hide();
+        } else {
+            $("#inscription").show();
+        }
+    });
     
     $("#getOeuvre").click(function (event) {
         hideAllOeuvre();

@@ -29,7 +29,7 @@
         <button type="button" id="showOeuvre" class="btn btn-default">Œuvres</button>
         <button type="button" id="showCommande" class="btn btn-default">Commandes</button>  
         <button type="button" id="showLogin" class="btn btn-default">Se connecter</button>
-        <button type="button" id="showSignup" class="btn btn-default">S'inscrire</button>
+        <button type="button" id="showInscription" class="btn btn-default">S'inscrire</button>
         <button type="button" id="showProfile" class="btn btn-default">Mon profil</button>
         
         <script>
@@ -67,7 +67,7 @@
                     <input class="form-control" type="text" id="postOeuvreDimension" placeholder="Dimension">
                     <input class="form-control" type="text" id="postOeuvrePoids" placeholder="Poids">
                     <input class="form-control" type="text" id="postOeuvreThematique" placeholder="Thematique">
-                    <span type="button" id="post-oeuvre-btn" class="btn btn-success btn-block">Ajouter</span>
+                    <span id="post-oeuvre-btn" class="btn btn-success btn-block">Ajouter</span>
                 </form>    
             </div>
             
@@ -78,7 +78,7 @@
                         <label for="login" class="control-label">Œuvre</label>
                         <input class="form-control" type="text" id="deleteOno" placeholder="Numero de l'oeuvre">
                     </div>
-                    <span type="button" id="delete-oeuvre-btn" class="btn btn-danger btn-block">Supprimer</span>
+                    <span id="delete-oeuvre-btn" class="btn btn-danger btn-block">Supprimer</span>
                 </form>
             </div>
             
@@ -114,7 +114,7 @@
                     <input class="form-control" type="text" id="postCommandeRemuneration" placeholder="Rémuneration">
                     <input class="form-control" type="text" id="postCommandePrix" placeholder="Prix">
                     <input class="form-control" type="text" id="postCommandeFrais" placeholder="Frais">
-                    <span type="button" id="post-commande-btn" class="btn btn-success btn-block">Ajouter</span>
+                    <span id="post-commande-btn" class="btn btn-success btn-block">Ajouter</span>
                 </form>    
             </div>
             
@@ -161,6 +161,48 @@
 		</div>
         <div class="row">
             <div id="getProfile" class="col-xs-10">
+            </div>
+        </div>
+    </div>
+
+    <!--Inscription-->
+    <div id="inscription" class="container">
+        <div class="page-header">
+            <h1>Inscription</h1>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-xs-offset-3">
+                <FORM name="login">
+                    <div class="form-group">
+                        <label for="new_login" class="control-label">Login<font color="red"> *</font></label>
+                        <input type="text" class="form-control" name="new_login" id="new_login" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="new_password" class="control-label">Mot de passe<font color="red"> *</font></label>
+                        <input type="password" class="form-control" name="new_password" id="new_password" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="new_nom" class="control-label">Nom<font color="red"> *</font></label>
+                        <input type="text" class="form-control" name="new_nom" id="new_nom" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="new_prenom" class="control-label">Prenom<font color="red"> *</font></label>
+                        <input type="text" class="form-control" name="new_prenom" id="new_prenom" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="new_dateN" class="control-label">Date de Naissance<font color="red"> *</font></label>
+                        <input type="text" class="form-control" name="new_dateN" id="new_dateN" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="new_mail" class="control-label">Mail<font color="red"> *</font></label>
+                        <input type="text" class="form-control" name="new_mail" id="new_mail" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="new_adresse" class="control-label">Adresse<font color="red"> *</font></label>
+                        <input type="text" class="form-control" name="new_adresse" id="new_adresse" value="">
+                    </div>
+                    <button type="button" id="button_new" class="btn btn-success btn-block">S'inscrire</button>
+                </FORM>
             </div>
         </div>
     </div>
