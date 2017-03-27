@@ -22,6 +22,56 @@ function afficherUser(nom) {
     
 }
 
+function afficherOeuvresParArtiste(nom) {
+
+    $.ajax({
+        url: "v1/oeuvre/"+nom,
+        type: "GET",
+        dataType: "json",
+        success: function(json) {
+            console.log("Getting /oeuvres/"+nom);
+
+            var table = $("#table-oeuvresArtiste");
+            var tr = $("<tr>");
+            $("<th>").html("ono").appendTo(tr);
+            $("<th>").html("ano").appendTo(tr);
+            $("<th>").html("prix").appendTo(tr);
+            $("<th>").html("promo").appendTo(tr);
+            $("<th>").html("description").appendTo(tr);
+            $("<th>").html("type").appendTo(tr);
+            $("<th>").html("dimension").appendTo(tr);
+            $("<th>").html("poids").appendTo(tr);
+            $("<th>").html("thematique").appendTo(tr);
+            $("<th>").html("").appendTo(tr);
+            tr.appendTo(table);
+
+            json.sort(function (a, b) {
+                return a.ono - b.ono;
+            });
+
+            for (var i=0; i<json.length; i++) {
+                var tr = $("<tr>");
+                $("<td>").html(json[i].ono).appendTo(tr);
+                $("<td>").html(json[i].ano).appendTo(tr);
+                $("<td>").html(json[i].prix).appendTo(tr);
+                $("<td>").html(json[i].promo).appendTo(tr);
+                $("<td>").html(json[i].description).appendTo(tr);
+                $("<td>").html(json[i].type).appendTo(tr);
+                $("<td>").html(json[i].dimension).appendTo(tr);
+                $("<td>").html(json[i].poids).appendTo(tr);
+                $("<td>").html(json[i].thematique).appendTo(tr);
+                tr.appendTo(table);
+            }
+            table.appendTo("#oeuvresArtiste");
+
+        },
+        error: function(xhr, status, errorThrown) {
+            alert("Requête impossible: GET/oeuvre/"+nom);
+        }
+    });
+
+}
+
 function afficherUtilisateur() {
 
     $("#table-utilisateur").empty();
@@ -130,6 +180,10 @@ function afficherOeuvres() {
         }
     });    
     
+}
+
+function afficherOeuvre(nom) {
+
 }
 
 function afficherCommandes() {

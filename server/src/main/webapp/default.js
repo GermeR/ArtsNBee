@@ -157,6 +157,7 @@ $(document).ready(function() {
         if ($("#getSouhaitMini").is(":visible")) {
             $("#getSouhaitMini").hide();
         } else {
+            afficherSouhaits();
             $("#getSouhaitMini").show();
         }
     });
@@ -195,6 +196,7 @@ $(document).ready(function() {
                         $("#showInscription").hide();
                         $("#showProfile").show();
                         $("#profile").show();
+                        afficherOeuvresParArtiste(monlogin);
                     }
                 },
                 error: function( xhr, status, errorThrown ) {
