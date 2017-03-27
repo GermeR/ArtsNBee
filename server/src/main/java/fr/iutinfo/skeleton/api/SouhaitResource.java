@@ -34,16 +34,16 @@ public class SouhaitResource {
         if (!tableExist("Souhait")) {
         	logger.debug("Création de la table souhait.");
             dao.createSouhaitTable();
+            dao.insert(new Souhait(1,"artiste"));
+            dao.insert(new Souhait(2,"artiste"));
         }
     }
 
     @POST
-    public SouhaitDto createSouhait(SouhaitDto dto) {
-    	Souhait Souhait = new Souhait();
-    	Souhait.initFromDto(dto);
-    	int id = dao.insert(Souhait);
-        dto.setOno(id);
-        return dto;
+    public Souhait createSouhait(Souhait s) {
+    	int id = dao.insert(s);
+        s.setOno(id);
+        return s;
     }
 
     @GET
@@ -66,6 +66,14 @@ public class SouhaitResource {
             Souhaits = dao.search("%" + query + "%");
         }
         return Souhaits.stream().map(Souhait::convertToDto).collect(Collectors.toList());
+    }
+    
+    @GET
+    @Path("/{login}")
+    public List<SouhaitDto> getSouhaits(@PathParam("login") String login){
+    	List<Souhait> souhaits;
+        souhaits = dao.findById(login);
+        return souhaits.stream().map(Souhait::convertToDto).collect(Collectors.toList());
     }
 
     @DELETE

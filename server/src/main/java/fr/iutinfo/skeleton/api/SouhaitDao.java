@@ -34,7 +34,7 @@ public interface SouhaitDao {
 
     @SqlQuery("select * from Souhait where login = :login")
     @RegisterMapperFactory(BeanMapperFactory.class)
-    Souhait findById(@Bind("login") int login);
+    List<Souhait> findById(@Bind("login") String login);
 
     void close();
 }

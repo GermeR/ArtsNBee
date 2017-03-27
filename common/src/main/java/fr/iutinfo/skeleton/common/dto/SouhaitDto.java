@@ -8,7 +8,7 @@ public class SouhaitDto{
 	final static Logger logger = LoggerFactory.getLogger(SouhaitDto.class);
 	private int ono;
     private String login;
-    
+
 	public int getOno() {
 		return ono;
 	}
