@@ -4,6 +4,8 @@ function hideAll() {
     $("#login").hide();
     $("#inscription").hide();
     $("#profile").hide();
+    $("#souhait").hide();
+    $("#utilisateur").hide();
 }
 
 function hideAllOeuvre() {    
@@ -17,6 +19,12 @@ function hideAllCommande() {
     $("#postCommandeMini").hide();
     $("#deleteCommandeMini").hide();
 }
+function hideAllSouhait() {
+    $("#getSouhaitMini").hide();
+    $("#postSouhaitMini").hide();
+    $("#deleteSouhaitMini").hide();
+}
+
   
 $(document).ready(function() { 
     
@@ -30,6 +38,25 @@ $(document).ready(function() {
             $("#oeuvre").show();
         }        
     });
+
+    $("#showUtilisateur").click(function (event) {
+        hideAll();
+        if ($("#utilisateur").is(":visible")) {
+            $("#utilisateur").hide();
+        } else {
+            $("#utilisateur").show();
+        }
+    });
+
+    $("#showSouhait").click(function (event) {
+        hideAll();
+        hideAllSouhait();
+        if ($("#souhait").is(":visible")) {
+            $("#souhait").hide();
+        } else {
+            $("#souhait").show();
+        }
+    })
 
     $("#showCommande").click(function (event) {
         hideAll();
@@ -124,6 +151,33 @@ $(document).ready(function() {
             $("#login").show();
         }        
     });
+
+    $("#getSouhait").click(function (event) {
+        hideAllSouhait();
+        if ($("#getSouhaitMini").is(":visible")) {
+            $("#getSouhaitMini").hide();
+        } else {
+            $("#getSouhaitMini").show();
+        }
+    });
+
+    $("#postSouhait").click(function (event) {
+        hideAllSouhait();
+        if ($("#postSouhaitMini").is(":visible")) {
+            $("#postSouhaitMini").hide();
+        } else {
+            $("#postSouhaitMini").show();
+        }
+    });
+    $("#deleteSouhait").click(function (event) {
+        hideAllSouhait();
+        if ($("#deleteSouhaitMini").is(":visible")) {
+            $("#deleteSouhaitMini").hide();
+        } else {
+            $("#deleteSouhaitMini").show();
+        }
+    });
+
     
     $("#loginButton").click(function (event) {
         console.log(document.getElementById('loginField').value);
@@ -138,7 +192,7 @@ $(document).ready(function() {
                     hideAll();
                     if (monlogin != null) {
                         $("#showLogin").hide();
-                        $("#showSignup").hide();
+                        $("#showInscription").hide();
                         $("#showProfile").show();
                         $("#profile").show();
                     }

@@ -45,6 +45,7 @@ public class UtilisateurResource {
 		Utilisateur utilisateur = new Utilisateur();
 		utilisateur.initFromDto(dto);
 		dao.insert(utilisateur);
+		System.out.println(utilisateur);
 		return dto;
 	}
     

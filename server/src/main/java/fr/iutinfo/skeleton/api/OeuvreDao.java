@@ -13,7 +13,7 @@ public interface OeuvreDao {
     @SqlUpdate("insert into oeuvre (nom,ano,prix, promo, description, type, dimension, poids, thematique) values (:nom, :ano, :prix, :promo, :description, :type, :dimension, :poids, :thematique)")
     @GetGeneratedKeys
     int insert(@BindBean() Oeuvre oeuvre);
-
+    
     @SqlQuery("select * from oeuvre where nom = :nom")
     @RegisterMapperFactory(BeanMapperFactory.class)
     Oeuvre findByName(@Bind("nom") String nom);
@@ -39,6 +39,5 @@ public interface OeuvreDao {
     //nom,prix, promo, description, type, dimension, poids, thematique
 	@SqlUpdate("update oeuvre set nom = :nom, prix = :prix, description = :description, type = :type, dimension = :dimension, poids = :poids, thematique = :thematique where ono = :no")
 	void update(@Bind("no") int ono, @BindBean() Oeuvre oeuvre);
-
     void close();
 }

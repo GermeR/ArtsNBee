@@ -18,8 +18,7 @@ public class Oeuvre {
 	private String dimension;
 	private double poids;
 	private String thematique;
-	
-    
+	   
     public Oeuvre() {
 	}
     
