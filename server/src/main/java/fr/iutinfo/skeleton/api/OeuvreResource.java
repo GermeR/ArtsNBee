@@ -60,7 +60,7 @@ public class OeuvreResource {
 	}
 
 	@GET
-	@Path("/{ono}")
+	@Path("/id/{ono}")
 	public OeuvreDto getOeuvre(@PathParam("ono") int ono) {
 		Oeuvre oeuvre = dao.findByName(ono);
 		if (oeuvre == null) {
