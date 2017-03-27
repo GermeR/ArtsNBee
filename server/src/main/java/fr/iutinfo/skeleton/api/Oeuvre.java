@@ -199,6 +199,4 @@ public class Oeuvre {
 	public static Logger getLogger() {
 		return logger;
 	}
-
-    
 }

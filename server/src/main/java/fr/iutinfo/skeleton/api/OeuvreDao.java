@@ -10,7 +10,7 @@ public interface OeuvreDao {
     @SqlUpdate("create table oeuvre(ono integer primary key autoincrement, nom varchar(20),ano varchar(20), prix numeric(6,2), promo integer, description text, type varchar(20), dimension varchar(20), poids integer, thematique varchar(20), img text, foreign key (ano) references user(login));")
     void createOeuvreTable();
 
-    @SqlUpdate("insert into oeuvre (nom,ano,prix, promo, description, type, dimension, poids, thematique, img) values (:nom, :ano, :prix, :promo, :description, :type, :dimension, :poids, :thematique, :img)")
+    @SqlUpdate("insert into oeuvre (nom,ano,prix, promo, description, type, dimension, poids, thematique, img) values (:nom, :ano, :prix, :promo, :description, :type, :dimension, :poids, :thematique, 'Ressources/img.jpg')")
     @GetGeneratedKeys
     int insert(@BindBean() Oeuvre oeuvre);
     
@@ -39,6 +39,11 @@ public interface OeuvreDao {
     @SqlQuery("select * from oeuvre where ano = :login")
     @RegisterMapperFactory(BeanMapperFactory.class)
     List<Oeuvre> oeuvreDe(@Bind("login") String login);
+    
+    // Si un jour on veut associer le login aux nom etprénom de l'artiste
+    /*@SqlQuery("select * from utilisateur where login = (select login from oeuvre where ono = :ono);")
+    @RegisterMapperFactory(BeanMapperFactory.class)
+    Utilisateur oeuvreArtiste(@Bind("ono") int ono);*/
     
     //nom,prix, promo, description, type, dimension, poids, thematique
 	@SqlUpdate("update oeuvre set nom = :nom, prix = :prix, description = :description, type = :type, dimension = :dimension, poids = :poids, thematique = :thematique, img = :img where ono = :no")

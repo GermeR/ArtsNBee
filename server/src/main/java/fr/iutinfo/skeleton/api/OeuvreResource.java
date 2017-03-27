@@ -68,7 +68,7 @@ public class OeuvreResource {
 		}
 		return oeuvre.convertToDto();
 	}
-	
+		
 	@GET
 	public List<OeuvreDto> getAllOeuvres(@QueryParam("q") String query) {
 		List<Oeuvre> oeuvres;
@@ -88,7 +88,6 @@ public class OeuvreResource {
 		oeuvre.initFromDto(dto);
 		dao.update(ono, oeuvre);
 	}
-
 
 	@DELETE
 	@Path("/{id}")
