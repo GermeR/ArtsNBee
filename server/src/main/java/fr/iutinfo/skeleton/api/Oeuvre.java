@@ -18,6 +18,7 @@ public class Oeuvre {
 	private String dimension;
 	private double poids;
 	private String thematique;
+	private String img;
 	   
     public Oeuvre() {
 	}
@@ -36,7 +37,7 @@ public class Oeuvre {
      * @param thematique
      */
 	public Oeuvre(int ono, String ano, String nom, double prix, int promo, String description, String type,
-			String dimension, double poids, String thematique) {
+			String dimension, double poids, String thematique, String img) {
 		this.ono = ono;
 		this.ano = ano;
 		this.nom = nom;
@@ -47,6 +48,7 @@ public class Oeuvre {
 		this.dimension = dimension;
 		this.poids = poids;
 		this.thematique = thematique;
+		this.img = img;
 	}
 	
 	/**
@@ -63,7 +65,7 @@ public class Oeuvre {
      * @param thematique
      */
 	public Oeuvre(String ano, String nom, double prix, int promo, String description, String type,
-			String dimension, double poids, String thematique) {
+			String dimension, double poids, String thematique, String img) {
 		this.ano = ano;
 		this.nom = nom;
 		this.prix = prix;
@@ -73,6 +75,7 @@ public class Oeuvre {
 		this.dimension = dimension;
 		this.poids = poids;
 		this.thematique = thematique;
+		this.img = img;
 	}
 
     public void initFromDto(OeuvreDto dto) {    	
@@ -86,6 +89,7 @@ public class Oeuvre {
     	this.setDimension(dto.getDimension());
     	this.setPoids(dto.getPoids());
     	this.setThematique(dto.getThematique());   	
+    	this.setImg(dto.getImg());
     }
 
     public OeuvreDto convertToDto() {
@@ -100,9 +104,18 @@ public class Oeuvre {
     	dto.setDimension(this.getDimension());
     	dto.setPoids(this.getPoids());
     	dto.setThematique(this.getThematique()); 
-        return dto;
+    	dto.setImg(this.getImg());
+    	return dto;
     }
 
+    public String getImg(){
+    	return img;
+    }
+    
+    public void setImg(String img){
+    	this.img = img;
+    }
+    
 	public int getOno() {
 		return ono;
 	}

@@ -7,10 +7,10 @@ import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 import java.util.List;
 
 public interface OeuvreDao {
-    @SqlUpdate("create table oeuvre(ono integer primary key autoincrement, nom varchar(20),ano varchar(20), prix numeric(6,2), promo integer, description text, type varchar(20), dimension varchar(20), poids integer, thematique varchar(20), foreign key (ano) references user(login));")
+    @SqlUpdate("create table oeuvre(ono integer primary key autoincrement, nom varchar(20),ano varchar(20), prix numeric(6,2), promo integer, description text, type varchar(20), dimension varchar(20), poids integer, thematique varchar(20), img text, foreign key (ano) references user(login));")
     void createOeuvreTable();
 
-    @SqlUpdate("insert into oeuvre (nom,ano,prix, promo, description, type, dimension, poids, thematique) values (:nom, :ano, :prix, :promo, :description, :type, :dimension, :poids, :thematique)")
+    @SqlUpdate("insert into oeuvre (nom,ano,prix, promo, description, type, dimension, poids, thematique, img) values (:nom, :ano, :prix, :promo, :description, :type, :dimension, :poids, :thematique, :img)")
     @GetGeneratedKeys
     int insert(@BindBean() Oeuvre oeuvre);
     
@@ -41,7 +41,7 @@ public interface OeuvreDao {
     List<Oeuvre> oeuvreDe(@Bind("login") String login);
     
     //nom,prix, promo, description, type, dimension, poids, thematique
-	@SqlUpdate("update oeuvre set nom = :nom, prix = :prix, description = :description, type = :type, dimension = :dimension, poids = :poids, thematique = :thematique where ono = :no")
+	@SqlUpdate("update oeuvre set nom = :nom, prix = :prix, description = :description, type = :type, dimension = :dimension, poids = :poids, thematique = :thematique, img = :img where ono = :no")
 	void update(@Bind("no") int ono, @BindBean() Oeuvre oeuvre);
     void close();
 }

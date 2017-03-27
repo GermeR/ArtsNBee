@@ -16,6 +16,8 @@ public class OeuvreDto {
 	private String dimension;
 	private double poids;
 	private String thematique;
+	private String img;
+	
 	public int getOno() {
 		return ono;
 	}
@@ -75,6 +77,14 @@ public class OeuvreDto {
 	}
 	public void setThematique(String thematique) {
 		this.thematique = thematique;
+	}
+	
+	public String getImg(){
+		return img;
+	}
+	
+	public void setImg(String img){
+		this.img = img;
 	}
 	public static Logger getLogger() {
 		return logger;

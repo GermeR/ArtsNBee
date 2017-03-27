@@ -36,8 +36,8 @@ public class OeuvreResource {
 		if (!tableExist("oeuvre")) {
 			logger.debug("Création de la table oeuvre.");
 			dao.createOeuvreTable();
-			dao.insert(new Oeuvre("artiste", "Tintin", 50.0, 0, "blablabla", "Toile", "180x180", 5.8, "Arts"));
-			dao.insert(new Oeuvre("artiste", "Tintin au tibet", 100.0, 0, "blablabla", "Sculpture", "40x10", 10.0, "Arts"));
+			dao.insert(new Oeuvre("artiste", "Tintin", 50.0, 0, "blablabla", "Toile", "180x180", 5.8, "Arts", "Ressources/img.jpg"));
+			dao.insert(new Oeuvre("artiste", "Tintin au tibet", 100.0, 0, "blablabla", "Sculpture", "40x10", 10.0, "Arts", "Ressources/img.jpg"));
 		}
 	}
 	@POST
