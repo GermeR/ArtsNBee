@@ -196,7 +196,7 @@ function afficherOeuvre(ono) {
             $("#getOneOeuvre").show();
             console.log("Getting oeuvre/"+ono);
             var profil = $("#getOneOeuvre");
-            $("<h3>").html("Ono: " + json.ono).appendTo(profil);
+            /*$("<h3>").html("Ono: " + json.ono).appendTo(profil);
             $("<h3>").html("Nom: " + json.nom).appendTo(profil);
             $("<h3>").html("Ano: " + json.ano).appendTo(profil);
             $("<h3>").html("Prix: " + json.prix).appendTo(profil);
@@ -205,7 +205,54 @@ function afficherOeuvre(ono) {
             $("<h3>").html("Type: " + json.type).appendTo(profil);
             $("<h3>").html("Dimensions: " + json.dimension).appendTo(profil);
             $("<h3>").html("Poids: " + json.poids).appendTo(profil);
-            $("<h3>").html("Thématique: " + json.thematique).appendTo(profil);
+            $("<h3>").html("Thématique: " + json.thematique).appendTo(profil);*/
+
+            var table = $("<table>");
+            var tr = $("<tr>");
+
+            // Infos:
+            var tdDesc = $("<td>"); // Colonne des informations
+            var tdDescTable = $("<table>"); // Tableau dans la colonne
+
+            var nom = $("<tr>");
+            $("<td>").html("<b>Nom:</b>").appendTo(nom);
+            $("<td>").html(json.nom).appendTo(nom);
+
+            var auteur = $("<tr>");
+            $("<td>").html("<b>Description:</b>").appendTo(auteur);
+            $("<td>").html(json.description).appendTo(auteur);
+
+            var dimensions = $("<tr>");
+            $("<td>").html("<b>Dimensions:</b>").appendTo(dimensions);
+            $("<td>").html(json.dimension).appendTo(dimensions);
+
+            var poids = $("<tr>");
+            $("<td>").html("<b>Poids:</b>").appendTo(poids);
+            $("<td>").html(json.poids + "g").appendTo(poids);
+
+            var ono = $("<tr>");
+            $("<td>").html("<b>Référence de l'oeuvre:</b>").appendTo(ono);
+            $("<td>").html(json.ono).appendTo(ono);
+
+            var ano = $("<tr>");
+            $("<td>").html("<b>Référence de l'artiste:</b>").appendTo(ano);
+            $("<td>").html(json.ono).appendTo(ano);
+
+            nom.appendTo(tdDescTable);
+            auteur.appendTo(tdDescTable);
+            dimensions.appendTo(tdDescTable);
+            poids.appendTo(tdDescTable);
+            ono.appendTo(tdDescTable);
+            ano.appendTo(tdDescTable);
+
+            tdDescTable.appendTo(tdDesc);
+            tdDesc.appendTo(tr);
+
+
+            tr.appendTo(table);
+            $("<p>").appendTo(table);
+            $("<img src='"+json.img+"'></img>").appendTo(table);
+            table.appendTo(profil);
         },
         error: function(xhr, status, errorThrown) {
             console.log("Requête impossible: GET/oeuvre/id"+ono);
