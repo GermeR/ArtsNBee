@@ -22,6 +22,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import fr.iutinfo.skeleton.common.dto.SouhaitDto;
+import fr.iutinfo.skeleton.common.dto.OeuvreDto;
 
 @Path("/souhait")
 @Produces(MediaType.APPLICATION_JSON)
@@ -70,10 +71,10 @@ public class SouhaitResource {
     
     @GET
     @Path("/{login}")
-    public List<SouhaitDto> getSouhaits(@PathParam("login") String login){
-    	List<Souhait> souhaits;
-        souhaits = dao.findById(login);
-        return souhaits.stream().map(Souhait::convertToDto).collect(Collectors.toList());
+    public List<OeuvreDto> getSouhaits(@PathParam("login") String login){
+    	List<Oeuvre> souhaits;
+        souhaits = dao.findOeuvres(login);
+        return souhaits.stream().map(Oeuvre::convertToDto).collect(Collectors.toList());
     }
 
     @DELETE

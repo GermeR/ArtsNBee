@@ -35,6 +35,10 @@ public interface SouhaitDao {
     @SqlQuery("select * from Souhait where login = :login")
     @RegisterMapperFactory(BeanMapperFactory.class)
     List<Souhait> findById(@Bind("login") String login);
+    
+    @SqlQuery("select * from Oeuvre, Souhait where Souhait.login = :login and Oeuvre.ono = Souhait.ono")
+    @RegisterMapperFactory(BeanMapperFactory.class)
+    List<Oeuvre> findOeuvres(@Bind("login") String login);
 
     void close();
 }
