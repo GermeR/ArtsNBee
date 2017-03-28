@@ -16,6 +16,7 @@
     <script src="delete.js"></script>
     <script src="post.js"></script>
     <script src="default.js"></script>
+    <link rel="stylesheet" href="style.css">
 
     <div id="fb-root"></div>
     <script>/*(function(d, s, id) {
@@ -33,20 +34,35 @@
 
 </head>
 <body>
-    <h1 class="text-center"><b>Arts'n'Bee</b></h1>
-    <br>
-    <div id="menubar" class="text-center">
-        <button type="button" id="showOeuvre" class="btn btn-default">Œuvres</button>
-        <button type="button" id="showCommande" class="btn btn-default">Commandes</button>
-        <button type="button" id="showSouhait" class="btn btn-default">Liste de souhaits</button>
-        <button type="button" id="showUtilisateur" class="btn btn-default">Utilisateur</button>
-        <button type="button" id="showLogin" class="btn btn-default">Se connecter</button>
-        <button type="button" id="showInscription" class="btn btn-default">S'inscrire</button>
-        <button type="button" id="showProfile" class="btn btn-default">Mon profil</button>
-        
-        <script>
-            $("#showProfile").hide();
-        </script>
+    <table id="header-table">
+        <tr>
+            <td>
+                <img id="logo" src="Ressources/logo.png" href="#">
+            </td>
+            <td>
+                <div id="menuBar">
+                    <button type="button" id="showOeuvre" class="btn btn-default">Œuvres</button>
+                    <button type="button" id="showCommande" class="btn btn-default">Commandes</button>
+                    <button type="button" id="showSouhait" class="btn btn-default">Liste de souhaits</button>
+                    <button type="button" id="showUtilisateur" class="btn btn-default">Utilisateur</button>
+                    <button type="button" id="showLogin" class="btn btn-default">Se connecter</button>
+                    <button type="button" id="showInscription" class="btn btn-default">S'inscrire</button>
+                    <button type="button" id="showProfile" class="btn btn-default">Mon profil</button>
+
+                    <script>
+                        $("#showProfile").hide();
+                        $("#showSouhait").hide();
+
+                        $("#showUtilisateur").hide();
+                        $("#showCommande").hide();
+                    </script>
+
+                </div>
+            </td>
+        </tr>
+    </table>
+
+
         
     </div>    
     
@@ -55,22 +71,22 @@
         
         <div class="page-header">
             <h1>Œuvres</h1>
-            <button type="button" id="getOeuvre" class="btn btn-default">Lister</button>
+            <button type="button" id="getOeuvre" class="btn btn-default">Actualiser</button>
             <button type="button" id="postOeuvre" class="btn btn-default">Ajouter</button>
-            <button type="button" id="deleteOeuvre" class="btn btn-default">Supprimer</button>
+            <script>
+                $("#postOeuvre").hide();
+            </script>
         </div>
         
         <div class="row">
             
             <div id="getOeuvreMini" class="col-xs-10">
-                <h3>Liste des œuvres:</h3>
                 <table id="table-oeuvre" class="table table-striped"></table>
                 <!--<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Partager</a></div>-->
             </div>
             
             <div id="postOeuvreMini" class="col-md-4">
                 <form id="post-form" class="form-horizontal">
-                    <h3>Ajouter une œuvre:</h3>
                     <input class="form-control" type="text" id="postOeuvreNom" placeholder="Nom">
                     <input class="form-control" type="text" id="postOeuvreAno" placeholder="Artiste">
                     <input class="form-control" type="text" id="postOeuvrePrix" placeholder="Prix">
@@ -83,22 +99,8 @@
                     <span id="post-oeuvre-btn" class="btn btn-success btn-block">Ajouter</span>
                 </form>    
             </div>
-            
-            <div id="deleteOeuvreMini" class="col-md-4">
-                <form name="post-form">
-                    <h3>Supprimer une œuvre:</h3>
-                    <div class="form-group">
-                        <label for="login" class="control-label">Œuvre</label>
-                        <input class="form-control" type="text" id="deleteOno" placeholder="Numero de l'oeuvre">
-                    </div>
-                    <span id="delete-oeuvre-btn" class="btn btn-danger btn-block">Supprimer</span>
-                </form>
-            </div>
+
             <div id="getOneOeuvre">
-                <script>
-                    /*afficherOeuvre(1);
-                    hideAll();*/
-                </script>
             </div>
             
         </div>        
@@ -110,9 +112,8 @@
         
         <div class="page-header">
             <h1>Commandes</h1>
-            <button type="button" id="getCommande" class="btn btn-default">Lister</button>
+            <button type="button" id="getCommande" class="btn btn-default">Actualiser</button>
             <button type="button" id="postCommande" class="btn btn-default">Ajouter</button>
-            <button type="button" id="deleteCommande" class="btn btn-default">Supprimer</button>
         </div>
         
         <div class="row">
@@ -135,13 +136,6 @@
                     <input class="form-control" type="text" id="postCommandeFrais" placeholder="Frais">
                     <span id="post-commande-btn" class="btn btn-success btn-block">Ajouter</span>
                 </form>    
-            </div>
-            
-            <div id="deleteCommandeMini" class="col-md-4">
-                <form name="post-form">
-                    <h3>Supprimer une commande:</h3>
-                    TODO
-                </form>
             </div>
             
         </div>        
@@ -181,7 +175,9 @@
         <div id="oeuvresArtiste" class="row">
             <div id="getProfile" class="col-xs-10">
             </div>
-            <table id="table-oeuvresArtiste"></table>
+            <table id="table-oeuvresArtiste">
+                <th>Mes oeuvres:</th>
+            </table>
         </div>
     </div>
 
@@ -243,9 +239,8 @@
 
         <div class="page-header">
             <h1>Liste de souhaits</h1>
-            <button type="button" id="getSouhait" class="btn btn-default">Lister</button>
+            <button type="button" id="getSouhait" class="btn btn-default">Actualiser</button>
             <button type="button" id="postSouhait" class="btn btn-default">Ajouter</button>
-            <button type="button" id="deleteSouhait" class="btn btn-default">Supprimer</button>
         </div>
 
         <div class="row">
@@ -261,13 +256,6 @@
                     <input class="form-control" type="text" id="postSouhaitLogin" placeholder="Login">
                     <input class="form-control" type="text" id="postSouhaitOno" placeholder="ID de l'oeuvre">
                     <span type="button" id="post-souhait-btn" class="btn btn-success btn-block">Ajouter</span>
-                </form>
-            </div>
-
-            <div id="deleteSouhaitMini" class="col-md-4">
-                <form name="post-form">
-                    <h3>Supprimer une Souhait:</h3>
-                    TODO
                 </form>
             </div>
 
@@ -290,6 +278,9 @@
 
     <script>
         hideAll();
+        hideAllOeuvre();
+        $("#oeuvre").show();
+        $("#getOeuvreMini").show();
     </script>
 
     

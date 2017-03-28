@@ -7,7 +7,7 @@ function supprimerOeuvre(id) {
         contentType : 'application/json',
         success: function(json) {
             console.log("Deleted: " + json);
-            alert("Deleted");
+            alert("Oeuvre supprimée avec succès");
         },
         error: function( xhr, status, errorThrown) {
             alert("Erreur: DELETE");
@@ -24,7 +24,7 @@ function supprimerCommande(id) {
         contentType : 'application/json',
         success: function(json) {
             console.log("Deleted: " + json);
-            alert("Deleted");
+            alert("Commande supprimée avec succès");
         },
         error: function( xhr, status, errorThrown) {
             alert("Erreur: DELETE");

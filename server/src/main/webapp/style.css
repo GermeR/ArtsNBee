@@ -1,43 +1,18 @@
 body {
-    padding: 15px 0px 0px 0px;
-    margin: 0px;
-    background-color: #F1F1F1;
-    background-position: center top;
-    background-repeat: repeat-y;
-    font-size: 75%;
-    height: 100%;
-    display: block;
-    margin: 8px;
+    margin-left: 15%;
+    margin-right: 15%;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    border: 0;
+#logo {
+    text-align: left;
+    padding-right: 100px;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    font-family: Arial;
-    border: 0;
-}
-
-h1 {
-
-    color: blue;
-    font-size: 3em;
-    margin: 0;
-    padding: 0;
-    font-family: Arial;
-    border: 0;
-}
-
-button {
-    font-size: 16px;
-    display: inline-block;
+#menuBar {
     text-align: center;
-    color: white;
-    border: none;
-    background-color: #4CAF50;
+    display: block;
+}
+
+#getProfile {
+    padding-bottom: 20px;
 }

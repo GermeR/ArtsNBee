@@ -8,7 +8,7 @@ function hideAll() {
     $("#utilisateur").hide();
 }
 
-function hideAllOeuvre() {    
+function hideAllOeuvre() {
     $("#getOeuvreMini").hide();
     $("#postOeuvreMini").hide();
     $("#deleteOeuvreMini").hide();
@@ -90,12 +90,9 @@ $(document).ready(function() {
     
     $("#getOeuvre").click(function (event) {
         hideAllOeuvre();
-        if ($("#getOeuvreMini").is(":visible")) {
-            $("#getOeuvreMini").hide();
-        } else {
-            afficherOeuvres();
-            $("#getOeuvreMini").show();
-        }        
+        afficherOeuvres();
+        $("#getOeuvreMini").show();
+
     });
     
     $("#postOeuvre").click(function (event) {
@@ -189,6 +186,7 @@ $(document).ready(function() {
                 type: 'GET',
                 success: function(response) {
                     monlogin = document.getElementById('loginField').value;
+                    monrole = response.role;
                     console.log("Connecté entant que "+ monlogin);
                     afficherUser(monlogin);
                     hideAll();
@@ -200,6 +198,14 @@ $(document).ready(function() {
                         $("#showSouhait").show();
                         afficherOeuvresParArtiste(monlogin);
                         afficherMesSouhaits(monlogin);
+                    }
+                    if (monrole == "Admin") {
+                        $("#showUtilisateur").show();
+                        $("#showCommande").show();
+                    }
+
+                    if (monrole == "Artiste" || monrole == "Admin") {
+                        $("#postOeuvre").show();
                     }
                 },
                 error: function( xhr, status, errorThrown ) {
