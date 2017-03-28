@@ -1,8 +1,10 @@
-package fr.iutinfo.skeleton.api;
+package fr.iutinfo.skeleton.api.dao;
 
 import org.skife.jdbi.v2.sqlobject.*;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapperFactory;
 import org.skife.jdbi.v2.tweak.BeanMapperFactory;
+
+import fr.iutinfo.skeleton.api.Panier;
 
 import java.util.List;
 

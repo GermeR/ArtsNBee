@@ -1,7 +1,9 @@
-package fr.iutinfo.skeleton.api;
+package fr.iutinfo.skeleton.api.ressource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import fr.iutinfo.skeleton.api.User;
 
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.GET;

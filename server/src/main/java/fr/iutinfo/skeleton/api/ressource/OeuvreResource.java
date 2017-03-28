@@ -1,4 +1,4 @@
-package fr.iutinfo.skeleton.api;
+package fr.iutinfo.skeleton.api.ressource;
 
 import static fr.iutinfo.skeleton.api.BDDFactory.getDbi;
 import static fr.iutinfo.skeleton.api.BDDFactory.tableExist;
@@ -22,6 +22,8 @@ import javax.ws.rs.core.MediaType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import fr.iutinfo.skeleton.api.Oeuvre;
+import fr.iutinfo.skeleton.api.dao.OeuvreDao;
 import fr.iutinfo.skeleton.common.dto.OeuvreDto;
 import fr.iutinfo.skeleton.common.dto.UtilisateurDto;
 
