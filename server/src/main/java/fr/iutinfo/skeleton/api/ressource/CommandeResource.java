@@ -86,5 +86,4 @@ public class CommandeResource {
     public void deleteCommande(@PathParam("ono") int ono) {
         dao.delete(ono);
     }
-
 }
