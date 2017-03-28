@@ -1,4 +1,4 @@
-package fr.iutinfo.skeleton.api;
+package fr.iutinfo.skeleton.api.dao;
 
 import java.util.List;
 
@@ -9,6 +9,8 @@ import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapperFactory;
 import org.skife.jdbi.v2.tweak.BeanMapperFactory;
+
+import fr.iutinfo.skeleton.api.Utilisateur;
 
 public interface UtilisateurDao {
     @SqlUpdate("create table utilisateur(login varchar(20) not null primary key, password varchar(20)"+

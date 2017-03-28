@@ -7,6 +7,8 @@ import java.sql.SQLException;
 
 import org.junit.Test;
 
+import fr.iutinfo.skeleton.api.ressource.UtilisateurResource;
+
 public class TestUtilisateur {
 
 	@Test
