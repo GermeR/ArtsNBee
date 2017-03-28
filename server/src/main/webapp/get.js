@@ -7,13 +7,35 @@ function afficherUser(nom) {
         success: function(json) {
             console.log("Getting utilisateur/"+nom);
             var profil = $("#getProfile");
-            $("<h3>").html("Role: " + json.role).appendTo(profil);
-            $("<h3>").html("Identifiant: " + json.login).appendTo(profil);
-            $("<h3>").html("Nom: " + json.nom).appendTo(profil);
-            $("<h3>").html("Prenom: " + json.prenom).appendTo(profil);
-            $("<h3>").html("Date de naissance: " + json.dateN).appendTo(profil);
-            $("<h3>").html("Adresse: " + json.adresse).appendTo(profil);
-            $("<h3>").html("Adresse e-mail: " + json.mail).appendTo(profil);
+
+            var table = $("<table>");
+
+            var nom = $("<tr>");
+            $("<td>").html("<b>Nom:</b>").appendTo(nom);
+            $("<td>").html(json.nom).appendTo(nom);
+            nom.appendTo(table);
+
+            var prenom = $("<tr>");
+            $("<td>").html("<b>Prénom:</b>").appendTo(prenom);
+            $("<td>").html(json.prenom).appendTo(prenom);
+            prenom.appendTo(table);
+
+            var dateN = $("<tr>");
+            $("<td>").html("<b>Date de naissance:</b>").appendTo(dateN);
+            $("<td>").html(json.dateN).appendTo(dateN);
+            dateN.appendTo(table);
+
+            var adresse = $("<tr>");
+            $("<td>").html("<b>Adresse:</b>").appendTo(adresse);
+            $("<td>").html(json.adresse).appendTo(adresse);
+            adresse.appendTo(table);
+
+            var mail = $("<tr>");
+            $("<td>").html("<b>E-mail:</b>").appendTo(mail);
+            $("<td>").html(json.mail).appendTo(mail);
+            mail.appendTo(table);
+
+            table.appendTo(profil);
         },
         error: function(xhr, status, errorThrown) {
             alert("Requête impossible: GET/utilisateur/"+nom);
@@ -32,18 +54,6 @@ function afficherOeuvresParArtiste(nom) {
             console.log("Getting /oeuvres/"+nom);
 
             var table = $("#table-oeuvresArtiste");
-            var tr = $("<tr>");
-            $("<th>").html("ono").appendTo(tr);
-            $("<th>").html("ano").appendTo(tr);
-            $("<th>").html("prix").appendTo(tr);
-            $("<th>").html("promo").appendTo(tr);
-            $("<th>").html("description").appendTo(tr);
-            $("<th>").html("type").appendTo(tr);
-            $("<th>").html("dimension").appendTo(tr);
-            $("<th>").html("poids").appendTo(tr);
-            $("<th>").html("thematique").appendTo(tr);
-            $("<th>").html("").appendTo(tr);
-            tr.appendTo(table);
 
             json.sort(function (a, b) {
                 return a.ono - b.ono;
@@ -51,15 +61,47 @@ function afficherOeuvresParArtiste(nom) {
 
             for (var i=0; i<json.length; i++) {
                 var tr = $("<tr>");
-                $("<td>").html(json[i].ono).appendTo(tr);
-                $("<td>").html(json[i].ano).appendTo(tr);
-                $("<td>").html(json[i].prix).appendTo(tr);
-                $("<td>").html(json[i].promo).appendTo(tr);
-                $("<td>").html(json[i].description).appendTo(tr);
-                $("<td>").html(json[i].type).appendTo(tr);
-                $("<td>").html(json[i].dimension).appendTo(tr);
-                $("<td>").html(json[i].poids).appendTo(tr);
-                $("<td>").html(json[i].thematique).appendTo(tr);
+
+                // Image
+                $("<td>").html("<img src='"+json[i].img+"' width='150' height='150'></img>").appendTo(tr);
+
+                // Informations
+
+                var tdDesc = $("<td>"); // Colonne des informations
+                var tdDescTable = $("<table>"); // Tableau dans la colonne
+
+                var nom = $("<tr>");
+                $("<td>").html("<b>Nom:</b>").appendTo(nom);
+                $("<td>").html(json[i].nom).appendTo(nom);
+
+                var auteur = $("<tr>");
+                $("<td>").html("<b>Description:</b>").appendTo(auteur);
+                $("<td>").html(json[i].description).appendTo(auteur);
+
+                var dimensions = $("<tr>");
+                $("<td>").html("<b>Dimensions:</b>").appendTo(dimensions);
+                $("<td>").html(json[i].dimension).appendTo(dimensions);
+
+                var poids = $("<tr>");
+                $("<td>").html("<b>Poids:</b>").appendTo(poids);
+                $("<td>").html(json[i].poids + "g").appendTo(poids);
+
+                nom.appendTo(tdDescTable);
+                auteur.appendTo(tdDescTable);
+                dimensions.appendTo(tdDescTable);
+                poids.appendTo(tdDescTable);
+
+                tdDescTable.appendTo(tdDesc);
+                tdDesc.appendTo(tr);
+
+                // Prix
+                $("<td>").html("<h2>"+json[i].prix+"€").appendTo(tr);
+
+                // Options
+                var tdDOpt = $("<td>"); // Colonne des options
+                $("<h3>").html("<span class='btn btn-danger btn-block' onclick='supprimerOeuvre("+json[i].ono+")'>Supprimer</span>").appendTo(tdDOpt);
+                tdDOpt.appendTo(tr);
+
                 tr.appendTo(table);
             }
             table.appendTo("#oeuvresArtiste");
@@ -352,10 +394,44 @@ function afficherSouhaits() {
 
 }
 
+function afficherMesSouhaits(login) {
+    $("#table-souhait").empty();
+    $.ajax({
+        url: "v1/souhait/"+login,
+        type: "GET",
+        dataType: "json",
+        success: function(json) {
+            console.log("Getting /souhait/"+login);
+
+            var table = $("#table-souhait");
+            var tr = $("<tr>");
+            $("<th>").html("login").appendTo(tr);
+            $("<th>").html("ono").appendTo(tr);
+            tr.appendTo(table);
+
+            json.sort(function (a, b) {
+                return a.ono - b.ono;
+            });
+
+            for (var i=0; i<json.length; i++) {
+                var tr = $("<tr>");
+                $("<td>").html(json[i].login).appendTo(tr);
+                $("<td>").html(json[i].ono).appendTo(tr);
+                tr.appendTo(table);
+            }
+            table.appendTo("#showSouhaitMini");
+
+        },
+        error: function(xhr, status, errorThrown) {
+            alert("Requête impossible: GET/souhait");
+        }
+    });
+}
+
 $(document).ready(function() {
     
     afficherOeuvres();
     afficherCommandes();
-    afficherSouhaits();
     afficherUtilisateur();
+
 });
