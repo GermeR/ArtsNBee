@@ -2,9 +2,10 @@ package fr.iutinfo.skeleton.web;
 
 
 import fr.iutinfo.skeleton.api.BDDFactory;
-import fr.iutinfo.skeleton.api.UserDao;
+
 import org.glassfish.jersey.server.mvc.Template;
 import fr.iutinfo.skeleton.api.User;
+import fr.iutinfo.skeleton.api.dao.UserDao;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
