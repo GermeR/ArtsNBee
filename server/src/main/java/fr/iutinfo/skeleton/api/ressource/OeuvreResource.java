@@ -25,7 +25,6 @@ import org.slf4j.LoggerFactory;
 import fr.iutinfo.skeleton.api.Oeuvre;
 import fr.iutinfo.skeleton.api.dao.OeuvreDao;
 import fr.iutinfo.skeleton.common.dto.OeuvreDto;
-import fr.iutinfo.skeleton.common.dto.UtilisateurDto;
 
 @Path("/oeuvre")
 @Produces(MediaType.APPLICATION_JSON)
