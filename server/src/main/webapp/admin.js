@@ -643,5 +643,4 @@ $(document).ready(function() {
 	adminafficherForfait();
 	adminafficherCommandes();
 	adminafficherCommandeTerminee();
-	adminafficherSouhait();
 });

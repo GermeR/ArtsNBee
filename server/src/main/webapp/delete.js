@@ -32,6 +32,22 @@ function supprimerCommande(id) {
     });
 }
 
+function supprimerSouhait(login, ono) {
+
+    $.ajax({
+        url: "v1/souhait/"+ono+":"+login,
+        type: "DELETE",
+        dataType: "json",
+        contentType : 'application/json',
+        success: function(json) {
+            console.log("Deleted: " + json);
+        },
+        error: function( xhr, status, errorThrown) {
+            alert("Erreur: DELETE");
+        },
+    });
+}
+
 
 $(document).ready(function() {
     

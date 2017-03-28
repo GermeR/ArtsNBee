@@ -13,7 +13,7 @@ function ajouterSouhait(login, ono) {
         contentType : 'application/json',
         success: function(json) {
             console.log(json);
-            alert("Added");
+            alert("Oeuvre ajoutée aux favoris avec succès");
         },
         error: function( xhr, status, errorThrown) {
             alert("Erreur: POST");
@@ -45,7 +45,7 @@ $(document).ready(function() {
             contentType : 'application/json',
             success: function(json) {
                 console.log(json);
-                alert("Added");
+                alert("Nouvelle oeuvre ajoutée avec succès");
             },
             error: function( xhr, status, errorThrown) {
                 alert("Erreur: POST");
@@ -75,7 +75,7 @@ $(document).ready(function() {
             contentType : 'application/json',
             success: function(json) {
                 console.log(json);
-                alert("Added");
+                alert("Nouvelle commande ajoutée avec succès");
             },
             error: function( xhr, status, errorThrown) {
                 alert("Erreur: POST");
@@ -119,7 +119,7 @@ $(document).ready(function() {
                 contentType : 'application/json',
                 success: function(json) {
                     console.log(json);
-                    alert("Added");
+                    alert("Inscription réussie");
                     hideAll();
                     $("#new_login").val("");
                     $("#new_password").val("");
@@ -136,7 +136,7 @@ $(document).ready(function() {
             });
 
         } else {
-            alert( "Veuillez remplir les champs obligatoires !");
+            alert( "Veuillez remplir les champs obligatoires");
         }
     });
 

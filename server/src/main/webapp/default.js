@@ -6,6 +6,7 @@ function hideAll() {
     $("#profile").hide();
     $("#souhait").hide();
     $("#utilisateur").hide();
+    $("#admin").hide();
 }
 
 function hideAllOeuvre() {
@@ -48,6 +49,15 @@ $(document).ready(function() {
         }        
     });
 
+    $("#showAdmin").click(function (event) {
+        hideAll();
+        if ($("#admin").is(":visible")) {
+            $("#admin").hide();
+        } else {
+            $("#admin").show();
+        }
+    });
+
     $("#showUtilisateur").click(function (event) {
         hideAll();
         if ($("#utilisateur").is(":visible")) {
@@ -64,6 +74,8 @@ $(document).ready(function() {
             $("#souhait").hide();
         } else {
             $("#souhait").show();
+            $("#getSouhaitMini").show();
+            afficherMesSouhaits(monlogin);
         }
     })
 
@@ -111,15 +123,6 @@ $(document).ready(function() {
             $("#postOeuvreMini").show();
         }        
     });
-    
-     $("#deleteOeuvre").click(function (event) {
-        hideAllOeuvre();
-        if ($("#deleteOeuvreMini").is(":visible")) {
-            $("#deleteOeuvreMini").hide();
-        } else {
-            $("#deleteOeuvreMini").show();
-        }        
-    });    
      
     $("#getCommande").click(function (event) {
         hideAllCommande();
@@ -163,25 +166,8 @@ $(document).ready(function() {
         if ($("#getSouhaitMini").is(":visible")) {
             $("#getSouhaitMini").hide();
         } else {
-            //afficherSouhaits();
+            afficherMesSouhaits(monlogin);
             $("#getSouhaitMini").show();
-        }
-    });
-
-    $("#postSouhait").click(function (event) {
-        hideAllSouhait();
-        if ($("#postSouhaitMini").is(":visible")) {
-            $("#postSouhaitMini").hide();
-        } else {
-            $("#postSouhaitMini").show();
-        }
-    });
-    $("#deleteSouhait").click(function (event) {
-        hideAllSouhait();
-        if ($("#deleteSouhaitMini").is(":visible")) {
-            $("#deleteSouhaitMini").hide();
-        } else {
-            $("#deleteSouhaitMini").show();
         }
     });
 
@@ -211,6 +197,7 @@ $(document).ready(function() {
                     if (monrole == "Admin") {
                         $("#showUtilisateur").show();
                         $("#showCommande").show();
+                        $("#showAdmin").show();
                     }
 
                     if (monrole == "Artiste" || monrole == "Admin") {
@@ -222,7 +209,7 @@ $(document).ready(function() {
                 },
             });
         } else {
-            alert( "Pas de mot de passe ou Login dans les champs !");
+            alert("Erreur: Un ou plusieurs champs sont vides.");
         }
     });
 

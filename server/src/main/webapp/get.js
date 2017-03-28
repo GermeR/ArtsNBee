@@ -38,7 +38,7 @@ function afficherUser(nom) {
             table.appendTo(profil);
         },
         error: function(xhr, status, errorThrown) {
-            alert("Requête impossible: GET/utilisateur/"+nom);
+            alert("Une erreur est survenue.");
         }
     });
     
@@ -108,7 +108,7 @@ function afficherOeuvresParArtiste(nom) {
 
         },
         error: function(xhr, status, errorThrown) {
-            alert("Requête impossible: GET/oeuvre/"+nom);
+            alert("Une erreur est survenue.");
         }
     });
 
@@ -166,7 +166,7 @@ function afficherUtilisateur() {
             table.appendTo("#showUtilisateurMini");
         },
         error: function(xhr, status, errorThrown) {
-            alert("Requête impossible: GET/utilisateur");
+            alert("Une erreur est survenue.");
         }
     });
 
@@ -234,7 +234,7 @@ function afficherOeuvre(ono) {
             table.appendTo(profil);
         },
         error: function(xhr, status, errorThrown) {
-            console.log("Requête impossible: GET/oeuvre/id"+ono);
+            console.log("Une erreur est survenue.");
         }
     });
 }
@@ -306,7 +306,7 @@ function afficherOeuvres() {
 
         },
         error: function(xhr, status, errorThrown) {
-            console.error("Impossible de récuéperer la liste des oeuvres");
+            console.error("Impossible de récuperer la liste des oeuvres");
         }
     });
 }
@@ -354,7 +354,7 @@ function afficherCommandes() {
 
         },
         error: function(xhr, status, errorThrown) {
-            alert("Requête impossible: GET/commande");
+            alert("Une erreur est survenue.");
         }
     }); 
     
@@ -410,13 +410,15 @@ function afficherSouhaits() {
                 // Prix
                 $("<td>").html("<h2>"+json[i].prix+"€").appendTo(tr);
 
+
+
                 tr.appendTo(table);
             }
             table.appendTo("#showSouhaitMini");
 
         },
         error: function(xhr, status, errorThrown) {
-            alert("Requête impossible: GET/souhait");
+            alert("Une erreur est survenue.");
         }
     });
 
@@ -469,6 +471,7 @@ function afficherMesSouhaits(login) {
 
                 // Prix
                 $("<td>").html("<h2>"+json[i].prix+"€").appendTo(tr);
+                $("<td>").html("<h1><span class='btn btn-warning btn-block' onclick='supprimerSouhait(&apos;"+monlogin+"&apos; ,"+json[i].ono+")'>Retirer des favoris</span></h1>").appendTo(tr);
 
                 tr.appendTo(table);
             }
@@ -476,7 +479,7 @@ function afficherMesSouhaits(login) {
 
         },
         error: function(xhr, status, errorThrown) {
-            alert("Requête impossible: GET/souhait");
+            alert("Une erreur est survenue.");
         }
     });
 }
