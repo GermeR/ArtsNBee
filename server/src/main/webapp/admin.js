@@ -385,17 +385,12 @@ function adminsupprimerForfait(fno) {
 
 function adminmodifierForfait(fno) {
 		    var data={
-				login: $("#adminputCommandeLogin"+ono+login).val(),
-				ono: $("#adminputCommandeOno"+ono+login).val(),
-		        paiement: Boolean('$("#adminputCommandePaiement"+ono+login).val()'),
-		        envoi: Boolean('$("#adminputCommandeEnvoi"+ono+login).val()'),
-		        reception: Boolean('$("#adminputCommandeReception"+ono+login).val()'),
-		        remuneration: Boolean('$("#adminputCommandeRemuneration"+ono+login).val()'),
-		        prix: $("#adminputCommandePrix"+ono+login).val(),
-		        frais: $("#adminputCommandeFrais"+ono+login).val()
+				fno: $("#adminpostForfaitFno"+fno).val(),
+				prix: $("#adminpostForfaitPrix"+fno).val(),
+		        nbOeuvres: $("#adminpostForfaitnbOeuvres"+fno).val(),
 		    };
             $.ajax({
-		         url: "v1/commande/"+login+":"+ono,
+		         url: "v1/forfait/"+fno,
 		        data: JSON.stringify(data),
 		        type: "PUT",
 		        dataType: "json",
@@ -635,6 +630,88 @@ function adminsupprimerCommandeTerminee(ono,login) {
 		}); 
 }
 
+function adminafficherSouhait() {
+
+    $("#admin-table-souhait").empty();
+    
+    $.ajax({
+        url: "v1/souhait",
+        type: "GET",
+        dataType: "json",
+        success: function(json) {
+            console.log("Getting /commande");
+            
+            var table = $("#admin-table-souhait");
+            var tr = $("<tr>");
+            $("<th>").html("ono").appendTo(tr);
+			$("<th>").html("login").appendTo(tr);
+            $("<th>").html("").appendTo(tr);
+            tr.appendTo(table);
+            
+            json.sort(function (a, b) {
+                return a.ono - b.ono; 
+            });
+            
+            for (var i=0; i<json.length; i++) {
+				var ono = json[i].ono;
+				var login = json[i].login;
+                var tr = $("<tr>");
+                $("<td>").html("<input class='form-control' type='text' value ='"+json[i].ono+"'>" ).appendTo(tr);
+				$("<td>").html("<input class='form-control' type='text' value ='"+json[i].login+"'>" ).appendTo(tr);
+				$("<td>").html("<span onclick='adminsupprimerSouhait("+ono+",&apos;"+login+"&apos;);' class='btn btn-success btn-block'>Supprimer</span>").appendTo(tr);
+                tr.appendTo(table);
+            }
+                var tr = $("<tr>");
+                $("<td>").html("<input class='form-control' type='text' id='adminpostSouhaitOno' value='id oeuvre'>").appendTo(tr);
+				$("<td>").html("<input class='form-control' type='text' id='adminpostSouhaitLogin' value='login'>").appendTo(tr);
+				$("<td>").html("<span id='post-oeuvre-btn' onclick='adminadd_Souhait();' class='btn btn-success btn-block'>Ajouter</span>").appendTo(tr);
+                tr.appendTo(table);
+        },
+        error: function(xhr, status, errorThrown) {
+            alert("Requête impossible: GET/souhait");
+        }
+    });    
+    
+}
+
+
+function adminadd_Souhait() {
+		    var data={
+				ono: $("#adminpostSouhaitOno").val(),
+				login: $("#adminpostSouhaitLogin").val()
+		    };
+        
+        $.ajax({
+            url: "v1/souhait",
+            data: JSON.stringify(data),
+            type: "POST",
+            dataType: "json",
+            contentType : 'application/json',
+            success: function(json) {
+               	adminafficherSouhait();
+            },
+            error: function( xhr, status, errorThrown) {
+                alert("Erreur: POST/Souhait");
+            },
+        });
+}
+
+function adminsupprimerSouhait(ono,login) {
+		$.ajax({
+		    url: "v1/souhait/"+ono+":"+login,
+		    type: "DELETE",
+		    dataType: "json",
+		    contentType : 'application/json',
+		    success: function(json) {
+		       	adminafficherSouhait();
+		    },
+		    error: function( xhr, status, errorThrown) {
+		        alert("Erreur: DELETE");
+		    },
+		}); 
+}
+
+
 
 $(document).ready(function() {
 
@@ -643,4 +720,5 @@ $(document).ready(function() {
 	adminafficherForfait();
 	adminafficherCommandes();
 	adminafficherCommandeTerminee();
+	adminafficherSouhait();
 });
