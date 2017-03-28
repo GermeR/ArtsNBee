@@ -24,7 +24,7 @@ public class TestOeuvre {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		assertNotNull(res.createOeuvre(new Oeuvre(0,"", "turc", 100, 5, "ceci est une description", "test", "100*100*100", 1500, "thematique").convertToDto()));
+		assertNotNull(res.createOeuvre(new Oeuvre("Adrien","Adrien",0.0,0,"Adrien","Adrien","Adrien",0.0,"Adrien","Adrien").convertToDto()));
 	}
 	
 	@Test
@@ -37,7 +37,7 @@ public class TestOeuvre {
 		}
 		assertNotNull(res.getAllOeuvres(null));
 		//
-		res.createOeuvre(new Oeuvre(0,"", "turc", 100, 5, "ceci est une description", "test", "100*100*100", 1500, "thematique").convertToDto());
+		res.createOeuvre(new Oeuvre("Adrien","Adrien",0.0,0,"Adrien","Adrien","Adrien",0.0,"Adrien","Adrien").convertToDto());
 		//
 		assertNotNull(res.getOeuvre("turc"));
 	}

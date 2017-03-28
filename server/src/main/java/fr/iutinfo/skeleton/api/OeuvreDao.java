@@ -28,6 +28,9 @@ public interface OeuvreDao {
     @SqlUpdate("delete from oeuvre where ono = :ono")
     void delete(@Bind("ono") int ono);
 
+    @SqlUpdate("delete from oeuvre where nom = :nom")
+    void delete(@Bind("nom") String nom);
+
     @SqlQuery("select * from oeuvre order by ono")
     @RegisterMapperFactory(BeanMapperFactory.class)
     List<Oeuvre> all();
@@ -49,4 +52,6 @@ public interface OeuvreDao {
 	@SqlUpdate("update oeuvre set nom = :nom, prix = :prix, description = :description, type = :type, dimension = :dimension, poids = :poids, thematique = :thematique, img = :img where ono = :no")
 	void update(@Bind("no") int ono, @BindBean() Oeuvre oeuvre);
     void close();
+    
+    
 }

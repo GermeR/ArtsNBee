@@ -94,5 +94,10 @@ public class OeuvreResource {
 	public void deleteOeuvre(@PathParam("id") int id) {
 		dao.delete(id);
 	}
-
+	
+	@DELETE
+	@Path("/name/{name}")
+	public void deleteOeuvre(@PathParam("name") String name) {
+		dao.delete(name);
+	}
 }
