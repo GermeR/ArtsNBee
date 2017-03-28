@@ -21,10 +21,11 @@ import javax.ws.rs.core.MediaType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import fr.iutinfo.skeleton.api.Oeuvre;
 import fr.iutinfo.skeleton.api.Souhait;
 import fr.iutinfo.skeleton.api.dao.SouhaitDao;
-import fr.iutinfo.skeleton.common.dto.SouhaitDto;
 import fr.iutinfo.skeleton.common.dto.OeuvreDto;
+import fr.iutinfo.skeleton.common.dto.SouhaitDto;
 
 @Path("/souhait")
 @Produces(MediaType.APPLICATION_JSON)

@@ -1,12 +1,17 @@
 package fr.iutinfo.skeleton.api.dao;
 
-import org.skife.jdbi.v2.sqlobject.*;
+import java.util.List;
+
+import org.skife.jdbi.v2.sqlobject.Bind;
+import org.skife.jdbi.v2.sqlobject.BindBean;
+import org.skife.jdbi.v2.sqlobject.GetGeneratedKeys;
+import org.skife.jdbi.v2.sqlobject.SqlQuery;
+import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapperFactory;
 import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 
+import fr.iutinfo.skeleton.api.Oeuvre;
 import fr.iutinfo.skeleton.api.Souhait;
-
-import java.util.List;
 
 public interface SouhaitDao {
     @SqlUpdate("create table Souhait(ono integer, login varchar(20), primary key (ono, login), foreign key (ono) references oeuvre(ono), foreign key (login) references user(login));")
