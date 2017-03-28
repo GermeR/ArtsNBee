@@ -294,7 +294,10 @@ function afficherOeuvres() {
 
                 // Options
                 var tdDOpt = $("<td>"); // Colonne des options
-                $("<h3>").html("<span class='btn btn-success btn-block' onclick='afficherOeuvre("+json[i].ono+")'>Plus d'infos</span>").appendTo(tdDOpt);
+                $("<h3>").html("<button class='btn btn-secondary btn-block' onclick='afficherOeuvre("+json[i].ono+")'>Plus d'infos</button>").appendTo(tdDOpt);
+                if (getRole() != null) {
+                    $("<h3>").html("<span class='btn btn-success btn-block' onclick='ajouterSouhait(&apos;"+monlogin+"&apos; ,"+json[i].ono+")'>Favoris</span>").appendTo(tdDOpt);
+                }
                 tdDOpt.appendTo(tr);
 
                 tr.appendTo(table);
@@ -369,19 +372,44 @@ function afficherSouhaits() {
             console.log("Getting /souhait");
 
             var table = $("#table-souhait");
-            var tr = $("<tr>");
-            $("<th>").html("login").appendTo(tr);
-            $("<th>").html("ono").appendTo(tr);
-            tr.appendTo(table);
-
-            json.sort(function (a, b) {
-                return a.ono - b.ono;
-            });
-
             for (var i=0; i<json.length; i++) {
                 var tr = $("<tr>");
-                $("<td>").html(json[i].login).appendTo(tr);
-                $("<td>").html(json[i].ono).appendTo(tr);
+
+                // Image
+                $("<td>").html("<img src='"+json[i].img+"' width='150' height='150'></img>").appendTo(tr);
+
+                // Informations
+
+                var tdDesc = $("<td>"); // Colonne des informations
+                var tdDescTable = $("<table>"); // Tableau dans la colonne
+
+                var nom = $("<tr>");
+                $("<td>").html("<b>Nom:</b>").appendTo(nom);
+                $("<td>").html(json[i].nom).appendTo(nom);
+
+                var auteur = $("<tr>");
+                $("<td>").html("<b>Description:</b>").appendTo(auteur);
+                $("<td>").html(json[i].description).appendTo(auteur);
+
+                var dimensions = $("<tr>");
+                $("<td>").html("<b>Dimensions:</b>").appendTo(dimensions);
+                $("<td>").html(json[i].dimension).appendTo(dimensions);
+
+                var poids = $("<tr>");
+                $("<td>").html("<b>Poids:</b>").appendTo(poids);
+                $("<td>").html(json[i].poids + "g").appendTo(poids);
+
+                nom.appendTo(tdDescTable);
+                auteur.appendTo(tdDescTable);
+                dimensions.appendTo(tdDescTable);
+                poids.appendTo(tdDescTable);
+
+                tdDescTable.appendTo(tdDesc);
+                tdDesc.appendTo(tr);
+
+                // Prix
+                $("<td>").html("<h2>"+json[i].prix+"€").appendTo(tr);
+
                 tr.appendTo(table);
             }
             table.appendTo("#showSouhaitMini");
@@ -404,19 +432,44 @@ function afficherMesSouhaits(login) {
             console.log("Getting /souhait/"+login);
 
             var table = $("#table-souhait");
-            var tr = $("<tr>");
-            $("<th>").html("login").appendTo(tr);
-            $("<th>").html("ono").appendTo(tr);
-            tr.appendTo(table);
-
-            json.sort(function (a, b) {
-                return a.ono - b.ono;
-            });
-
             for (var i=0; i<json.length; i++) {
                 var tr = $("<tr>");
-                $("<td>").html(json[i].login).appendTo(tr);
-                $("<td>").html(json[i].ono).appendTo(tr);
+
+                // Image
+                $("<td>").html("<img src='"+json[i].img+"' width='150' height='150'></img>").appendTo(tr);
+
+                // Informations
+
+                var tdDesc = $("<td>"); // Colonne des informations
+                var tdDescTable = $("<table>"); // Tableau dans la colonne
+
+                var nom = $("<tr>");
+                $("<td>").html("<b>Nom:</b>").appendTo(nom);
+                $("<td>").html(json[i].nom).appendTo(nom);
+
+                var auteur = $("<tr>");
+                $("<td>").html("<b>Description:</b>").appendTo(auteur);
+                $("<td>").html(json[i].description).appendTo(auteur);
+
+                var dimensions = $("<tr>");
+                $("<td>").html("<b>Dimensions:</b>").appendTo(dimensions);
+                $("<td>").html(json[i].dimension).appendTo(dimensions);
+
+                var poids = $("<tr>");
+                $("<td>").html("<b>Poids:</b>").appendTo(poids);
+                $("<td>").html(json[i].poids + "g").appendTo(poids);
+
+                nom.appendTo(tdDescTable);
+                auteur.appendTo(tdDescTable);
+                dimensions.appendTo(tdDescTable);
+                poids.appendTo(tdDescTable);
+
+                tdDescTable.appendTo(tdDesc);
+                tdDesc.appendTo(tr);
+
+                // Prix
+                $("<td>").html("<h2>"+json[i].prix+"€").appendTo(tr);
+
                 tr.appendTo(table);
             }
             table.appendTo("#showSouhaitMini");

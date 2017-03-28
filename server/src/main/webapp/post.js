@@ -1,3 +1,26 @@
+function ajouterSouhait(login, ono) {
+
+    var data={
+        login: login,
+        ono: ono
+    };
+
+    $.ajax({
+        url: "v1/souhait",
+        data: JSON.stringify(data),
+        type: "POST",
+        dataType: "json",
+        contentType : 'application/json',
+        success: function(json) {
+            console.log(json);
+            alert("Added");
+        },
+        error: function( xhr, status, errorThrown) {
+            alert("Erreur: POST");
+        },
+    });
+}
+
 $(document).ready(function() {
     
     $("#post-oeuvre-btn").click(function (event) {
@@ -59,28 +82,6 @@ $(document).ready(function() {
             },
         });
         
-    });
-
-    $("#post-souhait-btn").click(function (event) {
-        var data={
-            login: $("#postSouhaitLogin").val(),
-            ono: $("#postSouhaitOno").val()
-        };
-
-        $.ajax({
-            url: "v1/souhait",
-            data: JSON.stringify(data),
-            type: "POST",
-            dataType: "json",
-            contentType : 'application/json',
-            success: function(json) {
-                console.log(json);
-                alert("Added");
-            },
-            error: function( xhr, status, errorThrown) {
-                alert("Erreur: POST");
-            },
-        });
     });
 
     $("#button_new").click(function (event)
