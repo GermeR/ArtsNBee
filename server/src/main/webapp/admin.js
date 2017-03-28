@@ -1,6 +1,6 @@
-function afficherUtilisateur() {
+function adminafficherUtilisateur() {
 
-    $("#table-utilisateur").empty();
+    $("#admin-table-utilisateur").empty();
     
     $.ajax({
         url: "v1/utilisateur",
@@ -8,7 +8,7 @@ function afficherUtilisateur() {
         dataType: "json",
         success: function(json) {
             console.log("Getting /utilisateur");
-            var table = $("#table-utilisateur");
+            var table = $("#admin-table-utilisateur");
             var tr = $("<tr>");
             $("<th>").html("login").appendTo(tr);
             $("<th>").html("password").appendTo(tr);
@@ -33,38 +33,38 @@ function afficherUtilisateur() {
             for (var i=0; i<json.length; i++) {
                 var tr = $("<tr>");
 				var login = json[i].login;
-                $("<td>").html("<input class='form-control' type='text' id='putUtilisateurLogin"+login+"' value ='"+json[i].login+"'>" ).appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='putUtilisateurPassword"+login+"' value ='"+json[i].password+"'>" ).appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='putUtilisateurNom"+login+"' value ='"+json[i].nom+"'>" ).appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='putUtilisateurPrenom"+login+"' value ='"+json[i].prenom+"'>" ).appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='putUtilisateurDateN"+login+"' value ='"+json[i].dateN+"'>" ).appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='putUtilisateurFno"+login+"' value ='"+json[i].fno+"'>" ).appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='putUtilisateurMail"+login+"' value ='"+json[i].mail+"'>" ).appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='putUtilisateurDateDeb"+login+"' value ='"+json[i].dateDeb+"'>" ).appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='putUtilisateurDateFin"+login+"' value ='"+json[i].dateFin+"'>" ).appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='putUtilisateurAdresse"+login+"' value ='"+json[i].adresse+"'>" ).appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='putUtilisateurOptin"+login+"' value ='"+json[i].optin+"'>" ).appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='putUtilisateurOptinPart"+login+"' value ='"+json[i].optinPart+"'>" ).appendTo(tr);
- 				$("<td>").html("<input class='form-control' type='text' id='putUtilisateurRole"+login+"' value ='"+json[i].role+"'>" ).appendTo(tr);
-				$("<td>").html("<span onclick='modifierUtilisateur(&apos;"+login+"&apos;);' class='btn btn-success btn-block'>Modifier</span>").appendTo(tr);
-				$("<td>").html("<span onclick='supprimerUtilisateur(&apos;"+login+"&apos;);' class='btn btn-success btn-block'>Supprimer</span>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminputUtilisateurLogin"+login+"' value ='"+json[i].login+"'>" ).appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminputUtilisateurPassword"+login+"' value ='"+json[i].password+"'>" ).appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminputUtilisateurNom"+login+"' value ='"+json[i].nom+"'>" ).appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminputUtilisateurPrenom"+login+"' value ='"+json[i].prenom+"'>" ).appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminputUtilisateurDateN"+login+"' value ='"+json[i].dateN+"'>" ).appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminputUtilisateurFno"+login+"' value ='"+json[i].fno+"'>" ).appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminputUtilisateurMail"+login+"' value ='"+json[i].mail+"'>" ).appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminputUtilisateurDateDeb"+login+"' value ='"+json[i].dateDeb+"'>" ).appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminputUtilisateurDateFin"+login+"' value ='"+json[i].dateFin+"'>" ).appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminputUtilisateurAdresse"+login+"' value ='"+json[i].adresse+"'>" ).appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminputUtilisateurOptin"+login+"' value ='"+json[i].optin+"'>" ).appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminputUtilisateurOptinPart"+login+"' value ='"+json[i].optinPart+"'>" ).appendTo(tr);
+ 				$("<td>").html("<input class='form-control' type='text' id='adminputUtilisateurRole"+login+"' value ='"+json[i].role+"'>" ).appendTo(tr);
+				$("<td>").html("<span onclick='adminmodifierUtilisateur(&apos;"+login+"&apos;);' class='btn btn-success btn-block'>Modifier</span>").appendTo(tr);
+				$("<td>").html("<span onclick='adminsupprimerUtilisateur(&apos;"+login+"&apos;);' class='btn btn-success btn-block'>Supprimer</span>").appendTo(tr);
                 tr.appendTo(table);
             }
                 var tr = $("<tr>");
-                $("<td>").html("<input class='form-control' type='text' id='postUtilisateurLogin' value ='login'>" ).appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postUtilisateurPassword' value ='password'>" ).appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postUtilisateurNom' value ='nom'>" ).appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postUtilisateurPrenom' value ='prenom'>" ).appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postUtilisateurDateN' value ='dateN'>" ).appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postUtilisateurFno' value ='Gratuit'>" ).appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postUtilisateurMail' value ='mail'>" ).appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postUtilisateurDateDeb' value ='dateDebut'>" ).appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postUtilisateurDateFin' value ='dateFin'>" ).appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postUtilisateurAdresse' value ='adresse'>" ).appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postUtilisateurOptin' value ='false'>" ).appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postUtilisateurOptinPart' value ='false'>" ).appendTo(tr);
- 				$("<td>").html("<input class='form-control' type='text' id='postUtilisateurRole' value ='Client'>" ).appendTo(tr);
-				$("<td>").html("<span onclick='add_Utilisateur();' class='btn btn-success btn-block'>Ajouter</span>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostUtilisateurLogin' value ='login'>" ).appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostUtilisateurPassword' value ='password'>" ).appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostUtilisateurNom' value ='nom'>" ).appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostUtilisateurPrenom' value ='prenom'>" ).appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostUtilisateurDateN' value ='dateN'>" ).appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostUtilisateurFno' value ='Gratuit'>" ).appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostUtilisateurMail' value ='mail'>" ).appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostUtilisateurDateDeb' value ='dateDebut'>" ).appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostUtilisateurDateFin' value ='dateFin'>" ).appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostUtilisateurAdresse' value ='adresse'>" ).appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostUtilisateurOptin' value ='false'>" ).appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostUtilisateurOptinPart' value ='false'>" ).appendTo(tr);
+ 				$("<td>").html("<input class='form-control' type='text' id='adminpostUtilisateurRole' value ='Client'>" ).appendTo(tr);
+				$("<td>").html("<span onclick='adminadd_Utilisateur();' class='btn btn-success btn-block'>Ajouter</span>").appendTo(tr);
                 tr.appendTo(table);
 
         },
@@ -76,21 +76,21 @@ function afficherUtilisateur() {
 }
 
 
-function add_Utilisateur() {
+function adminadd_Utilisateur() {
         var data={
-			adresse: $("#postUtilisateurAdresse").val(),
-			dateDeb: $("#postUtilisateurDateDeb").val(),
-			dateFin: $("#postUtilisateurDateFin").val(),
-			dateN: $("#postUtilisateurDateN").val(),
-			fno: $("#postUtilisateurFno").val(),
-			login: $("#postUtilisateurLogin").val(),
-			mail: $("#postUtilisateurMail").val(),
-			nom: $("#postUtilisateurNom").val(),
-			optin: Boolean('$("#postUtilisateurOptin").val()'),
-			optinPart: Boolean('$("#postUtilisateurOptinPart").val()'),
-			password: $("#postUtilisateurPassword").val(),
-			prenom: $("#postUtilisateurPrenom").val(),
-			role: $("#postUtilisateurRole").val()
+			adresse: $("#adminpostUtilisateurAdresse").val(),
+			dateDeb: $("#adminpostUtilisateurDateDeb").val(),
+			dateFin: $("#adminpostUtilisateurDateFin").val(),
+			dateN: $("#adminpostUtilisateurDateN").val(),
+			fno: $("#adminpostUtilisateurFno").val(),
+			login: $("#adminpostUtilisateurLogin").val(),
+			mail: $("#adminpostUtilisateurMail").val(),
+			nom: $("#adminpostUtilisateurNom").val(),
+			optin: Boolean('$("#adminpostUtilisateurOptin").val()'),
+			optinPart: Boolean('$("#adminpostUtilisateurOptinPart").val()'),
+			password: $("#adminpostUtilisateurPassword").val(),
+			prenom: $("#adminpostUtilisateurPrenom").val(),
+			role: $("#adminpostUtilisateurRole").val()
         };
         
         $.ajax({
@@ -100,11 +100,11 @@ function add_Utilisateur() {
             dataType: "json",
             contentType : 'application/json',
             success: function(json) {
-               	afficherUtilisateur();
+               	adminafficherUtilisateur();
             },
             error: function( xhr, status, errorThrown) {
 				$.ajax({
-					url: "v1/utilisateur/"+$("#postOeuvreLogin").val(),
+					url: "v1/utilisateur/"+$("#adminpostOeuvreLogin").val(),
 					type: "GET",
 					dataType: "json",
 					success: function(json) {
@@ -117,14 +117,14 @@ function add_Utilisateur() {
         });
 }
 
-function supprimerUtilisateur(login) {
+function adminsupprimerUtilisateur(login) {
 		$.ajax({
 		    url: "v1/utilisateur/"+login,
 		    type: "DELETE",
 		    dataType: "json",
 		    contentType : 'application/json',
 		    success: function(json) {
-		       	afficherUtilisateur();
+		       	adminafficherUtilisateur();
 		    },
 		    error: function( xhr, status, errorThrown) {
 		        alert("Erreur: DELETE");
@@ -132,21 +132,21 @@ function supprimerUtilisateur(login) {
 		}); 
 }
 
-function modifierUtilisateur(login) {
+function adminmodifierUtilisateur(login) {
 		    var data={
-				adresse: $("#putUtilisateurAdresse"+login).val(),
-				dateDeb: $("#putUtilisateurDateDeb"+login).val(),
-				dateFin: $("#putUtilisateurDateFin"+login).val(),
-				dateN: $("#putUtilisateurDateN"+login).val(),
-				fno: $("#putUtilisateurFno"+login).val(),
-				login: $("#putUtilisateurLogin"+login).val(),
-				mail: $("#putUtilisateurMail"+login).val(),
-				nom: $("#putUtilisateurNom"+login).val(),
-				optin: Boolean('$("#putUtilisateurOptin"+login).val()'),
-				optinPart: Boolean('$("#putUtilisateurOptinPart"+login).val()'),
-				password: $("#putUtilisateurPassword"+login).val(),
-				prenom: $("#putUtilisateurPrenom"+login).val(),
-				role: $("#putUtilisateurRole"+login).val()
+				adresse: $("#adminputUtilisateurAdresse"+login).val(),
+				dateDeb: $("#adminputUtilisateurDateDeb"+login).val(),
+				dateFin: $("#adminputUtilisateurDateFin"+login).val(),
+				dateN: $("#adminputUtilisateurDateN"+login).val(),
+				fno: $("#adminputUtilisateurFno"+login).val(),
+				login: $("#adminputUtilisateurLogin"+login).val(),
+				mail: $("#adminputUtilisateurMail"+login).val(),
+				nom: $("#adminputUtilisateurNom"+login).val(),
+				optin: Boolean('$("#adminputUtilisateurOptin"+login).val()'),
+				optinPart: Boolean('$("#adminputUtilisateurOptinPart"+login).val()'),
+				password: $("#adminputUtilisateurPassword"+login).val(),
+				prenom: $("#adminputUtilisateurPrenom"+login).val(),
+				role: $("#adminputUtilisateurRole"+login).val()
 			};
             $.ajax({
 		         url: "v1/utilisateur/"+login,
@@ -155,7 +155,7 @@ function modifierUtilisateur(login) {
 		        dataType: "json",
 		        contentType : 'application/json',
                 success: function(response) {
-					afficherUtilisateur();
+					adminafficherUtilisateur();
                 },
                 error: function( xhr, status, errorThrown ) {
                     alert("Erreur: PUT");
@@ -164,9 +164,9 @@ function modifierUtilisateur(login) {
   
 }
 
-function afficherOeuvres() {
+function adminafficherOeuvres() {
 
-    $("#table-oeuvre").empty();
+    $("#admin-table-oeuvre").empty();
     
     $.ajax({
         url: "v1/oeuvre",
@@ -175,7 +175,7 @@ function afficherOeuvres() {
         success: function(json) {
             console.log("Getting /oeuvres");
             
-            var table = $("#table-oeuvre");
+            var table = $("#admin-table-oeuvre");
             var tr = $("<tr>");
             $("<th>").html("nom").appendTo(tr);
             $("<th>").html("prix").appendTo(tr);
@@ -195,28 +195,28 @@ function afficherOeuvres() {
             for (var i=0; i<json.length; i++) {
 				var ono = json[i].ono;
                 var tr = $("<tr>");
-                $("<td>").html("<input class='form-control' type='text' id='putOeuvreNom"+ono+"' value ='"+json[i].nom+"'>" ).appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='putOeuvrePrix"+ono+"' value='"+json[i].prix+"'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='putOeuvrePromo"+ono+"' value='"+json[i].promo+"'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='putOeuvreDescription"+ono+"' value='"+json[i].description+"'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='putOeuvreType"+ono+"' value='"+json[i].type+"'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='putOeuvreDimension"+ono+"' value='"+json[i].dimension+"'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='putOeuvrePoids"+ono+"' value='"+json[i].poids+"'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='putOeuvreThematique"+ono+"' value='"+json[i].thematique+"'>").appendTo(tr);
-				$("<td>").html("<span id='put-oeuvre-btn' onclick='modifierOeuvre("+ono+");' class='btn btn-success btn-block'>Modifier</span>").appendTo(tr);
-				$("<td>").html("<span id='delete-oeuvre-btn' onclick='supprimerOeuvre("+ono+");' class='btn btn-success btn-block'>Supprimer</span>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminputOeuvreNom"+ono+"' value ='"+json[i].nom+"'>" ).appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminputOeuvrePrix"+ono+"' value='"+json[i].prix+"'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminputOeuvrePromo"+ono+"' value='"+json[i].promo+"'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminputOeuvreDescription"+ono+"' value='"+json[i].description+"'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminputOeuvreType"+ono+"' value='"+json[i].type+"'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminputOeuvreDimension"+ono+"' value='"+json[i].dimension+"'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminputOeuvrePoids"+ono+"' value='"+json[i].poids+"'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminputOeuvreThematique"+ono+"' value='"+json[i].thematique+"'>").appendTo(tr);
+				$("<td>").html("<span id='put-oeuvre-btn' onclick='adminmodifierOeuvre("+ono+");' class='btn btn-success btn-block'>Modifier</span>").appendTo(tr);
+				$("<td>").html("<span id='delete-oeuvre-btn' onclick='adminsupprimerOeuvre("+ono+");' class='btn btn-success btn-block'>Supprimer</span>").appendTo(tr);
                 tr.appendTo(table);
             }
                 var tr = $("<tr>");
-                $("<td>").html("<input class='form-control' type='text' id='postOeuvreNom' value='nom'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postOeuvrePrix' value='prix'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postOeuvrePromo' value='promo'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postOeuvreDescription' value='description'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postOeuvreType' value='type'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postOeuvreDimension' value='dimension'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postOeuvrePoids' value='poids'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postOeuvreThematique' value='thematique'>").appendTo(tr);
-				$("<td>").html("<span id='post-oeuvre-btn' onclick='add_oeuvre();' class='btn btn-success btn-block'>Ajouter</span>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostOeuvreNom' value='nom'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostOeuvrePrix' value='prix'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostOeuvrePromo' value='promo'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostOeuvreDescription' value='description'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostOeuvreType' value='type'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostOeuvreDimension' value='dimension'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostOeuvrePoids' value='poids'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostOeuvreThematique' value='thematique'>").appendTo(tr);
+				$("<td>").html("<span id='post-oeuvre-btn' onclick='adminadd_oeuvre();' class='btn btn-success btn-block'>Ajouter</span>").appendTo(tr);
                 tr.appendTo(table);
 
         },
@@ -228,16 +228,16 @@ function afficherOeuvres() {
 }
 
 
-function add_oeuvre() {
+function adminadd_oeuvre() {
         var data={
-			nom: $("#postOeuvreNom").val(),
-            prix: $("#postOeuvrePrix").val(),
-            promo: $("#postOeuvrePromo").val(),
-            description: $("#postOeuvreDescription").val(),
-            type: $("#postOeuvreType").val(),
-            dimension: $("#postOeuvreDimension").val(),
-            poids: $("#postOeuvrePoids").val(),
-            thematique: $("#postOeuvreThematique").val()
+			nom: $("#adminpostOeuvreNom").val(),
+            prix: $("#adminpostOeuvrePrix").val(),
+            promo: $("#adminpostOeuvrePromo").val(),
+            description: $("#adminpostOeuvreDescription").val(),
+            type: $("#adminpostOeuvreType").val(),
+            dimension: $("#adminpostOeuvreDimension").val(),
+            poids: $("#adminpostOeuvrePoids").val(),
+            thematique: $("#adminpostOeuvreThematique").val()
         };
         
         $.ajax({
@@ -247,7 +247,7 @@ function add_oeuvre() {
             dataType: "json",
             contentType : 'application/json',
             success: function(json) {
-               	afficherOeuvres();
+               	adminafficherOeuvres();
             },
             error: function( xhr, status, errorThrown) {
                 alert("Erreur: POST");
@@ -255,14 +255,14 @@ function add_oeuvre() {
         });
 }
 
-function supprimerOeuvre(ono) {
+function adminsupprimerOeuvre(ono) {
 		$.ajax({
 		    url: "v1/oeuvre/"+ono,
 		    type: "DELETE",
 		    dataType: "json",
 		    contentType : 'application/json',
 		    success: function(json) {
-		       	afficherOeuvres();
+		       	adminafficherOeuvres();
 		    },
 		    error: function( xhr, status, errorThrown) {
 		        alert("Erreur: DELETE");
@@ -270,16 +270,16 @@ function supprimerOeuvre(ono) {
 		}); 
 }
 
-function modifierOeuvre(ono) {
+function adminmodifierOeuvre(ono) {
 		     var data={
-				    nom: $("#putOeuvreNom"+ono).val(),
-				    prix: $("#putOeuvrePrix"+ono).val(),
-				    promo: $("#putOeuvrePromo"+ono).val(),
-				    description: $("#putOeuvreDescription"+ono).val(),
-				    type: $("#putOeuvreType"+ono).val(),
-				    dimension: $("#putOeuvreDimension"+ono).val(),
-				    poids: $("#putOeuvrePoids"+ono).val(),
-					thematique: $("#putOeuvreThematique"+ono).val()
+				    nom: $("#adminputOeuvreNom"+ono).val(),
+				    prix: $("#adminputOeuvrePrix"+ono).val(),
+				    promo: $("#adminputOeuvrePromo"+ono).val(),
+				    description: $("#adminputOeuvreDescription"+ono).val(),
+				    type: $("#adminputOeuvreType"+ono).val(),
+				    dimension: $("#adminputOeuvreDimension"+ono).val(),
+				    poids: $("#adminputOeuvrePoids"+ono).val(),
+					thematique: $("#adminputOeuvreThematique"+ono).val()
 		    };
             $.ajax({
 		         url: "v1/oeuvre/"+ono,
@@ -288,7 +288,7 @@ function modifierOeuvre(ono) {
 		        dataType: "json",
 		        contentType : 'application/json',
                 success: function(response) {
-					afficherOeuvres();
+					adminafficherOeuvres();
                 },
                 error: function( xhr, status, errorThrown ) {
                     alert("Erreur: PUT");
@@ -298,9 +298,9 @@ function modifierOeuvre(ono) {
 }
 
 
-function afficherForfait() {
+function adminafficherForfait() {
 
-    $("#table-forfait").empty();
+    $("#admin-table-forfait").empty();
     
     $.ajax({
         url: "v1/forfait",
@@ -309,7 +309,7 @@ function afficherForfait() {
         success: function(json) {
             console.log("Getting /forfait");
             
-            var table = $("#table-forfait");
+            var table = $("#admin-table-forfait");
             var tr = $("<tr>");
             $("<th>").html("fno").appendTo(tr);
 			$("<th>").html("prix").appendTo(tr);
@@ -324,18 +324,18 @@ function afficherForfait() {
             for (var i=0; i<json.length; i++) {
 				var fno = json[i].fno;
                 var tr = $("<tr>");
-                $("<td>").html("<input class='form-control' type='text' id='putForfaitFno"+fno+"' value ='"+json[i].fno+"'>" ).appendTo(tr);
-				$("<td>").html("<input class='form-control' type='text' id='putForfaitPrix"+fno+"' value ='"+json[i].prix+"'>" ).appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='putForfaitnbOeuvres"+fno+"' value='"+json[i].nbOeuvres+"'>").appendTo(tr);
-				$("<td>").html("<span id='put-oeuvre-btn' onclick='modifierForfait(&apos;"+fno+"&apos;);' class='btn btn-success btn-block'>Modifier</span>").appendTo(tr);
-				$("<td>").html("<span id='delete-oeuvre-btn' onclick='supprimerForfait(&apos;"+fno+"&apos;);' class='btn btn-success btn-block'>Supprimer</span>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminputForfaitFno"+fno+"' value ='"+json[i].fno+"'>" ).appendTo(tr);
+				$("<td>").html("<input class='form-control' type='text' id='adminputForfaitPrix"+fno+"' value ='"+json[i].prix+"'>" ).appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminputForfaitnbOeuvres"+fno+"' value='"+json[i].nbOeuvres+"'>").appendTo(tr);
+				$("<td>").html("<span id='put-oeuvre-btn' onclick='adminmodifierForfait(&apos;"+fno+"&apos;);' class='btn btn-success btn-block'>Modifier</span>").appendTo(tr);
+				$("<td>").html("<span id='delete-oeuvre-btn' onclick='adminsupprimerForfait(&apos;"+fno+"&apos;);' class='btn btn-success btn-block'>Supprimer</span>").appendTo(tr);
                 tr.appendTo(table);
             }
                 var tr = $("<tr>");
-                $("<td>").html("<input class='form-control' type='text' id='postForfaitFno' value='forfait'>").appendTo(tr);
-				$("<td>").html("<input class='form-control' type='text' id='postForfaitPrix' value='0'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postForfaitnbOeuvres' value='0'>").appendTo(tr);
-				$("<td>").html("<span id='post-oeuvre-btn' onclick='add_Forfait();' class='btn btn-success btn-block'>Ajouter</span>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostForfaitFno' value='forfait'>").appendTo(tr);
+				$("<td>").html("<input class='form-control' type='text' id='adminpostForfaitPrix' value='0'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostForfaitnbOeuvres' value='0'>").appendTo(tr);
+				$("<td>").html("<span id='post-oeuvre-btn' onclick='adminadd_Forfait();' class='btn btn-success btn-block'>Ajouter</span>").appendTo(tr);
                 tr.appendTo(table);
         },
         error: function(xhr, status, errorThrown) {
@@ -346,11 +346,11 @@ function afficherForfait() {
 }
 
 
-function add_Forfait() {
+function adminadd_Forfait() {
 		    var data={
-				fno: $("#postForfaitFno").val(),
-				prix: $("#postForfaitPrix").val(),
-		        nbOeuvres: $("#postForfaitnbOeuvres").val(),
+				fno: $("#adminpostForfaitFno").val(),
+				prix: $("#adminpostForfaitPrix").val(),
+		        nbOeuvres: $("#adminpostForfaitnbOeuvres").val(),
 		    };
         
         $.ajax({
@@ -360,7 +360,7 @@ function add_Forfait() {
             dataType: "json",
             contentType : 'application/json',
             success: function(json) {
-               afficherForfait();
+               adminafficherForfait();
             },
             error: function( xhr, status, errorThrown) {
                 alert("Erreur: POST/forfait déjà créer");
@@ -368,14 +368,14 @@ function add_Forfait() {
         });
 }
 
-function supprimerForfait(fno) {
+function adminsupprimerForfait(fno) {
 		$.ajax({
 		    url: "v1/forfait/"+fno,
 		    type: "DELETE",
 		    dataType: "json",
 		    contentType : 'application/json',
 		    success: function(json) {
-		       	afficherForfait();
+		       	adminafficherForfait();
 		    },
 		    error: function( xhr, status, errorThrown) {
 		        alert("Erreur: DELETE");
@@ -383,16 +383,16 @@ function supprimerForfait(fno) {
 		}); 
 }
 
-function modifierForfait(fno) {
+function adminmodifierForfait(fno) {
 		    var data={
-				login: $("#putCommandeLogin"+ono+login).val(),
-				ono: $("#putCommandeOno"+ono+login).val(),
-		        paiement: Boolean('$("#putCommandePaiement"+ono+login).val()'),
-		        envoi: Boolean('$("#putCommandeEnvoi"+ono+login).val()'),
-		        reception: Boolean('$("#putCommandeReception"+ono+login).val()'),
-		        remuneration: Boolean('$("#putCommandeRemuneration"+ono+login).val()'),
-		        prix: $("#putCommandePrix"+ono+login).val(),
-		        frais: $("#putCommandeFrais"+ono+login).val()
+				login: $("#adminputCommandeLogin"+ono+login).val(),
+				ono: $("#adminputCommandeOno"+ono+login).val(),
+		        paiement: Boolean('$("#adminputCommandePaiement"+ono+login).val()'),
+		        envoi: Boolean('$("#adminputCommandeEnvoi"+ono+login).val()'),
+		        reception: Boolean('$("#adminputCommandeReception"+ono+login).val()'),
+		        remuneration: Boolean('$("#adminputCommandeRemuneration"+ono+login).val()'),
+		        prix: $("#adminputCommandePrix"+ono+login).val(),
+		        frais: $("#adminputCommandeFrais"+ono+login).val()
 		    };
             $.ajax({
 		         url: "v1/commande/"+login+":"+ono,
@@ -401,7 +401,7 @@ function modifierForfait(fno) {
 		        dataType: "json",
 		        contentType : 'application/json',
                 success: function(response) {
-					afficherForfait();
+					adminafficherForfait();
                 },
                 error: function( xhr, status, errorThrown ) {
                     alert("Erreur: PUT");
@@ -410,9 +410,9 @@ function modifierForfait(fno) {
   
 }
 
-function afficherCommandes() {
+function adminafficherCommandes() {
 
-    $("#table-commande").empty();
+    $("#admin-table-commande").empty();
     
     $.ajax({
         url: "v1/commande",
@@ -421,7 +421,7 @@ function afficherCommandes() {
         success: function(json) {
             console.log("Getting /commande");
             
-            var table = $("#table-commande");
+            var table = $("#admin-table-commande");
             var tr = $("<tr>");
             $("<th>").html("login").appendTo(tr);
 			$("<th>").html("ono").appendTo(tr);
@@ -442,28 +442,28 @@ function afficherCommandes() {
 				var ono = json[i].ono;
 				var login = json[i].login;
                 var tr = $("<tr>");
-                $("<td>").html("<input class='form-control' type='text' id='putCommandeLogin"+ono+login+"' value ='"+json[i].login+"'>" ).appendTo(tr);
-				$("<td>").html("<input class='form-control' type='text' id='putCommandeOno"+ono+login+"' value ='"+json[i].ono+"'>" ).appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='putCommandePaiement"+ono+login+"' value='"+json[i].paiement+"'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='putCommandeEnvoi"+ono+login+"' value='"+json[i].envoi+"'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='putCommandeReception"+ono+login+"' value='"+json[i].reception+"'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='putCommandeRemuneration"+ono+login+"' value='"+json[i].remuneration+"'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='putCommandePrix"+ono+login+"' value='"+json[i].prix+"'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='putCommandeFrais"+ono+login+"' value='"+json[i].frais+"'>").appendTo(tr);
-				$("<td>").html("<span id='put-oeuvre-btn' onclick='modifierCommande(&apos;"+login+"&apos;:"+ono+");' class='btn btn-success btn-block'>Modifier</span>").appendTo(tr);
-				$("<td>").html("<span id='delete-oeuvre-btn' onclick='supprimerCommande("+ono+");' class='btn btn-success btn-block'>Supprimer</span>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminputCommandeLogin"+ono+login+"' value ='"+json[i].login+"'>" ).appendTo(tr);
+				$("<td>").html("<input class='form-control' type='text' id='adminputCommandeOno"+ono+login+"' value ='"+json[i].ono+"'>" ).appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminputCommandePaiement"+ono+login+"' value='"+json[i].paiement+"'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminputCommandeEnvoi"+ono+login+"' value='"+json[i].envoi+"'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminputCommandeReception"+ono+login+"' value='"+json[i].reception+"'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminputCommandeRemuneration"+ono+login+"' value='"+json[i].remuneration+"'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminputCommandePrix"+ono+login+"' value='"+json[i].prix+"'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminputCommandeFrais"+ono+login+"' value='"+json[i].frais+"'>").appendTo(tr);
+				$("<td>").html("<span id='put-oeuvre-btn' onclick='adminmodifierCommande(&apos;"+login+"&apos;:"+ono+");' class='btn btn-success btn-block'>Modifier</span>").appendTo(tr);
+				$("<td>").html("<span id='delete-oeuvre-btn' onclick='adminsupprimerCommande("+ono+");' class='btn btn-success btn-block'>Supprimer</span>").appendTo(tr);
                 tr.appendTo(table);
             }
                 var tr = $("<tr>");
-                $("<td>").html("<input class='form-control' type='text' id='postCommandeLogin' value='client'>").appendTo(tr);
-				$("<td>").html("<input class='form-control' type='text' id='postCommandeOno' value='id oeuvre'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postCommandePaiement' value='false'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postCommandeEnvoi' value='false'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postCommandeReception' value='false'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postCommandeRemuneration' value='false'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postCommandePrix' value='0'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postCommandeFrais' value='0'>").appendTo(tr);
-				$("<td>").html("<span id='post-oeuvre-btn' onclick='add_Commande();' class='btn btn-success btn-block'>Ajouter</span>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostCommandeLogin' value='client'>").appendTo(tr);
+				$("<td>").html("<input class='form-control' type='text' id='adminpostCommandeOno' value='id oeuvre'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostCommandePaiement' value='false'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostCommandeEnvoi' value='false'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostCommandeReception' value='false'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostCommandeRemuneration' value='false'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostCommandePrix' value='0'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostCommandeFrais' value='0'>").appendTo(tr);
+				$("<td>").html("<span id='post-oeuvre-btn' onclick='adminadd_Commande();' class='btn btn-success btn-block'>Ajouter</span>").appendTo(tr);
                 tr.appendTo(table);
         },
         error: function(xhr, status, errorThrown) {
@@ -474,16 +474,16 @@ function afficherCommandes() {
 }
 
 
-function add_Commande() {
+function adminadd_Commande() {
 		    var data={
-				login: $("#postCommandeLogin").val(),
-				ono: $("#postCommandeOno").val(),
-		        paiement: $("#postCommandePaiement").val(),
-		        envoi: $("#postCommandeEnvoi").val(),
-		        reception: $("#postCommandeReception").val(),
-		        remuneration: $("#postCommandeRemuneration").val(),
-		        prix: $("#postCommandePrix").val(),
-		        frais: $("#postCommandeFrais").val()
+				login: $("#adminpostCommandeLogin").val(),
+				ono: $("#adminpostCommandeOno").val(),
+		        paiement: $("#adminpostCommandePaiement").val(),
+		        envoi: $("#adminpostCommandeEnvoi").val(),
+		        reception: $("#adminpostCommandeReception").val(),
+		        remuneration: $("#adminpostCommandeRemuneration").val(),
+		        prix: $("#adminpostCommandePrix").val(),
+		        frais: $("#adminpostCommandeFrais").val()
 		    };
         
         $.ajax({
@@ -493,7 +493,7 @@ function add_Commande() {
             dataType: "json",
             contentType : 'application/json',
             success: function(json) {
-               	afficherCommandes();
+               	adminafficherCommandes();
             },
             error: function( xhr, status, errorThrown) {
                 alert("Erreur: POST/Oeuvre déjà acheté");
@@ -501,14 +501,14 @@ function add_Commande() {
         });
 }
 
-function supprimerCommande(ono) {
+function adminsupprimerCommande(ono) {
 		$.ajax({
 		    url: "v1/commande/"+ono,
 		    type: "DELETE",
 		    dataType: "json",
 		    contentType : 'application/json',
 		    success: function(json) {
-		       	afficherCommandes();
+		       	adminafficherCommandes();
 		    },
 		    error: function( xhr, status, errorThrown) {
 		        alert("Erreur: DELETE");
@@ -516,16 +516,16 @@ function supprimerCommande(ono) {
 		}); 
 }
 
-function modifierCommande(login,ono) {
+function adminmodifierCommande(login,ono) {
 		    var data={
-				login: $("#postCommandeLogin+ono+login").val(),
-				ono: $("#postCommandeOno"+ono+login).val(),
-		        paiement: Boolean('$("#postCommandePaiement"+ono+login).val()'),
-		        envoi: Boolean('$("#postCommandeEnvoi"+ono+login).val()'),
-		        reception: Boolean('$("#postCommandeReception"+ono+login).val()'),
-		        remuneration: Boolean('$("#postCommandeRemuneration"+ono+login).val()'),
-		        prix: $("#postCommandePrix"+ono+login).val(),
-		        frais: $("#postCommandeFrais"+ono+login).val()
+				login: $("#adminpostCommandeLogin+ono+login").val(),
+				ono: $("#adminpostCommandeOno"+ono+login).val(),
+		        paiement: Boolean('$("#adminpostCommandePaiement"+ono+login).val()'),
+		        envoi: Boolean('$("#adminpostCommandeEnvoi"+ono+login).val()'),
+		        reception: Boolean('$("#adminpostCommandeReception"+ono+login).val()'),
+		        remuneration: Boolean('$("#adminpostCommandeRemuneration"+ono+login).val()'),
+		        prix: $("#adminpostCommandePrix"+ono+login).val(),
+		        frais: $("#adminpostCommandeFrais"+ono+login).val()
 		    };
             $.ajax({
 		        url: "v1/commande/"+login+":"+ono,
@@ -534,7 +534,7 @@ function modifierCommande(login,ono) {
 		        dataType: "json",
 		        contentType : 'application/json',
                 success: function(response) {
-					afficherOeuvres();
+					adminafficherOeuvres();
                 },
                 error: function( xhr, status, errorThrown ) {
                     alert("Erreur: PUT");
@@ -543,9 +543,9 @@ function modifierCommande(login,ono) {
   
 }
 
-function afficherCommandeTerminee() {
+function adminafficherCommandeTerminee() {
 
-    $("#table-facture").empty();
+    $("#admin-table-facture").empty();
     
     $.ajax({
         url: "v1/facture",
@@ -553,7 +553,7 @@ function afficherCommandeTerminee() {
         dataType: "json",
         success: function(json) {
             console.log("Getting /facture");
-            var table = $("#table-facture");
+            var table = $("#admin-table-facture");
             var tr = $("<tr>");
             $("<th>").html("login").appendTo(tr);
 			$("<th>").html("ono").appendTo(tr);
@@ -576,16 +576,16 @@ function afficherCommandeTerminee() {
                 $("<td>").html("<input class='form-control' type='text' value='"+json[i].prix+"'>").appendTo(tr);
                 $("<td>").html("<input class='form-control' type='text' value='"+json[i].frais+"'>").appendTo(tr);
                 $("<td>").html("<input class='form-control' type='text' value='"+json[i].adresseLivraison+"'>").appendTo(tr);
-				$("<td>").html("<span id='delete-oeuvre-btn' onclick='supprimerCommandeTerminee("+ono+",&apos;"+login+"&apos;);' class='btn btn-success btn-block'>Supprimer</span>").appendTo(tr);
+				$("<td>").html("<span id='delete-oeuvre-btn' onclick='adminsupprimerCommandeTerminee("+ono+",&apos;"+login+"&apos;);' class='btn btn-success btn-block'>Supprimer</span>").appendTo(tr);
                 tr.appendTo(table);
             }
                 var tr = $("<tr>");
-                $("<td>").html("<input class='form-control' type='text' id='postCommandeTermineeLogin' value='login'>").appendTo(tr);
-				$("<td>").html("<input class='form-control' type='text' id='postCommandeTermineeOno' value='id oeuvre'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postCommandeTermineePrix' value='prix'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='postCommandeTermineeFrais' value='frais'>").appendTo(tr);
-                $("<td>").html("<input class='form-control' type='text' id='putCommandeTermineeadresseLivraison' value='adresse'>").appendTo(tr);
-				$("<td>").html("<span id='post-oeuvre-btn' onclick='add_CommandeTerminee();' class='btn btn-success btn-block'>Ajouter</span>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostCommandeTermineeLogin' value='login'>").appendTo(tr);
+				$("<td>").html("<input class='form-control' type='text' id='adminpostCommandeTermineeOno' value='id oeuvre'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostCommandeTermineePrix' value='prix'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostCommandeTermineeFrais' value='frais'>").appendTo(tr);
+                $("<td>").html("<input class='form-control' type='text' id='adminpostCommandeTermineeadresseLivraison' value='adresse'>").appendTo(tr);
+				$("<td>").html("<span id='post-oeuvre-btn' onclick='adminadd_CommandeTerminee();' class='btn btn-success btn-block'>Ajouter</span>").appendTo(tr);
                 tr.appendTo(table);
         },
         error: function(xhr, status, errorThrown) {
@@ -596,13 +596,13 @@ function afficherCommandeTerminee() {
 }
 
 
-function add_CommandeTerminee() {
+function adminadd_CommandeTerminee() {
 		    var data={
-				login: $("#postCommandeTermineeLogin").val(),
-				ono: $("#postCommandeTermineeOno").val(),
-		        prix: $("#postCommandeTermineePrix").val(),
-		        frais: $("#postCommandeTermineeFrais").val(),
-		        adresseLivraison: $("#putCommandeTermineeadresseLivraison").val(),
+				login: $("#adminpostCommandeTermineeLogin").val(),
+				ono: $("#adminpostCommandeTermineeOno").val(),
+		        prix: $("#adminpostCommandeTermineePrix").val(),
+		        frais: $("#adminpostCommandeTermineeFrais").val(),
+		        adresseLivraison: $("#adminpostCommandeTermineeadresseLivraison").val(),
 		    };
         
         $.ajax({
@@ -612,7 +612,7 @@ function add_CommandeTerminee() {
             dataType: "json",
             contentType : 'application/json',
             success: function(json) {
-               	afficherCommandeTerminee();
+               	adminafficherCommandeTerminee();
             },
             error: function( xhr, status, errorThrown) {
                 alert("Erreur: POST");
@@ -620,14 +620,14 @@ function add_CommandeTerminee() {
         });
 }
 
-function supprimerCommandeTerminee(ono,login) {
+function adminsupprimerCommandeTerminee(ono,login) {
 		$.ajax({
 		    url: "v1/facture/"+ono+":"+login,
 		    type: "DELETE",
 		    dataType: "json",
 		    contentType : 'application/json',
 		    success: function(json) {
-		       	afficherCommandeTerminee();
+		       	adminafficherCommandeTerminee();
 		    },
 		    error: function( xhr, status, errorThrown) {
 		        alert("Erreur: DELETE");
@@ -635,12 +635,13 @@ function supprimerCommandeTerminee(ono,login) {
 		}); 
 }
 
+
 $(document).ready(function() {
 
-    afficherUtilisateur();
-    afficherOeuvres();
-	afficherForfait();
-	afficherCommandes();
-	afficherCommandeTerminee();
-
+    adminafficherUtilisateur();
+    adminafficherOeuvres();
+	adminafficherForfait();
+	adminafficherCommandes();
+	adminafficherCommandeTerminee();
+	adminafficherSouhait();
 });
