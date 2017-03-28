@@ -85,8 +85,7 @@ public class ForfaitResource {
 
     @DELETE
     @Path("/{fno}")
-    public void deleteForfait(@PathParam("id") String id) {
-        dao.delete(id);
+    public void deleteForfait(@PathParam("fno") String fno) {
+        dao.delete(fno);
     }
-
 }
